@@ -1,0 +1,22 @@
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+        <% @groups.each do |group| %>
+                      <tr>
+                    <td><%= group.name %></td>
+                    <td><%= group.description %></td>
+                    <td><%= link_to 'Show', product %></td>
+                    <td><%= link_to 'Edit', edit_admin_product_path(comment) %></td>
+                    <td><%= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete %></td>
+                  </tr>
+        <% end %>
+    </table>
+
+    <%=link_to 'Add product', new_admin_product_path %>
