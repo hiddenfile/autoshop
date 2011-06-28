@@ -1,7 +1,6 @@
     <table>
       <tr>
         <th>Title</th>
-        <th>Description</th>
 
         <th></th>
         <th></th>
@@ -11,12 +10,11 @@
         <% @groups.each do |group| %>
                       <tr>
                     <td><%= group.name %></td>
-                    <td><%= group.description %></td>
-                    <td><%= link_to 'Show', product %></td>
-                    <td><%= link_to 'Edit', edit_admin_product_path(comment) %></td>
-                    <td><%= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete %></td>
+                    <td><%= link_to 'Show', admin_group_path(group) %></td>
+                    <td><%= link_to 'Edit', edit_admin_group_path(group) %></td>
+                    <td><%= link_to 'Destroy', admin_group_path(group), :confirm => 'Are you sure?', :method => :delete %></td>
                   </tr>
         <% end %>
     </table>
 
-    <%=link_to 'Add product', new_admin_product_path %>
+    <%=link_to 'Add group', new_admin_group_path %>

@@ -1,17 +1,12 @@
 class Admin::GroupsController < Admin::AdminController
   def create
-    @group = Group.new(params[:product])
+    @group = Group.new(params[:group])
 
-    respond_to do |format|
       if @group.save
-        format.html { render :nothing => true}
-#          redirect_to(@comment, :notice => 'Comment was successfully created.') }
-        format.xml  { render :xml => @group, :status => :created, :location => @group }
+        redirect_to(admin_groups_path, :notice => 'Group was successfully created.')
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
+        render :action => "new"
       end
-    end
   end
 
   def index
@@ -25,23 +20,19 @@ class Admin::GroupsController < Admin::AdminController
   def update
     @group = Group.find(params[:id])
 
-    respond_to do |format|
       if @group.update_attributes(params[:group])
-        format.html { redirect_to(@group, :notice => 'group was successfully updated.') }
-        format.xml  { head :ok }
+        redirect_to(admin_group_path(@group), :notice => 'group was successfully updated.')
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
+        render :action => "edit"
       end
-    end
   end
 
   def show
-    @group = group.find(params[:id])
+    @group = Group.find(params[:id])
   end
 
   def edit
-    @group = group.find(params[:id])
+    @group = Group.find(params[:id])
   end
 
 end

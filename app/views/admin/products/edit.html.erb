@@ -1,0 +1,26 @@
+<%=form_for @product, :url => admin_product_path do |pos| %>
+    <div>
+        <%= pos.label 'Company' %>
+        <%#= pos.select 'company',@companies.map(&:name) %>
+        <%= pos.select 'company',@companies.collect{|p| [p.name, p.id]} %>
+        <%#= pos.select :member,:gym_id,Gym.find(:all).collect{|p| [p.name, p.id]}%>
+    </div>
+
+    <div>
+        <%= pos.label 'Group' %>
+        <%#= pos.select 'group',@groups.map(&:name) %>
+        <%= pos.select 'group',@groups.collect{|p| [p.name, p.id]} %>
+    </div>
+
+    <div>
+        <%= pos.label 'Title' %>
+        <%= pos.text_field :title%>
+    </div>
+
+    <div>
+        <%= pos.label 'Description' %>
+        <%= pos.text_area :description%>
+    </div>
+
+    <%=pos.submit 'Update product info'%>
+<%end%>

@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/cncardoso/web-app-theme.git
+  revision: 80337dba00e1f2b5725371c584d9e2abc5f29127
+  specs:
+    web-app-theme (0.6.3)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -46,7 +52,9 @@ GEM
     erubis (2.7.0)
     execjs (1.2.0)
       multi_json (~> 1.0)
+    haml (3.1.2)
     hike (1.1.0)
+    hpricot (0.8.4)
     i18n (0.6.0)
     jquery-rails (1.0.12)
       railties (~> 3.0)
@@ -111,7 +119,6 @@ GEM
       multi_json (>= 1.0.2)
     warden (1.0.4)
       rack (>= 1.0)
-    web-app-theme (0.6.3)
 
 PLATFORMS
   ruby
@@ -119,6 +126,8 @@ PLATFORMS
 DEPENDENCIES
   coffee-script
   devise
+  haml
+  hpricot
   jquery-rails
   rails (= 3.1.0.rc4)
   sass-rails (~> 3.1.0.rc)
@@ -126,4 +135,4 @@ DEPENDENCIES
   therubyracer (>= 0.8.2)
   turn
   uglifier
-  web-app-theme (>= 0.6.2)
+  web-app-theme!

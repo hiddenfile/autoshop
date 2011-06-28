@@ -16,10 +16,9 @@ gem 'coffee-script'
 gem 'uglifier'
 
 gem 'jquery-rails'
-
-group :development, :test do
-  gem 'web-app-theme', '>= 0.6.2'
-end
+gem 'web-app-theme', :git => 'git://github.com/cncardoso/web-app-theme.git'
+gem 'haml'
+gem 'hpricot'
 
 # Use unicorn as the web server
 # gem 'unicorn'

@@ -1,7 +1,7 @@
 Avtoportal::Application.routes.draw do
 
   namespace :admin do
-    resources :products
+    resources :products, :companies , :groups
   end
 
 #  resources :products

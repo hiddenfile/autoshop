@@ -1,22 +1,20 @@
     <table>
       <tr>
         <th>Title</th>
-        <th>Description</th>
 
         <th></th>
         <th></th>
         <th></th>
       </tr>
 
-        <% @products.each do |product| %>
+        <% @companies.each do |company| %>
                       <tr>
-                    <td><%= product.title %></td>
-                    <td><%= product.description %></td>
-                    <td><%= link_to 'Show', product %></td>
-                    <td><%= link_to 'Edit', edit_admin_product_path(comment) %></td>
-                    <td><%= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete %></td>
+                    <td><%= company.name %></td>
+                    <td><%= link_to 'Show', admin_company_path(company) %></td>
+                    <td><%= link_to 'Edit', edit_admin_company_path(company) %></td>
+                    <td><%= link_to 'Destroy', admin_company_path(company), :confirm => 'Are you sure?', :method => :delete %></td>
                   </tr>
         <% end %>
     </table>
 
-    <%=link_to 'Add product', new_admin_product_path %>
+    <%=link_to 'Add company', new_admin_company_path %>

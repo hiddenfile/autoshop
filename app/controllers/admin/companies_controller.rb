@@ -2,16 +2,11 @@ class Admin::CompaniesController < Admin::AdminController
   def create
     @company = Company.new(params[:company])
 
-    respond_to do |format|
       if @company.save
-        format.html { render :nothing => true}
-#          redirect_to(@comment, :notice => 'Comment was successfully created.') }
-        format.xml  { render :xml => @company, :status => :created, :location => @company }
+         redirect_to(admin_companies_path, :notice => 'Company was successfully created.')
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @company.errors, :status => :unprocessable_entity }
+         render :action => "new"
       end
-    end
   end
 
   def index
@@ -25,15 +20,11 @@ class Admin::CompaniesController < Admin::AdminController
   def update
     @company = Company.find(params[:id])
 
-    respond_to do |format|
-      if @product.update_attributes(params[:company])
-        format.html { redirect_to(@company, :notice => 'Product was successfully updated.') }
-        format.xml  { head :ok }
+      if @company.update_attributes(params[:company])
+        redirect_to(admin_company_path(@company), :notice => 'Product was successfully updated.')
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @company.errors, :status => :unprocessable_entity }
+        render :action => "edit"
       end
-    end
   end
 
   def show
