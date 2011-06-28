@@ -7,7 +7,7 @@
 
       <h2 class="title">All Groups</h2>
 
-    <table>
+    <table class="table">
       <tr>
         <th class="first">Title</th>
 
@@ -17,11 +17,11 @@
       </tr>
 
         <% @groups.each do |group| %>
-                      <tr>
+                  <tr>
                     <td><%= group.name %></td>
-                    <td><%= link_to 'Show', admin_group_path(group) %></td>
-                    <td><%= link_to 'Edit', edit_admin_group_path(group) %></td>
-                    <td><%= link_to 'Destroy', admin_group_path(group), :confirm => 'Are you sure?', :method => :delete %></td>
+                    <td><%= link_to 'Show', admin_group_path(group) %>
+                    <%= link_to 'Edit', edit_admin_group_path(group) %>
+                    <%= link_to 'Destroy', admin_group_path(group), :confirm => 'Are you sure?', :method => :delete %></td>
                   </tr>
         <% end %>
     </table>

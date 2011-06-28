@@ -25,9 +25,9 @@
                     <td><%= product.group.name %></td>
                     <td><%= product.title %></td>
                     <td><%= product.description %></td>
-                    <td><%= link_to 'Show', admin_product_path(product) %></td>
-                    <td><%= link_to 'Edit', edit_admin_product_path(product) %></td>
-                    <td><%= link_to 'Destroy', admin_product_path(product), :confirm => 'Are you sure?', :method => :delete %></td>
+                    <td><%= link_to 'Show', admin_product_path(product) %>
+                    <%= link_to 'Edit', edit_admin_product_path(product) %>
+                    <%= link_to 'Destroy', admin_product_path(product), :confirm => 'Are you sure?', :method => :delete %></td>
                   </tr>
         <% end %>
     </table>

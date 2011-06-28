@@ -3,6 +3,7 @@
 <head>
   <title>Web App</title>
   <%= stylesheet_link_tag :application %>
+  <%= stylesheet_link_tag :custom %>
   <%= javascript_include_tag :application %>
   <%= csrf_meta_tag %>
 </head>
@@ -35,7 +36,7 @@
           </div>
         <% end -%>
       </div>
-      <div id="main">
+      <div id="main" class="content">
         <%= yield %>
         <div id="footer">
           <div class="block">
