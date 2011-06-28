@@ -1,10 +1,20 @@
-    <table>
+
+      <div class="secondary-navigation">
+        <ul class="wat-cf">
+          <li><a href="<%=admin_companies_path%>">List</a></li>
+          <li><a href="<%=new_admin_company_path%>">Add new</a></li>
+        </ul>
+      </div>
+
+      <h2 class="title">All Companies</h2>
+
+<table class="table">
       <tr>
-        <th>Title</th>
+        <th class="first">Title</th>
 
         <th></th>
         <th></th>
-        <th></th>
+        <th class="last"></th>
       </tr>
 
         <% @companies.each do |company| %>
@@ -16,5 +26,3 @@
                   </tr>
         <% end %>
     </table>
-
-    <%=link_to 'Add company', new_admin_company_path %>

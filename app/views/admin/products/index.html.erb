@@ -1,13 +1,22 @@
-    <table>
+       <div class="secondary-navigation">
+        <ul class="wat-cf">
+          <li><a href="<%=admin_products_path%>">List</a></li>
+          <li><a href="<%=new_admin_product_path%>">Add new</a></li>
+        </ul>
+      </div>
+
+       <h2 class="title">All Products</h2>
+
+    <table  class="table">
       <tr>
-        <th>Company</th>
+        <th  class="first">Company</th>
         <th>Group</th>
         <th>Title</th>
         <th>Description</th>
 
         <th></th>
         <th></th>
-        <th></th>
+        <th  class="last"></th>
       </tr>
 
         <% @products.each do |product| %>
@@ -22,5 +31,3 @@
                   </tr>
         <% end %>
     </table>
-
-    <%=link_to 'Add product', new_admin_product_path %>

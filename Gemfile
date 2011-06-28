@@ -8,7 +8,7 @@ gem 'rails', '3.1.0.rc4'
 gem 'therubyracer', '>= 0.8.2'
 
 #gem 'sqlite3'
-gem "mysql2", "0.2.7"
+gem "mysql2", "0.3.2"
 gem 'devise'
 
 # Asset template engines
