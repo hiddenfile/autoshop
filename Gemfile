@@ -7,7 +7,8 @@ gem 'rails', '3.1.0.rc4'
 
 gem 'therubyracer', '>= 0.8.2'
 
-gem 'sqlite3'
+#gem 'sqlite3'
+gem "mysql2", "0.2.7"
 gem 'devise'
 
 # Asset template engines
@@ -19,6 +20,8 @@ gem 'jquery-rails'
 gem 'web-app-theme', :git => 'git://github.com/cncardoso/web-app-theme.git'
 gem 'haml'
 gem 'hpricot'
+
+gem 'yaml_db', :git => 'git://github.com/ludicast/yaml_db.git'
 
 # Use unicorn as the web server
 # gem 'unicorn'
