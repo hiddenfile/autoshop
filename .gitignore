@@ -3,6 +3,6 @@ db/*.sqlite3
 log/*.log
 tmp/
 .sass-cache/
-.idea/	
+.idea/
 config/database.yml
 avtoportal.ids

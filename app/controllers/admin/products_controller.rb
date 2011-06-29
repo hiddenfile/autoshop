@@ -10,13 +10,15 @@ class Admin::ProductsController < Admin::AdminsController
   end
 
   def index
-    @products = Product.all
+    @products = Product.includes(:company,:group).all
+
   end
 
   def new
     @product = Product.new
     @companies = Company.all
     @groups = Group.all
+
   end
 
   def update
