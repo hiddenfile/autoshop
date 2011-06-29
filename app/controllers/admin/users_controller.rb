@@ -1,5 +1,5 @@
 class Admin::UsersController < Admin::AdminController
-  def select
+  def index
     @users = User.all
   end
 end

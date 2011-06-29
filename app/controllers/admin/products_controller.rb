@@ -11,8 +11,8 @@ class Admin::ProductsController < Admin::AdminController
 #    params[:product][:company]=Company.find_by_name(params[:product][:company]).id
 #    params[:product][:group]=Group.find_by_name(params[:product][:group]).id
 
-    params[:product][:company]=Company.find(params[:product][:company])
-    params[:product][:group]=Group.find(params[:product][:group])
+#    params[:product][:company]=Company.find(params[:product][:company])
+#    params[:product][:group]=Group.find(params[:product][:group])
 
     @product = Product.new(params[:product])
 
