@@ -14,9 +14,9 @@
 
     <div id="user-navigation">
       <ul class="wat-cf">
-        <li><a href="<%=edit_admin_panel_registration_path%>"><%= t("web-app-theme.profile", :default => "Профиль") %></a></li>
+        <li><a href="<%=edit_admin_registration_path%>"><%= t("web-app-theme.profile", :default => "Профиль") %></a></li>
         <li style="display:none;"><a href="#"><%= t("web-app-theme.settings", :default => "Настройки") %></a></li>
-        <li><a href="<%=destroy_admin_panel_session_path%>" class="logout"><%= t("web-app-theme.logout", :default => "Выход") %></a></li>
+        <li><a href="<%=destroy_admin_session_path%>" class="logout"><%= t("web-app-theme.logout", :default => "Выход") %></a></li>
       </ul>
     </div>
     <div id="main-navigation">

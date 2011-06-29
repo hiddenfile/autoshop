@@ -19,7 +19,7 @@
         <td><%= user.last_sign_in_at%></td>
         <td class='links_column'><%#= link_to 'Show', admin_panel_company_path(company) %>
           <%#= link_to 'Edit', edit_admin_panel_company_path(company) %>
-          <%= link_to 'Удалить', admin_panel_user_path(admin), :confirm => 'Are you sure?', :method => :delete %></td>
+          <%= link_to 'Удалить', admin_panel_user_path(user), :confirm => 'Are you sure?', :method => :delete %></td>
       </tr>
   <% end %>
 </table>
