@@ -8,11 +8,26 @@
 </head>
 <body>
 
+<div class="flash">
+  <% flash.each do |type, message| -%>
+      <div class="message <%= type %>">
+        <p><%= message %></p>
+      </div>
+  <% end -%>
+</div>
+
+<%if current_user%>
+    <p>Hello&nbsp<%= current_user.email %>&nbsp<%= link_to 'Exit', destroy_user_session_path %></p>
+<%else%>
+    <%= link_to 'Login', user_session_path %>
+    <%= link_to 'Register', new_user_registration_path %>
+<%end%>
+
 <div id="navigation">
   <ul>
-    <li><a href="#"><%= t(admin_products_path, :default => "Товары") %></a></li>
-    <li><a href="#"><%= t(admin_groups_path, :default => "Категории") %></a></li>
-    <li><a href="#"><%= t(admin_companies_path, :default => "Компании") %></a></li>
+    <li><a href="#"><%= t(admin_panel_products_path, :default => "Товары") %></a></li>
+    <li><a href="#"><%= t(admin_panel_groups_path, :default => "Категории") %></a></li>
+    <li><a href="#"><%= t(admin_panel_companies_path, :default => "Компании") %></a></li>
   </ul>
 </div>
 

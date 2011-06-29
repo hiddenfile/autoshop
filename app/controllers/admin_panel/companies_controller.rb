@@ -1,9 +1,9 @@
-class Admin::CompaniesController < Admin::AdminsController
+class AdminPanel::CompaniesController < AdminPanel::AdminApplicationController
   def create
     @company = Company.new(params[:company])
 
     if @company.save
-      redirect_to(admin_companies_path, :notice => 'Company was successfully created.')
+      redirect_to(admin_panel_companies_path, :notice => 'Company was successfully created.')
     else
       render :action => "new"
     end
@@ -21,7 +21,7 @@ class Admin::CompaniesController < Admin::AdminsController
     @company = Company.find(params[:id])
 
     if @company.update_attributes(params[:company])
-      redirect_to(admin_company_path(@company), :notice => 'Product was successfully updated.')
+      redirect_to(admin_panel_company_path(@company), :notice => 'Product was successfully updated.')
     else
       render :action => "edit"
     end

@@ -1,7 +1,7 @@
 <div class="secondary-navigation">
   <ul class="wat-cf">
-    <li><a href="<%= admin_products_path %>">Перечень</a></li>
-    <li><a href="<%= new_admin_product_path %>">Добавить</a></li>
+    <li><a href="<%= admin_panel_products_path %>">Перечень</a></li>
+    <li><a href="<%= new_admin_panel_product_path %>">Добавить</a></li>
   </ul>
 </div>
 
@@ -22,9 +22,9 @@
         <td><%= product.group.name %></td>
         <td><%= product.title %></td>
         <td><%= product.description %></td>
-        <td class='links_column'><%= link_to 'Перейти', admin_product_path(product) %>
-          <%= link_to 'Редактировать', edit_admin_product_path(product) %>
-          <%= link_to 'Удалить', admin_product_path(product), :confirm => 'Are you sure?', :method => :delete %></td>
+        <td class='links_column'><%= link_to 'Перейти', admin_panel_product_path(product) %>
+          <%= link_to 'Редактировать', edit_admin_panel_product_path(product) %>
+          <%= link_to 'Удалить', admin_panel_product_path(product), :confirm => 'Are you sure?', :method => :delete %></td>
       </tr>
   <% end %>
 </table>

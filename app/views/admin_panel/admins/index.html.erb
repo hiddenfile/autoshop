@@ -1,7 +1,7 @@
 <div class="secondary-navigation">
   <ul class="wat-cf">
-    <li><a href="<%= admin_admins_path %>">Список</a></li>
-    <li><a href="<%= new_admin_registration_path %>">Добавить</a></li>
+    <li><a href="<%= admin_panel_admins_path %>">Список</a></li>
+    <li><a href="<%= new_admin_panel_registration_path %>">Добавить</a></li>
   </ul>
 </div>
 
@@ -18,9 +18,9 @@
       <tr>
         <td><%= admin.email %></td>
         <td><%= admin.last_sign_in_at%></td>
-        <td class='links_column'><%#= link_to 'Show', admin_company_path(company) %>
-          <%#= link_to 'Edit', edit_admin_company_path(company) %>
-          <%= link_to 'Удалить', admin_admin_path(admin), :confirm => 'Are you sure?', :method => :delete %></td>
+        <td class='links_column'><%#= link_to 'Show', admin_panel_company_path(company) %>
+          <%#= link_to 'Edit', edit_admin_panel_company_path(company) %>
+          <%= link_to 'Удалить', admin_panel_admin_panel_path(admin), :confirm => 'Are you sure?', :method => :delete %></td>
       </tr>
   <% end %>
 </table>

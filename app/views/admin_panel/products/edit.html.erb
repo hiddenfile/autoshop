@@ -1,4 +1,4 @@
-<%= form_for @product, :url => admin_product_path do |f| %>
+<%= form_for @product, :url => admin_panel_product_path do |f| %>
     <div>
       <%= f.label 'Company' %>
       <%= f.select 'company_id', @companies.collect { |p| [p.name, p.id] } %>

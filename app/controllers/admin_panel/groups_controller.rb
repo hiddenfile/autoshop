@@ -1,9 +1,9 @@
-class Admin::GroupsController < Admin::AdminsController
+class AdminPanel::GroupsController < AdminPanel::AdminApplicationController
   def create
     @group = Group.new(params[:group])
 
     if @group.save
-      redirect_to(admin_groups_path, :notice => 'Group was successfully created.')
+      redirect_to(admin_panel_groups_path, :notice => 'Group was successfully created.')
     else
       render :action => "new"
     end
@@ -21,7 +21,7 @@ class Admin::GroupsController < Admin::AdminsController
     @group = Group.find(params[:id])
 
     if @group.update_attributes(params[:group])
-      redirect_to(admin_group_path(@group), :notice => 'Group was successfully updated.')
+      redirect_to(admin_panel_group_path(@group), :notice => 'Group was successfully updated.')
     else
       render :action => "edit"
     end

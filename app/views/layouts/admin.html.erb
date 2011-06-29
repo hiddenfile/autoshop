@@ -14,21 +14,21 @@
 
     <div id="user-navigation">
       <ul class="wat-cf">
-        <li><a href="#"><%= t("web-app-theme.profile", :default => "Профиль") %></a></li>
-        <li><a href="#"><%= t("web-app-theme.settings", :default => "Настройки") %></a></li>
-        <li><a href="/logout" class="logout"><%= t("web-app-theme.logout", :default => "Выход") %></a></li>
+        <li><a href="<%=edit_admin_panel_registration_path%>"><%= t("web-app-theme.profile", :default => "Профиль") %></a></li>
+        <li style="display:none;"><a href="#"><%= t("web-app-theme.settings", :default => "Настройки") %></a></li>
+        <li><a href="<%=destroy_admin_panel_session_path%>" class="logout"><%= t("web-app-theme.logout", :default => "Выход") %></a></li>
       </ul>
     </div>
     <div id="main-navigation">
       <ul class="wat-cf">
-        <li><a href="<%= admin_companies_path %>">Компании</a></li>
-        <li><a href="<%= admin_groups_path %>">Категории</a></li>
-        <li><a href="<%= admin_products_path %>">Товары</a></li>
+        <li><a href="<%= admin_panel_companies_path %>">Компании</a></li>
+        <li><a href="<%= admin_panel_groups_path %>">Категории</a></li>
+        <li><a href="<%= admin_panel_products_path %>">Товары</a></li>
 
         <li class='delimiter'>_</li>
 
-        <li><a href="<%= admin_admins_path %>">Администраторы</a></li>
-        <li><a href="<%= admin_users_path %>">Пользователи</a></li>
+        <li><a href="<%= admin_panel_admins_path %>">Администраторы</a></li>
+        <li><a href="<%= admin_panel_users_path %>">Пользователи</a></li>
       </ul>
     </div>
   </div>
