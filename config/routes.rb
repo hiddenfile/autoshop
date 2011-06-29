@@ -1,5 +1,7 @@
 Avtoportal::Application.routes.draw do
 
+  devise_for :admins
+
   devise_for :users
 
   namespace :admin do

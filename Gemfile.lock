@@ -4,12 +4,6 @@ GIT
   specs:
     web-app-theme (0.6.3)
 
-GIT
-  remote: git://github.com/ludicast/yaml_db.git
-  revision: bec9ecfa1c69fa510de9d8ed326fa4e495feff85
-  specs:
-    yaml_db (0.2.0)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -142,4 +136,3 @@ DEPENDENCIES
   turn
   uglifier
   web-app-theme!
-  yaml_db!
