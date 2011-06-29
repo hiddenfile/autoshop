@@ -4,7 +4,7 @@ gem 'rails', '3.1.0.rc4'
 
 gem 'therubyracer', '>= 0.8.2'
 
-gem "mysql2", "0.3.2"
+gem "pg"
 gem 'devise'
 
 gem 'sass-rails', "~> 3.1.0.rc"
