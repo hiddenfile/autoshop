@@ -7,15 +7,12 @@
 
 <h2 class="title">All Products</h2>
 
-<table class="table">
+<table id='tablecontent' class="table">
   <tr>
     <th class="first">Company</th>
     <th>Group</th>
     <th>Title</th>
     <th>Description</th>
-
-    <th></th>
-    <th></th>
     <th class="last"></th>
   </tr>
 
@@ -25,9 +22,13 @@
         <td><%= product.group.name %></td>
         <td><%= product.title %></td>
         <td><%= product.description %></td>
-        <td><%= link_to 'Show', admin_product_path(product) %>
+        <td class='links_column'><%= link_to 'Show', admin_product_path(product) %>
           <%= link_to 'Edit', edit_admin_product_path(product) %>
           <%= link_to 'Destroy', admin_product_path(product), :confirm => 'Are you sure?', :method => :delete %></td>
       </tr>
   <% end %>
 </table>
+
+<script>
+  alternateTableRowsColor('tablecontent');
+</script>

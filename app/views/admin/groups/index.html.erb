@@ -7,21 +7,22 @@
 
 <h2 class="title">All Groups</h2>
 
-<table class="table">
+<table id='tablecontent' class="table">
   <tr>
     <th class="first">Title</th>
-
-    <th></th>
-    <th></th>
     <th class="last"></th>
   </tr>
 
   <% @groups.each do |group| %>
       <tr>
         <td><%= group.name %></td>
-        <td><%= link_to 'Show', admin_group_path(group) %>
+        <td class='links_column'><%= link_to 'Show', admin_group_path(group) %>
           <%= link_to 'Edit', edit_admin_group_path(group) %>
           <%= link_to 'Destroy', admin_group_path(group), :confirm => 'Are you sure?', :method => :delete %></td>
       </tr>
   <% end %>
 </table>
+
+<script>
+  alternateTableRowsColor('tablecontent');
+</script>

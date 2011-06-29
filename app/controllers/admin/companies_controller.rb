@@ -1,4 +1,4 @@
-class Admin::CompaniesController < Admin::AdminController
+class Admin::CompaniesController < Admin::AdminsController
   def create
     @company = Company.new(params[:company])
 
