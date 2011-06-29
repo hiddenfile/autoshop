@@ -2,11 +2,11 @@ class Admin::CompaniesController < Admin::AdminController
   def create
     @company = Company.new(params[:company])
 
-      if @company.save
-         redirect_to(admin_companies_path, :notice => 'Company was successfully created.')
-      else
-         render :action => "new"
-      end
+    if @company.save
+      redirect_to(admin_companies_path, :notice => 'Company was successfully created.')
+    else
+      render :action => "new"
+    end
   end
 
   def index
@@ -20,11 +20,11 @@ class Admin::CompaniesController < Admin::AdminController
   def update
     @company = Company.find(params[:id])
 
-      if @company.update_attributes(params[:company])
-        redirect_to(admin_company_path(@company), :notice => 'Product was successfully updated.')
-      else
-        render :action => "edit"
-      end
+    if @company.update_attributes(params[:company])
+      redirect_to(admin_company_path(@company), :notice => 'Product was successfully updated.')
+    else
+      render :action => "edit"
+    end
   end
 
   def show

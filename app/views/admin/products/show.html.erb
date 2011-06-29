@@ -1,18 +1,18 @@
 <div>
-  <p>Company : <%=@product.company.name%></p>
+  <p>Company : <%= @product.company.name %></p>
 </div>
 
 <div>
-  <p>Group : <%=@product.group.name%></p>
+  <p>Group : <%= @product.group.name %></p>
 </div>
 
 <div>
-  <p>Title : <%=@product.title%></p>
+  <p>Title : <%= @product.title %></p>
 </div>
 
 <div>
   <p>Description :</p>
-  <%=@product.description%>
+  <%= @product.description %>
 </div><br/>
 
 <%= link_to 'Edit', edit_admin_product_path %>

@@ -1,27 +1,27 @@
-      <div class="secondary-navigation">
-        <ul class="wat-cf">
-          <li><a href="<%=admin_groups_path%>">List</a></li>
-          <li><a href="<%=new_admin_group_path%>">Add new</a></li>
-        </ul>
-      </div>
+<div class="secondary-navigation">
+  <ul class="wat-cf">
+    <li><a href="<%= admin_groups_path %>">List</a></li>
+    <li><a href="<%= new_admin_group_path %>">Add new</a></li>
+  </ul>
+</div>
 
-      <h2 class="title">All Groups</h2>
+<h2 class="title">All Groups</h2>
 
-    <table class="table">
+<table class="table">
+  <tr>
+    <th class="first">Title</th>
+
+    <th></th>
+    <th></th>
+    <th class="last"></th>
+  </tr>
+
+  <% @groups.each do |group| %>
       <tr>
-        <th class="first">Title</th>
-
-        <th></th>
-        <th></th>
-        <th class="last"></th>
+        <td><%= group.name %></td>
+        <td><%= link_to 'Show', admin_group_path(group) %>
+          <%= link_to 'Edit', edit_admin_group_path(group) %>
+          <%= link_to 'Destroy', admin_group_path(group), :confirm => 'Are you sure?', :method => :delete %></td>
       </tr>
-
-        <% @groups.each do |group| %>
-                  <tr>
-                    <td><%= group.name %></td>
-                    <td><%= link_to 'Show', admin_group_path(group) %>
-                    <%= link_to 'Edit', edit_admin_group_path(group) %>
-                    <%= link_to 'Destroy', admin_group_path(group), :confirm => 'Are you sure?', :method => :delete %></td>
-                  </tr>
-        <% end %>
-    </table>
+  <% end %>
+</table>

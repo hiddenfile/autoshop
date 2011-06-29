@@ -1,9 +1,8 @@
-
-<%=form_for @company, :url => admin_companies_path do |pos| %>
+<%= form_for @company, :url => admin_companies_path do |pos| %>
     <div>
-        <%= pos.label 'Company' %>
-        <%= pos.text_field 'name' %>
+      <%= pos.label 'Company' %>
+      <%= pos.text_field 'name' %>
     </div>
 
-    <%=pos.submit 'Add company'%>
-<%end%>
+    <%= pos.submit 'Add company' %>
+<% end %>

@@ -2,19 +2,19 @@
 <html>
 <head>
   <title>Avtoportal</title>
-  <%= stylesheet_link_tag    "application" %>
+  <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-      <div id="navigation">
-        <ul>
-          <li><a href="#"><%= t(admin_products_path, :default => "Products")  %></a></li>
-          <li><a href="#"><%= t(admin_groups_path, :default => "Groups")  %></a></li>
-          <li><a href="#"><%= t(admin_companies_path, :default => "Companies")  %></a></li>
-        </ul>
-      </div>
+<div id="navigation">
+  <ul>
+    <li><a href="#"><%= t(admin_products_path, :default => "Products") %></a></li>
+    <li><a href="#"><%= t(admin_groups_path, :default => "Groups") %></a></li>
+    <li><a href="#"><%= t(admin_companies_path, :default => "Companies") %></a></li>
+  </ul>
+</div>
 
 <%= yield %>
 
