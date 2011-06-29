@@ -1,8 +1,8 @@
-<%= form_for @group, :url => admin_groups_path do |pos| %>
+<%= form_for @group, :url => admin_groups_path do |f| %>
     <div>
-      <%= pos.label 'Group' %>
-      <%= pos.text_field 'name' %>
+      <%= f.label 'Group' %>
+      <%= f.text_field 'name' %>
     </div>
 
-    <%= pos.submit 'Add group' %>
+    <%= f.submit 'Add group' %>
 <% end %>
