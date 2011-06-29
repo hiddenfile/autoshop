@@ -21,7 +21,7 @@ class Admin::GroupsController < Admin::AdminsController
     @group = Group.find(params[:id])
 
     if @group.update_attributes(params[:group])
-      redirect_to(admin_group_path(@group), :notice => 'group was successfully updated.')
+      redirect_to(admin_group_path(@group), :notice => 'Group was successfully updated.')
     else
       render :action => "edit"
     end

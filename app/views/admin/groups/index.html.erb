@@ -1,24 +1,24 @@
 <div class="secondary-navigation">
   <ul class="wat-cf">
-    <li><a href="<%= admin_groups_path %>">List</a></li>
-    <li><a href="<%= new_admin_group_path %>">Add new</a></li>
+    <li><a href="<%= admin_groups_path %>">Перечень</a></li>
+    <li><a href="<%= new_admin_group_path %>">Добавить</a></li>
   </ul>
 </div>
 
-<h2 class="title">All Groups</h2>
+<h2 class="title">Категории</h2>
 
 <table id='tablecontent' class="table">
   <tr>
-    <th class="first">Title</th>
+    <th class="first">Наименование</th>
     <th class="last"></th>
   </tr>
 
   <% @groups.each do |group| %>
       <tr>
         <td><%= group.name %></td>
-        <td class='links_column'><%= link_to 'Show', admin_group_path(group) %>
-          <%= link_to 'Edit', edit_admin_group_path(group) %>
-          <%= link_to 'Destroy', admin_group_path(group), :confirm => 'Are you sure?', :method => :delete %></td>
+        <td class='links_column'><%= link_to 'Перейти', admin_group_path(group) %>
+          <%= link_to 'Редактировать', edit_admin_group_path(group) %>
+          <%= link_to 'Удалить', admin_group_path(group), :confirm => 'Are you sure?', :method => :delete %></td>
       </tr>
   <% end %>
 </table>

@@ -1,16 +1,16 @@
 <div class="secondary-navigation">
   <ul class="wat-cf">
-    <li><a href="<%= admin_admins_path %>">List</a></li>
-    <li><a href="<%= new_admin_registration_path %>">Add new</a></li>
+    <li><a href="<%= admin_admins_path %>">Список</a></li>
+    <li><a href="<%= new_admin_registration_path %>">Добавить</a></li>
   </ul>
 </div>
 
-<h2 class="title">All Admins</h2>
+<h2 class="title">Администраторы</h2>
 
 <table id='tablecontent' class="table">
   <tr>
     <th class="first">E-mail</th>
-    <th>Last sign in</th>
+    <th>Дата последнего посещения</th>
     <th class="last"></th>
   </tr>
 
@@ -20,7 +20,7 @@
         <td><%= admin.last_sign_in_at%></td>
         <td class='links_column'><%#= link_to 'Show', admin_company_path(company) %>
           <%#= link_to 'Edit', edit_admin_company_path(company) %>
-          <%= link_to 'Destroy', admin_admin_path(admin), :confirm => 'Are you sure?', :method => :delete %></td>
+          <%= link_to 'Удалить', admin_admin_path(admin), :confirm => 'Are you sure?', :method => :delete %></td>
       </tr>
   <% end %>
 </table>

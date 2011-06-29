@@ -1,18 +1,18 @@
 <div class="secondary-navigation">
   <ul class="wat-cf">
-    <li><a href="<%= admin_products_path %>">List</a></li>
-    <li><a href="<%= new_admin_product_path %>">Add new</a></li>
+    <li><a href="<%= admin_products_path %>">Перечень</a></li>
+    <li><a href="<%= new_admin_product_path %>">Добавить</a></li>
   </ul>
 </div>
 
-<h2 class="title">All Products</h2>
+<h2 class="title">Товары</h2>
 
 <table id='tablecontent' class="table">
   <tr>
-    <th class="first">Company</th>
-    <th>Group</th>
-    <th>Title</th>
-    <th>Description</th>
+    <th class="first">Производитель</th>
+    <th>Категория</th>
+    <th>Наименование</th>
+    <th>Описание</th>
     <th class="last"></th>
   </tr>
 
@@ -22,9 +22,9 @@
         <td><%= product.group.name %></td>
         <td><%= product.title %></td>
         <td><%= product.description %></td>
-        <td class='links_column'><%= link_to 'Show', admin_product_path(product) %>
-          <%= link_to 'Edit', edit_admin_product_path(product) %>
-          <%= link_to 'Destroy', admin_product_path(product), :confirm => 'Are you sure?', :method => :delete %></td>
+        <td class='links_column'><%= link_to 'Перейти', admin_product_path(product) %>
+          <%= link_to 'Редактировать', edit_admin_product_path(product) %>
+          <%= link_to 'Удалить', admin_product_path(product), :confirm => 'Are you sure?', :method => :delete %></td>
       </tr>
   <% end %>
 </table>
