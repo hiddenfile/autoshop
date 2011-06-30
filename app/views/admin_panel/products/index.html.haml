@@ -1,0 +1,30 @@
+%div.secondary-navigation
+  %ul.wat-cf
+    %li
+      = link_to 'Перечень', admin_panel_products_path
+    %li
+      = link_to 'Добавить', new_admin_panel_product_path
+
+%h2.title Товары
+
+%table#tablecontent.table
+  %tr
+    %th.first Производитель
+    %th Категория
+    %th Наименование
+    %th Описание
+    %th.last
+
+  -@products.each do |product|
+    %tr
+      %td #{product.company.name}
+      %td #{product.group.name}
+      %td #{product.title}
+      %td #{product.description}
+      %td.links_column
+        = link_to 'Перейти', admin_panel_product_path(product)
+        = link_to 'Редактировать', edit_admin_panel_product_path(product)
+        = link_to 'Удалить', admin_panel_product_path(product), :confirm => 'Are you sure?', :method => :delete
+
+:javascript
+  alternateTableRowsColor('tablecontent');

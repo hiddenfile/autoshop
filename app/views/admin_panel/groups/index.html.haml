@@ -1,0 +1,24 @@
+.secondary-navigation
+  %ul.wat-cf
+    %li
+      = link_to 'Перечень', admin_panel_groups_path
+    %li
+      = link_to 'Добавить', new_admin_panel_group_path
+
+%h2.title Категории
+
+%table#tablecontent.table
+  %tr
+    %th.first Наименование
+    %th.last
+
+  - @groups.each do |group|
+    %tr
+      %td #{group.name}
+      %td.links_column
+        = link_to 'Перейти', admin_panel_group_path(group)
+        = link_to 'Редактировать', edit_admin_panel_group_path(group)
+        = link_to 'Удалить', admin_panel_group_path(group), :confirm => 'Are you sure?', :method => :delete
+
+:javascript
+  alternateTableRowsColor('tablecontent');

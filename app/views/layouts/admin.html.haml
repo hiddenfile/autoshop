@@ -16,8 +16,6 @@
           %ul.wat-cf
             %li
               =link_to 'Профиль', edit_admin_registration_path
-            %li {:style=>"display:none;"}
-            -#=link_to 'Настройки', ''
             %li
               =link_to 'Выход', destroy_admin_session_path, {:class=>"logout"}
 
@@ -39,7 +37,7 @@
         .flash
           - flash.each do |type, message|
             .message{:class => "#{type}"}
-              %p = message
+              %p #{message}
 
 
         #main.content

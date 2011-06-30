@@ -1,0 +1,15 @@
+%div>
+  %p Производитель : #{@product.company.name}
+
+%div
+  %p Категория : #{@product.group.name}
+
+%div
+  %p Наименование : #{@product.title}
+
+%div
+  %p Описание : #{@product.description}
+%br
+
+= link_to 'Редактировать', edit_admin_panel_product_path
+= link_to 'Вернутся', admin_panel_products_path
