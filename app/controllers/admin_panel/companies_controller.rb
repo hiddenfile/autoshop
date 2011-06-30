@@ -35,4 +35,8 @@ class AdminPanel::CompaniesController < AdminPanel::AdminApplicationController
     @company = Company.find(params[:id])
   end
 
+  def destroy
+
+  end
+
 end
