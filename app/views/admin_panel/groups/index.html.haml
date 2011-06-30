@@ -13,12 +13,9 @@
     %th.last
 
   - @groups.each do |group|
-    %tr
+    %tr{:class => cycle("odd", "even")}
       %td #{group.name}
       %td.links_column
         = link_to 'Перейти', admin_panel_group_path(group)
         = link_to 'Редактировать', edit_admin_panel_group_path(group)
         = link_to 'Удалить', admin_panel_group_path(group), :confirm => 'Are you sure?', :method => :delete
-
-:javascript
-  alternateTableRowsColor('tablecontent');

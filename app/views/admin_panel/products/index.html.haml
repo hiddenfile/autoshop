@@ -16,7 +16,7 @@
     %th.last
 
   -@products.each do |product|
-    %tr
+    %tr{:class => cycle("odd", "even")}
       %td #{product.company.name}
       %td #{product.group.name}
       %td #{product.title}
@@ -25,6 +25,3 @@
         = link_to 'Перейти', admin_panel_product_path(product)
         = link_to 'Редактировать', edit_admin_panel_product_path(product)
         = link_to 'Удалить', admin_panel_product_path(product), :confirm => 'Are you sure?', :method => :delete
-
-:javascript
-  alternateTableRowsColor('tablecontent');

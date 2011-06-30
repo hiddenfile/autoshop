@@ -13,13 +13,9 @@
     %th.last
 
   - @companies.each do |company|
-    %tr
+    %tr{:class => cycle("odd", "even")}
       %td #{company.name}
       %td.links_column
         = link_to 'Перейти', admin_panel_company_path(company)
         = link_to 'Редактировать', edit_admin_panel_company_path(company)
         = link_to 'Удалить', admin_panel_company_path(company), :confirm => 'Are you sure?', :method => :delete
-
-
-:javascript
-  alternateTableRowsColor('tablecontent');

@@ -14,12 +14,9 @@
     %th.last
 
   - @admins.each do |admin|
-    %tr
+    %tr{:class => cycle("odd", "even")}
       %td #{admin.email}
       %td #{admin.last_sign_in_at}
       %td.links_column
         =link_to 'Show', admin_panel_company_path(admin)
         =link_to 'Удалить', admin_panel_admin_path(admin), :confirm => 'Are you sure?', :method => :delete
-
-:javascript
-  alternateTableRowsColor('tablecontent');

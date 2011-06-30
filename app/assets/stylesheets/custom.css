@@ -13,23 +13,6 @@
     margin-bottom: 0 !important;
 }
 
-.even_line
-{
-    background-color: #666666;
-    color : #FFFFFF;
-}
-
-.odd_line
-{
-    background-color: #FFFFFF;
-    color : #000000;
-}
-
-.even_line a
-{
-    color : #FFFFFF;
-}
-
 .table .links_column
 {
     text-align: right;

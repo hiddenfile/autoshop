@@ -1,0 +1,20 @@
+.secondary-navigation
+  %ul.wat-cf
+    %li
+      = link_to 'Список', admin_panel_users_path
+
+%h2.title Пользователи
+
+%table#tablecontent.table
+  %tr
+    %th.first E-mail
+    %th Дата последнего посещения
+    %th.last
+
+  -@users.each do |user|
+    %tr{:class => cycle("odd", "even")}
+      %td #{user.email}
+      %td #{user.last_sign_in_at}
+      %td.links_column
+        = link_to 'Удалить', admin_panel_user_path(user), :confirm => 'Are you sure?', :method => :delete
+
