@@ -1,0 +1,8 @@
+<%= form_for @group, :url => admin_panel_groups_path do |f| %>
+    <div>
+      <%= f.label 'Категория' %>
+      <%= f.text_field 'name' %>
+    </div>
+
+    <%= f.submit 'Добавить' %>
+<% end %>
