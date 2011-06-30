@@ -1,0 +1,25 @@
+.secondary-navigation
+  %ul.wat-cf
+    %li
+      =link_to 'Список', admin_panel_admins_path
+    %li
+      =link_to 'Добавить', new_admin_registration_path
+
+%h2.title Администраторы
+
+%table#tablecontent.table
+  %tr
+    %th.first E-mail
+    %th Дата последнего посещения
+    %th.last
+
+  - @admins.each do |admin|
+    %tr
+      %td #{admin.email}
+      %td #{admin.last_sign_in_at}
+      %td.links_column
+        =link_to 'Show', admin_panel_company_path(admin)
+        =link_to 'Удалить', admin_panel_admin_path(admin), :confirm => 'Are you sure?', :method => :delete
+
+:javascript
+  alternateTableRowsColor('tablecontent');

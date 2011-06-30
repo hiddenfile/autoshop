@@ -1,0 +1,25 @@
+.secondary-navigation
+  %ul.wat-cf
+    %li
+      =link_to 'Перечень', admin_panel_companies_path
+    %li
+      =link_to 'Добавить', new_admin_panel_company_path
+
+%h2.title Производители
+
+%table#tablecontent.table
+  %tr
+    %th.first Название
+    %th.last
+
+  - @companies.each do |company|
+    %tr
+      %td #{company.name}
+      %td.links_column
+        = link_to 'Перейти', admin_panel_company_path(company)
+        = link_to 'Редактировать', edit_admin_panel_company_path(company)
+        = link_to 'Удалить', admin_panel_company_path(company), :confirm => 'Are you sure?', :method => :delete
+
+
+:javascript
+  alternateTableRowsColor('tablecontent');
