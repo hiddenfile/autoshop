@@ -17,11 +17,11 @@
 
   -@products.each do |product|
     %tr{:class => cycle("odd", "even")}
-      %td #{product.company.name}
-      %td #{product.group.name}
-      %td #{product.title}
-      %td #{product.description}
+      %td=link_to product.company.name,admin_panel_product_path(product)
+      %td=product.group.name
+      %td=product.title
+      %td=product.description
+
       %td.links_column
-        = link_to 'Перейти', admin_panel_product_path(product)
         = link_to 'Редактировать', edit_admin_panel_product_path(product)
         = link_to 'Удалить', admin_panel_product_path(product), :confirm => 'Are you sure?', :method => :delete

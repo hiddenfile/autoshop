@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+
   def create
     @product = Product.new(params[:product])
 

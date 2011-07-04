@@ -1,4 +1,5 @@
 class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
+
   def create
     @product = Product.new(params[:product])
 

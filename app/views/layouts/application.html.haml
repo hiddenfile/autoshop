@@ -1,0 +1,35 @@
+!!!
+%html
+  %head
+    %title Авто портал
+    =stylesheet_link_tag "application"
+    =javascript_include_tag "application"
+    =csrf_meta_tags
+
+  %body
+    %div.flash
+      -flash.each do |type, message|
+        .message{:class => "#{type}"}
+          %p=message
+
+    %div
+      -if current_user
+        %p Hello&nbsp= current_user.email&nbsp=link_to 'Exit', destroy_user_session_path
+      -else
+        =link_to 'Login', user_session_path
+        =link_to 'Register', new_user_registration_path
+    %br
+
+    #main-navigation
+      %ul
+        %li
+          =link_to 'Товары', products_path
+        -#%li
+        -#  =link_to 'Категории', groups_path
+        -#%li
+        -#  =link_to 'Компании', companies_path
+
+    %br
+    %br
+
+    =yield
