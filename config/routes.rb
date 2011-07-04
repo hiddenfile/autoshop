@@ -10,6 +10,7 @@ Avtoportal::Application.routes.draw do
 
 #  root :to => 'admin/admins#index', :constraints => {}
   root :to => 'products#index'
+  match '/adminroot' => 'admin_panel/admins#index', :as => 'adminroot'
 
   devise_for :admin
 
