@@ -35,4 +35,11 @@ class AdminPanel::GroupsController < AdminPanel::AdminApplicationController
     @group = Group.find(params[:id])
   end
 
+    def destroy
+    if Group.find(params[:id]).destroy
+      redirect_to(admin_panel_groups_path, :notice => 'Group was successfully deleted.')
+    else
+      redirect_to(admin_panel_groups_path, :alert => 'Error.')
+    end
+  end
 end

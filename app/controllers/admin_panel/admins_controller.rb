@@ -8,7 +8,7 @@ class AdminPanel::AdminsController < AdminPanel::AdminApplicationController
     if Admin.find(params[:id]).destroy
       redirect_to(admin_panel_admins_path, :notice => 'Admin was successfully deleted.')
     else
-      redirect_to(admin_panel_admins_path, :notice => 'Error.')
+      redirect_to(admin_panel_admins_path, :alert => 'Error.')
     end
   end
 

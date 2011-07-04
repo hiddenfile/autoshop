@@ -36,7 +36,11 @@ class AdminPanel::CompaniesController < AdminPanel::AdminApplicationController
   end
 
   def destroy
-
+    if Company.find(params[:id]).destroy
+      redirect_to(admin_panel_companies_path, :notice => 'Company was successfully deleted.')
+    else
+      redirect_to(admin_panel_companies_path, :alert => 'Error.')
+    end
   end
 
 end

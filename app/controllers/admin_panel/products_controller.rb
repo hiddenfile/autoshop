@@ -42,4 +42,12 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
     @companies = Company.all
     @groups = Group.all
   end
+
+  def destroy
+    if Product.find(params[:id]).destroy
+      redirect_to(admin_panel_products_path, :notice => 'Product was successfully deleted.')
+    else
+      redirect_to(admin_panel_products_path, :notice => 'Error.')
+    end
+  end
 end
