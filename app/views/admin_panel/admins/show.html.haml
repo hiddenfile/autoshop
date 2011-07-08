@@ -1,0 +1,25 @@
+%h2 Admin information
+
+=form_for(@admin, :url => admin_panel_admin_path) do |f|
+
+  %table#tablecontent.table
+    %tr
+      %th.first Параметр
+      %th Значение
+      %th.last
+
+      %tr{:class => cycle("odd", "even")}
+        %td= f.label :email
+        %td= @admin.email
+
+      %tr{:class => cycle("odd", "even")}
+        %td= f.label :sign_in_count
+        %td= @admin.sign_in_count
+
+      %tr{:class => cycle("odd", "even")}
+        %td= f.label :last_sign_in_at
+        %td= @admin.last_sign_in_at
+
+      %tr{:class => cycle("odd", "even")}
+        %td= f.label :last_sign_in_ip
+        %td= @admin.last_sign_in_ip

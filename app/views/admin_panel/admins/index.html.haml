@@ -3,7 +3,7 @@
     %li
       =link_to 'Список', admin_panel_admins_path
     %li
-      -#=link_to 'Добавить', new_admin_registration_path
+      =link_to 'Добавить', new_admin_panel_admin_path
 
 %h2.title Администраторы
 
@@ -18,5 +18,5 @@
       %td #{admin.email}
       %td #{admin.last_sign_in_at}
       %td.links_column
-        =link_to 'Show', admin_panel_company_path(admin)
+        =link_to 'Show', admin_panel_admin_path(admin)
         =link_to 'Удалить', admin_panel_admin_path(admin), :confirm => 'Are you sure?', :method => :delete
