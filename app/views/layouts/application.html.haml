@@ -7,29 +7,45 @@
     =csrf_meta_tags
 
   %body
-    %div.flash
-      -flash.each do |type, message|
-        .message{:class => "#{type}"}
-          %p=message
+    #content
+      #titlediv
 
-    #user-nav
-      -if current_user
-        %p Hello&nbsp #{current_user.email}&nbsp&nbsp&nbsp&nbsp#{link_to 'Exit', destroy_user_session_path}
-      -else
-        =link_to 'Login', user_session_path
-        =link_to 'Register', new_user_registration_path
-    %br
+        .inline_div_left
+          %p#title_str Авто портал
 
-    #main-navigation
-      %ul
-        %li
-          =link_to 'Товары', products_path
-        -#%li
-        -#  =link_to 'Категории', groups_path
-        -#%li
-        -#  =link_to 'Компании', companies_path
+        .inline_div_right
+          =form_for :search_form, :url=>'/index' do |f|
+            =f.text_field 'search_str'
+            =f.submit('',:id => 'search_submit')
+        .cleaner
 
-    %br
-    %br
-    .content
-      =yield
+      %div.flash
+        -flash.each do |type, message|
+          .message{:class => "#{type}"}
+            %p=message
+
+      #user-nav
+        -if current_user
+          %p Hello&nbsp #{current_user.email}&nbsp&nbsp&nbsp&nbsp#{link_to 'Exit', destroy_user_session_path}
+        -else
+          =link_to 'Login', user_session_path
+          =link_to 'Register', new_user_registration_path
+      %br
+
+      #main-navigation
+        %ul
+          %li
+            =link_to 'Товары', products_path
+          -#%li
+          -#  =link_to 'Категории', groups_path
+          -#%li
+          -#  =link_to 'Компании', companies_path
+
+      %br
+      %br
+      .content
+        =yield
+
+    #footer
+      #copy
+        Copyright &copy; 2009 - #{Time.now.year} Face It.

@@ -1,3 +1,82 @@
+body
+{
+    background:url("h-bk.gif") repeat-x #FFFFFF !important;
+    font-family: Tahoma !important;
+}
+
+#content
+{
+    min-height:600px;
+
+    margin: 0 auto;
+    position: relative;
+    width: 1000px;
+}
+
+
+#titlediv
+{
+    height:132px;
+}
+
+#titlediv p
+{
+    padding: 25px 150px 0;
+    font-size:30px;
+    font-weight:bold;
+    color:#337741;
+    margin:0;
+}
+
+.inline_div_left
+{
+    float:left;
+}
+
+.inline_div_right
+{
+    float:right;
+    padding: 40px;
+}
+
+#search_form_search_str
+{
+    background: url("search-field.gif") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    color: #FFFFFF;
+    height: 35px;
+    padding: 0 15px;
+    width: 200px;
+}
+
+#search_submit
+{
+    background: url("search-but.gif") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    cursor: pointer;
+    height: 34px;
+    width: 88px;
+}
+
+.cleaner
+{
+    clear:both;
+}
+
+#footer
+{
+    background: url('f-bk.gif') repeat-x;
+    height: 64px
+}
+
+#copy
+{
+    color: #FFFFFF;
+    padding: 33px 0;
+    text-align: center;
+}
+
+
 #user-nav
 {
     color : #FFFFFF;
@@ -30,4 +109,11 @@
 .table .links_column
 {
     text-align: right;
+}
+
+li
+{
+    border-bottom: 1px dotted #999999;
+    margin: 0;
+    padding: 0 10px;
 }
