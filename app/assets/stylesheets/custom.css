@@ -11,6 +11,8 @@ body
     margin: 0 auto;
     position: relative;
     width: 1000px;
+
+    background:url("h-bk.gif") repeat-x #FFFFFF !important;
 }
 
 
