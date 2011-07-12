@@ -11,18 +11,13 @@
       #titlediv
 
         .inline_div_left
-          %p#title_str Авто портал
+          =link_to 'Авто портал',root_path, :id=>'titlediv'
 
         .inline_div_right
           =form_for :search_form, :url=>'/index' do |f|
             =f.text_field 'search_str'
             =f.submit('',:id => 'search_submit')
         .cleaner
-
-      %div.flash
-        -flash.each do |type, message|
-          .message{:class => "#{type}"}
-            %p=message
 
       #user-nav
         -if current_user
@@ -32,19 +27,31 @@
           =link_to 'Register', new_user_registration_path
       %br
 
-      #main-navigation
-        %ul
-          %li
-            =link_to 'Товары', products_path
-          -#%li
-          -#  =link_to 'Категории', groups_path
-          -#%li
-          -#  =link_to 'Компании', companies_path
+      %div.flash
+        -flash.each do |type, message|
+          .message{:class => "#{type}"}
+            %p=message
 
-      %br
-      %br
-      .content
-        =yield
+      #leftsidebar
+        #main-navigation
+          %h2 Навигация
+          %ul
+            %li
+              =link_to 'Товары', products_path
+            %li
+              =link_to 'Товары', products_path
+            -#%li
+            -#  =link_to 'Категории', groups_path
+            -#%li
+            -#  =link_to 'Компании', companies_path
+
+      #centerbar
+        .content
+          =yield
+
+      #rightsidebar
+
+      .cleaner
 
     #footer
       #copy

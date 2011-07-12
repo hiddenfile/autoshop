@@ -16,21 +16,21 @@ body
 
 #titlediv
 {
-    height:132px;
+    height:106px;
 }
 
-#titlediv p
+#titlediv a
 {
-    padding: 25px 150px 0;
     font-size:30px;
     font-weight:bold;
-    color:#337741;
-    margin:0;
+    color:#aaaaaa;
+    text-decoration:none;
 }
 
 .inline_div_left
 {
     float:left;
+    padding: 40px 0 0 40px;
 }
 
 .inline_div_right
@@ -79,8 +79,10 @@ body
 
 #user-nav
 {
-    color : #FFFFFF;
     background-color: #000000;
+    border: 1px solid #000000;
+    border-radius: 2px 2px 16px 16px;
+    color: #FFFFFF;
     padding-left: 10px;
 }
 
@@ -88,6 +90,7 @@ body
 {
     color : #FFFFFF;
     text-decoration: none;
+    padding : 0 10px 0 0;
 }
 
 .content
@@ -116,4 +119,31 @@ li
     border-bottom: 1px dotted #999999;
     margin: 0;
     padding: 0 10px;
+}
+
+#main-navigation
+{
+    background:none !important;
+}
+
+#main-navigation li
+{
+    background:none !important;
+    float : none !important;
+}
+
+#main-navigation li a
+{
+    color : #000000 !important;
+}
+
+#rightsidebar
+{
+
+}
+
+#leftsidebar,#centerbar
+{
+   float:left;
+   margin-right: 20px;
 }
