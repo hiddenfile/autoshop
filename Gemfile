@@ -19,4 +19,6 @@ gem 'hpricot'
 
 group :test do
   gem 'turn', :require => false
+  gem 'factory_girl_rails'
+  gem 'shoulda'
 end
