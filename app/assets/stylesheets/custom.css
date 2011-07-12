@@ -30,13 +30,13 @@ body
 .inline_div_left
 {
     float:left;
-    padding: 40px 0 0 40px;
+    padding: 33px 0 0 33px;
 }
 
 .inline_div_right
 {
     float:right;
-    padding: 40px;
+    padding: 33px;
 }
 
 #search_form_search_str
@@ -135,15 +135,26 @@ li
 #main-navigation li a
 {
     color : #000000 !important;
+    padding: 4px 0 !important;
 }
 
 #rightsidebar
 {
-
+   float:left;
 }
 
 #leftsidebar,#centerbar
 {
    float:left;
    margin-right: 20px;
+   margin-top: 20px;
+}
+
+h6
+{    background: url("cc.gif") repeat-x scroll 0 bottom transparent;
+    font-size: 12.5pt;
+    font-weight: bold;
+    margin: 0 0 5px;
+    padding: 0 10px 10px;
+    text-shadow: 0 0 1px #999999;
 }

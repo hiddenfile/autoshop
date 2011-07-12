@@ -19,14 +19,6 @@
             =f.submit('',:id => 'search_submit')
         .cleaner
 
-      #user-nav
-        -if current_user
-          %p Hello&nbsp #{current_user.email}&nbsp&nbsp&nbsp&nbsp#{link_to 'Exit', destroy_user_session_path}
-        -else
-          =link_to 'Login', user_session_path
-          =link_to 'Register', new_user_registration_path
-      %br
-
       %div.flash
         -flash.each do |type, message|
           .message{:class => "#{type}"}
@@ -34,7 +26,7 @@
 
       #leftsidebar
         #main-navigation
-          %h2 Навигация
+          %h6 Навигация
           %ul
             %li
               =link_to 'Товары', products_path
