@@ -24,13 +24,13 @@
           .message{:class => "#{type}"}
             %p=message
 
-      #leftsidebar
+      #leftsidebar.block
         #main-navigation
           %h6 Навигация
           %ul
             %li
               =link_to 'Товары', products_path
-            %li
+            %li.last
               =link_to 'Товары', products_path
             -#%li
             -#  =link_to 'Категории', groups_path

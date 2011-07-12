@@ -16,7 +16,7 @@ body
 
 #titlediv
 {
-    height:106px;
+    height:102px;
 }
 
 #titlediv a
@@ -121,6 +121,13 @@ li
     padding: 0 10px;
 }
 
+li.last
+{
+    border-bottom: none;
+    margin: 0;
+    padding: 0 10px;
+}
+
 #main-navigation
 {
     background:none !important;
@@ -157,4 +164,10 @@ h6
     margin: 0 0 5px;
     padding: 0 10px 10px;
     text-shadow: 0 0 1px #999999;
+}
+
+.block
+{
+    background: url("cc.gif") repeat-x scroll 0 bottom transparent !important;
+    padding-bottom: 10px;
 }
