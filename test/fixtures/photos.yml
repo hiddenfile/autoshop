@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
-
-one:
-  path: MyString
-  product_id: 1
-
-two:
-  path: MyString
-  product_id: 1

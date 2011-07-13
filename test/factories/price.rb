@@ -1,3 +1,3 @@
-FactoryGirl.define :price, :class => Price do |f|
+Factory.define :price, :class => Price do |f|
     f.price 234
 end

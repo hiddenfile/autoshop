@@ -18,7 +18,9 @@ gem 'hpricot'
 
 
 group :test do
+  gem "test-unit", :require => "test/unit"
   gem 'turn', :require => false
-  gem 'factory_girl_rails'
+  gem "factory_girl_rails", "~> 1.1.rc1"
+
   gem 'shoulda'
 end

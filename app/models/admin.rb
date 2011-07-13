@@ -10,7 +10,4 @@ class Admin < ActiveRecord::Base
   def password_require?
     new_record? || !password.nil? || !password_confirmation.nil?
   end
-
-
-
 end

@@ -1,0 +1,3 @@
+rake db:create RAILS_ENV="test"
+rake db:test:prepare
+rake test
