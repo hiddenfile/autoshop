@@ -22,5 +22,7 @@ group :test do
   gem 'turn', :require => false
   gem "factory_girl_rails", "~> 1.1.rc1"
 
-  gem 'shoulda'
+  gem 'rspec'
+
+  gem 'shoulda'#, :git => 'git://github.com/thoughtbot/shoulda-matchers.git'
 end
