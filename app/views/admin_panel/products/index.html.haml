@@ -17,7 +17,7 @@
 
   -@products.each do |product|
     %tr{:class => cycle("odd", "even")}
-      %td=link_to product.company.name,admin_panel_product_path(product)
+      %td=link_to product.company.name, admin_panel_product_path(product)
       %td=product.group.name
       %td=product.title
       %td=product.description

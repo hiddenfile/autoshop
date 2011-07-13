@@ -16,6 +16,7 @@ gem 'web-app-theme', :git => 'git://github.com/cncardoso/web-app-theme.git'
 gem 'haml'
 gem 'hpricot'
 
+gem "paperclip", "~> 2.3.15",  :git => 'https://github.com/thoughtbot/paperclip.git'
 
 group :test do
   gem 'turn', :require => false

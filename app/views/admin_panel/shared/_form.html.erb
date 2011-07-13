@@ -1,0 +1,8 @@
+<span id="photo_fields">
+  <% f.fields_for @photo do |image| %>
+<%= image.file_field 'photo[0]', :size => 30, :id => nil  -%>
+  <% end %>
+</span>
+<br />
+<p><%= link_to "add_image", '#', :onclick => 'addFileField(this); return false;' %></p>
+
