@@ -1,5 +1,5 @@
 class CreatePhotos < ActiveRecord::Migration
-  def up
+  def change
     create_table :photos do |t|
       t.string  :photo_file_name
       t.string  :photo_content_type
@@ -8,9 +8,5 @@ class CreatePhotos < ActiveRecord::Migration
       t.string :entity_type
       t.timestamps
     end
-  end
-
-  def down
-     drop_table :photos
   end
 end

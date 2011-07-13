@@ -7,19 +7,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-jQuery.noConflict();
 
 
-var fileFieldCount = 1;
-
-function addFileField(elem) {
-
-    fileFieldCount++;
-    var f = document.createElement("input");
-    f.type = "file";
-    f.name = "photo[" + fileFieldCount + "]";
-    f.size = 30;
-    p = document.getElementById("photo_fields");
-    p.appendChild(document.createElement("br"));
-    p.appendChild(f);
+function addFileField()
+{
+    $($(".empty-row").clone()[0]).appendTo(".photo_fields");
+    return true;
 }

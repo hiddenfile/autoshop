@@ -3,9 +3,9 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
   def create
     @product = Product.new(params[:product])
 
-    if params[:photo]
-      params[:photo].each_pair do |k, v|
-        @product.photos.build(:photo => params[:photo][k])
+    if params[:photos]
+      params[:photos].each do |hash|
+        @product.photos.build(hash)
       end
     end
 
@@ -26,6 +26,7 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
     @groups = Group.all
 
     @photo = Photo.new
+
   end
 
   def update
