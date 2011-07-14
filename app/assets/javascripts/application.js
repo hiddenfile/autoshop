@@ -7,3 +7,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+function addFileField()
+{
+    $($(".empty-row").clone()[0]).appendTo(".photo_fields");
+    return true;
+}

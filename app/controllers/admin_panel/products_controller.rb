@@ -3,6 +3,12 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
   def create
     @product = Product.new(params[:product])
 
+    if params[:photos]
+      params[:photos].each do |hash|
+        @product.photos.build(hash)
+      end
+    end
+
     if @product.save
       redirect_to(admin_panel_products_path, :notice => 'Product was successfully created.')
     else
@@ -12,13 +18,14 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
 
   def index
     @products = Product.includes(:company,:group).all
-
   end
 
   def new
     @product = Product.new
     @companies = Company.all
     @groups = Group.all
+
+    @photo = Photo.new
 
   end
 
