@@ -19,5 +19,11 @@ gem 'hpricot'
 gem "paperclip", "= 2.3.0"
 
 group :test do
+  gem "test-unit", :require => "test/unit"
   gem 'turn', :require => false
+  gem "factory_girl_rails", "~> 1.1.rc1"
+
+  gem 'rspec'
+
+  gem 'shoulda'#, :git => 'git://github.com/thoughtbot/shoulda-matchers.git'
 end

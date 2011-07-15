@@ -65,7 +65,7 @@ body
     clear:both;
 }
 
-#footer
+#m-footer
 {
     background: url('f-bk.gif') repeat-x;
     height: 64px
@@ -116,32 +116,32 @@ body
     text-align: right;
 }
 
-li
+#m-navigation li
 {
     border-bottom: 1px dotted #999999;
     margin: 0;
     padding: 0 10px;
 }
 
-li.last
+#m-navigation li.last
 {
     border-bottom: none;
     margin: 0;
     padding: 0 10px;
 }
 
-#main-navigation
+#m-navigation
 {
     background:none !important;
 }
 
-#main-navigation li
+#m-navigation li
 {
     background:none !important;
     float : none !important;
 }
 
-#main-navigation li a
+#m-navigation li a
 {
     color : #000000 !important;
     padding: 4px 0 !important;
@@ -168,7 +168,7 @@ h6
     text-shadow: 0 0 1px #999999;
 }
 
-.block
+.piece
 {
     background: url("cc.gif") repeat-x scroll 0 bottom transparent !important;
     padding-bottom: 10px;
