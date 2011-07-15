@@ -5,7 +5,7 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
 
     if params[:photos]
       params[:photos].each do |hash|
-        @product.photos.build(hash)
+        @product.photos.build(:photo => hash)
       end
     end
 
@@ -32,6 +32,12 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
   def update
     @product = Product.find(params[:id])
 
+    if params[:photos]
+      params[:photos].each do |hash|
+        @product.photos.build(:photo => hash)
+      end
+    end
+
     if @product.update_attributes(params[:product])
       redirect_to(admin_panel_product_path(@product), :notice => 'Product was successfully updated.')
     else
@@ -44,8 +50,9 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
-
+    @product = Product.includes(:photos).find(params[:id])
+      #Product.find(params[:id])
+      #  @photos = @product.photos
     @companies = Company.all
     @groups = Group.all
   end
@@ -56,5 +63,12 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
     else
       redirect_to(admin_panel_products_path, :notice => 'Error.')
     end
+  end
+
+  def delete_photo
+    @product = Product.find(params[:product_id])
+    @product.photos.find(params[:photo_id]).destroy
+    @product = Product.includes(:photos).find(params[:product_id])
+    render :partial => "admin_panel/shared/images", :layout => false, :locals => {:target => @product, :target_link_ => "product"}
   end
 end

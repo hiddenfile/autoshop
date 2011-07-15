@@ -11,3 +11,11 @@ module Avtoportal
     config.assets.enabled = true
   end
 end
+
+#module Paperclip
+#  module Interpolations
+#    def rails_root attachment, style
+#      Rails.root
+#    end
+#  end
+#end

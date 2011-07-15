@@ -1,18 +1,2 @@
-= form_for @product, :url => admin_panel_product_path do |f|
-  %div
-    = f.label 'Изготовитель'
-    = f.select 'company_id', @companies.collect { |p| [p.name, p.id] }
-
-  %div
-    = f.label 'Категория'
-    = f.select 'group_id', @groups.collect { |p| [p.name, p.id] }
-
-  %div
-    = f.label 'Наименование'
-    = f.text_field :title
-
-  %div
-    = f.label 'Описание'
-    = f.text_area :description
-
-  = f.submit 'Обновить'
+=render :partial => 'form'
+=render :partial => 'admin_panel/shared/images', :locals => {:target => @product, :target_link_ => "product"}

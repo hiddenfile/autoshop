@@ -2,6 +2,7 @@ Avtoportal::Application.routes.draw do
 
   match '/products' => 'products#index'
 
+
   resource :product,:except => :show do
     collection do
      match '/show/:id' => 'products#show' , :as => 'show'
@@ -32,6 +33,10 @@ Avtoportal::Application.routes.draw do
     resources :products, :companies , :groups, :users ,:admins
   end
 
-
+  scope '/delete_photo' do
+   match 'product/:product_id/:photo_id' => "admin_panel/products#delete_photo", :as => :delete_product_photo
+   match 'company/:company_id/:photo_id' => "admin_panel/companies#delete_photo", :as => :delete_company_photo
+   match 'group/:group_id/:photo_id' => "admin_panel/groups#delete_photo", :as => :delete_group_photo
+  end
 
 end

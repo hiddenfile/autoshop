@@ -1,0 +1,5 @@
+#images-list
+  -target.photos.each do |p|
+    =link_to image_tag(p.photo.url(:medium))
+    =link_to_function 'Удалить', "deletePhoto('#{instance_eval("delete_#{target_link_}_photo_path(:#{target_link_}_id => target.id,:photo_id => p.id)")}')"
+    %br
