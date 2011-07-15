@@ -14,3 +14,14 @@ function addFileField()
     $($(".empty-row").clone()[0]).appendTo(".photo_fields");
     return true;
 }
+
+function deletePhoto(path)
+{
+    $.ajax({
+        type: 'POST',
+        url: path,
+        success: function(response){
+            $("#images-list").html(response);
+        }
+    })
+}

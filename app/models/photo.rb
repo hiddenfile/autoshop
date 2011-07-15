@@ -8,7 +8,4 @@ class Photo < ActiveRecord::Base
 
   validates_length_of :photo_file_name, :maximum => 255
 
-
-
-
 end

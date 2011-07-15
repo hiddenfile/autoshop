@@ -44,8 +44,9 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
-
+    @product = Product.includes(:photos).find(params[:id])
+      #Product.find(params[:id])
+      #  @photos = @product.photos
     @companies = Company.all
     @groups = Group.all
   end
@@ -56,5 +57,12 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
     else
       redirect_to(admin_panel_products_path, :notice => 'Error.')
     end
+  end
+
+  def delete_photo
+    @product = Product.find(params[:product_id])
+    @product.photos.find(params[:photo_id]).destroy
+    @product = Product.includes(:photos).find(params[:product_id])
+    render :partial => "admin_panel/shared/images", :layout => false, :locals => {:target => @product}
   end
 end
