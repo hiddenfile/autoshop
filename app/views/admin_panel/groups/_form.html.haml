@@ -1,0 +1,10 @@
+= form_for @group, :url => @group.new_record? ? admin_panel_groups_path : admin_panel_group_path do |f|
+  %p
+    = f.label 'Категория'
+    = f.text_field 'name'
+  %p
+    =render :partial => 'admin_panel/shared/form', :locals => {:f => f}
+  %p
+    =render :partial => 'admin_panel/shared/images', :locals => {:target => @group, :target_link_ => "group"}
+  %p
+    = f.submit @group.new_record? ? 'Добавить' : 'Обновить'

@@ -11,5 +11,8 @@
   %p Описание : #{@product.description}
 %br
 
+%div
+  %p=render :partial => 'admin_panel/shared/images_show', :locals => {:target => @product}
+
 = link_to 'Редактировать', edit_admin_panel_product_path
 = link_to 'Вернутся', admin_panel_products_path

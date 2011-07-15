@@ -1,6 +1,6 @@
 %div
   %p Название : #{@group.name}
-%br
-
-= link_to 'Редактировать', edit_admin_panel_group_path
-= link_to 'Вернутся', admin_panel_groups_path
+  %p= render :partial => 'admin_panel/shared/images_show', :locals => {:target => @group}
+  %p
+    = link_to 'Редактировать', edit_admin_panel_group_path
+    = link_to 'Вернутся', admin_panel_groups_path

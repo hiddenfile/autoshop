@@ -12,10 +12,10 @@ module Avtoportal
   end
 end
 
-module Paperclip
-  module Interpolations
-    def rails_root attachment, style
-      Rails.root
-    end
-  end
-end
+#module Paperclip
+#  module Interpolations
+#    def rails_root attachment, style
+#      Rails.root
+#    end
+#  end
+#end

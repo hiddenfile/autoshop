@@ -6,5 +6,7 @@ class Product < ActiveRecord::Base
 
   belongs_to :price
 
+  validates :title, :presence => true
+
 
 end

@@ -5,6 +5,7 @@ class Admin < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
   validates :password, :presence => true, :confirmation => true, :length => {:minimum => 6}, :if => :password_require?
+  validates :email, :presence => true
 
   protected
   def password_require?

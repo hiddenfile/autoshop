@@ -30,12 +30,13 @@ Avtoportal::Application.routes.draw do
 #  end
 
   namespace :admin_panel do
-    resources :companies , :groups, :users ,:admins
-    resources :products
+    resources :products, :companies , :groups, :users ,:admins
   end
 
   scope '/delete_photo' do
-   match '/:product_id/:photo_id' => "admin_panel/products#delete_photo", :as => :delete_product_photo
+   match 'product/:product_id/:photo_id' => "admin_panel/products#delete_photo", :as => :delete_product_photo
+   match 'company/:company_id/:photo_id' => "admin_panel/companies#delete_photo", :as => :delete_company_photo
+   match 'group/:group_id/:photo_id' => "admin_panel/groups#delete_photo", :as => :delete_group_photo
   end
 
 end
