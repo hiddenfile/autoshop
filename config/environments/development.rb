@@ -1,4 +1,4 @@
-Avtoportal::Application.configure do
+Autoshop::Application.configure do
   config.cache_classes = false
 
   # Log error messages when you accidentally call methods on nil.

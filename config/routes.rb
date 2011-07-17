@@ -1,4 +1,4 @@
-Avtoportal::Application.routes.draw do
+Autoshop::Application.routes.draw do
 
   match '/products' => 'products#index'
 

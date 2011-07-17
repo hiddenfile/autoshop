@@ -4,7 +4,7 @@ require 'rails/all'
 
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
-module Avtoportal
+module Autoshop
   class Application < Rails::Application
     config.encoding = "utf-8"
     config.filter_parameters += [:password]

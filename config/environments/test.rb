@@ -1,4 +1,4 @@
-Avtoportal::Application.configure do
+Autoshop::Application.configure do
 
   config.cache_classes = true
 
