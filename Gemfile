@@ -16,7 +16,7 @@ gem 'web-app-theme', :git => 'git://github.com/cncardoso/web-app-theme.git'
 gem 'haml'
 gem 'hpricot'
 
-gem "paperclip", "= 2.3.0"
+gem "paperclip", "= 2.3.12"
 
 group :test do
   gem "test-unit", :require => "test/unit"

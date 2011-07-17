@@ -2,12 +2,7 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
 
   def create
     @product = Product.new(params[:product])
-
-    if params[:photos]
-      params[:photos].each do |hash|
-        @product.photos.build(:photo => hash)
-      end
-    end
+    photo_build
 
     if @product.save
       redirect_to(admin_panel_products_path, :notice => 'Product was successfully created.')
@@ -17,27 +12,18 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
   end
 
   def index
-    @products = Product.includes(:company,:group).all
+    @products = Product.includes(:company, :group).all
   end
 
   def new
     @product = Product.new
     @companies = Company.all
     @groups = Group.all
-
-    @photo = Photo.new
-
   end
 
   def update
     @product = Product.find(params[:id])
-
-    if params[:photos]
-      params[:photos].each do |hash|
-        @product.photos.build(:photo => hash)
-      end
-    end
-
+    photo_build
     if @product.update_attributes(params[:product])
       redirect_to(admin_panel_product_path(@product), :notice => 'Product was successfully updated.')
     else
@@ -70,5 +56,11 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
     @product.photos.find(params[:photo_id]).destroy
     @product = Product.includes(:photos).find(params[:product_id])
     render :partial => "admin_panel/shared/images", :layout => false, :locals => {:target => @product, :target_link_ => "product"}
+  end
+
+  private
+
+  def photo_build
+    params[:photos].each_value { |photo| @product.photos.build(photo) } if params[:photos]
   end
 end

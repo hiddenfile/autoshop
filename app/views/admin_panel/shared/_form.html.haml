@@ -1,6 +1,5 @@
+%p= link_to_function "Добавить изображение", 'addFileField();'
 .photo_fields
-   %p= link_to_function "Добавить изображение", 'addFileField();'
-   .empty-row
-      %input{:type=>"file", :name=>"photos[][photo]"}
+  %input{:type=>"file", :name=>"photos[0][photo]"}
 
 

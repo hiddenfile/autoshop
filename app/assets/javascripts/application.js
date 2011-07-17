@@ -8,10 +8,11 @@
 //= require jquery_ujs
 //= require_tree .
 
-
+var photo_index = 0
 function addFileField()
-{
-    $($(".empty-row").clone()[0]).appendTo(".photo_fields");
+{   photo_index++;
+    $("<br/>").appendTo(".photo_fields");
+    $($(".photo_fields > input:first").clone().attr("name","photos["+photo_index+"][photo]").val("")).appendTo(".photo_fields");
     return true;
 }
 
