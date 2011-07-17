@@ -1,4 +1,6 @@
 class AdminPanel::GroupsController < AdminPanel::AdminApplicationController
+  before_filter :find_group, :only => [:update, :show, :edit, :destroy]
+
   def create
     @group = Group.new(params[:group])
     photo_build
@@ -18,7 +20,6 @@ class AdminPanel::GroupsController < AdminPanel::AdminApplicationController
   end
 
   def update
-    @group = Group.find(params[:id])
     photo_build
     if @group.update_attributes(params[:group])
       redirect_to(admin_panel_group_path(@group), :notice => 'Group was successfully updated.')
@@ -28,19 +29,14 @@ class AdminPanel::GroupsController < AdminPanel::AdminApplicationController
   end
 
   def show
-    @group = Group.find(params[:id])
   end
 
   def edit
-    @group = Group.find(params[:id])
   end
 
-    def destroy
-    if Group.find(params[:id]).destroy
-      redirect_to(admin_panel_groups_path, :notice => 'Group was successfully deleted.')
-    else
-      redirect_to(admin_panel_groups_path, :alert => 'Error.')
-    end
+  def destroy
+    @group.destroy
+    redirect_to(admin_panel_groups_path, :notice => 'Group was successfully deleted.')
   end
 
 
@@ -52,6 +48,12 @@ class AdminPanel::GroupsController < AdminPanel::AdminApplicationController
   end
 
   private
+  def find_group
+    unless @group = Group.find_by_id(params[:id])
+      flash[:error] = "Could not find id: #{params[:id]}"
+      redirect_to admin_panel_groups_path
+    end
+  end
 
   def photo_build
     params[:photos].each_value { |photo| @group.photos.build(photo) } if params[:photos]

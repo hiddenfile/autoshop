@@ -1,4 +1,5 @@
 class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
+  before_filter :find_product, :only => [:update, :show, :edit, :destroy]
 
   def create
     @product = Product.new(params[:product])
@@ -22,7 +23,6 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
   end
 
   def update
-    @product = Product.find(params[:id])
     photo_build
     if @product.update_attributes(params[:product])
       redirect_to(admin_panel_product_path(@product), :notice => 'Product was successfully updated.')
@@ -32,22 +32,16 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
   end
 
   def edit
-    @product = Product.includes(:photos).find(params[:id])
     @companies = Company.all
     @groups = Group.all
   end
 
   def destroy
-    if Product.find_by_id(params[:id]).try(:destroy)
-       flash[:notice] = 'Product was successfully deleted.'
-    else
-      flash[:error] = 'Error.'
-    end
-    redirect_to admin_panel_products_path
+    @product.destroy
+    redirect_to admin_panel_products_path, :notice => 'Product was successfully deleted.'
   end
 
   def delete_photo
@@ -58,6 +52,12 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
   end
 
   private
+  def find_product
+    unless @product = Product.find_by_id(params[:id])
+      flash[:error] = "Could not find id: #{params[:id]}"
+      redirect_to admin_panel_products_path
+    end
+  end
 
   def photo_build
     params[:photos].each_value { |photo| @product.photos.build(photo) } if params[:photos]
