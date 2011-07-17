@@ -37,18 +37,17 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
 
   def edit
     @product = Product.includes(:photos).find(params[:id])
-      #Product.find(params[:id])
-      #  @photos = @product.photos
     @companies = Company.all
     @groups = Group.all
   end
 
   def destroy
-    if Product.find(params[:id]).destroy
-      redirect_to(admin_panel_products_path, :notice => 'Product was successfully deleted.')
+    if Product.find_by_id(params[:id]).try(:destroy)
+       flash[:notice] = 'Product was successfully deleted.'
     else
-      redirect_to(admin_panel_products_path, :notice => 'Error.')
+      flash[:error] = 'Error.'
     end
+    redirect_to admin_panel_products_path
   end
 
   def delete_photo
