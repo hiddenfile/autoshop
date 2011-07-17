@@ -1,13 +1,7 @@
 class AdminPanel::GroupsController < AdminPanel::AdminApplicationController
   def create
     @group = Group.new(params[:group])
-
-    if params[:photos]
-      params[:photos].each do |hash|
-        @group.photos.build(:photo => hash)
-      end
-    end
-
+    photo_build
     if @group.save
       redirect_to(admin_panel_groups_path, :notice => 'Group was successfully created.')
     else
@@ -25,13 +19,7 @@ class AdminPanel::GroupsController < AdminPanel::AdminApplicationController
 
   def update
     @group = Group.find(params[:id])
-
-    if params[:photos]
-      params[:photos].each do |hash|
-        @group.photos.build(:photo => hash)
-      end
-    end
-
+    photo_build
     if @group.update_attributes(params[:group])
       redirect_to(admin_panel_group_path(@group), :notice => 'Group was successfully updated.')
     else
@@ -61,6 +49,12 @@ class AdminPanel::GroupsController < AdminPanel::AdminApplicationController
     @group.photos.find(params[:photo_id]).destroy
     @group = Group.includes(:photos).find(params[:group_id])
     render :partial => "admin_panel/shared/images", :layout => false, :locals => {:target => @group, :target_link_ => "group"}
+  end
+
+  private
+
+  def photo_build
+    params[:photos].each_value { |photo| @group.photos.build(photo) } if params[:photos]
   end
 
 end

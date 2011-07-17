@@ -1,13 +1,7 @@
 class AdminPanel::CompaniesController < AdminPanel::AdminApplicationController
   def create
     @company = Company.new(params[:company])
-
-    if params[:photos]
-      params[:photos].each do |hash|
-        @company.photos.build(:photo => hash)
-      end
-    end
-
+    photo_build
     if @company.save
       redirect_to(admin_panel_companies_path, :notice => 'Company was successfully created.')
     else
@@ -26,12 +20,7 @@ class AdminPanel::CompaniesController < AdminPanel::AdminApplicationController
 
   def update
     @company = Company.find(params[:id])
-
-    if params[:photos]
-      params[:photos].each do |hash|
-        @company.photos.build(:photo => hash)
-      end
-    end
+    photo_build
 
     if @company.update_attributes(params[:company])
       redirect_to(admin_panel_company_path(@company), :notice => 'Company was successfully updated.')
@@ -61,6 +50,11 @@ class AdminPanel::CompaniesController < AdminPanel::AdminApplicationController
     @company.photos.find(params[:photo_id]).destroy
     @company = Company.includes(:photos).find(params[:company_id])
     render :partial => "admin_panel/shared/images", :layout => false, :locals => {:target => @company, :target_link_ => "company"}
+  end
+  private
+
+  def photo_build
+    params[:photos].each_value { |photo| @company.photos.build(photo) } if params[:photos]
   end
 
 end
