@@ -1,0 +1,248 @@
+/* ----- main styles ----- */
+
+* {
+  margin: 0px;
+  padding: 0px; }
+
+html {
+  width: 100%;
+  height: 100%; }
+
+body {
+  font-family: Tahoma;
+  font-size: 9pt;
+  height: 100%;
+  width: 100%;
+  color: #000;
+  background: url("/assets/h-bk.gif") repeat-x white; }
+
+a {
+  outline: none;
+  -moz-outline: 0;
+  border: none;
+  border-width: 0px;
+  &:active, &:focus {
+    outline: none;
+    -moz-outline: 0; }
+  color: #000;
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none; } }
+
+img {
+  border: none;
+  border-width: 0px; }
+
+h1, h2, h3, h4, h5 {
+  color: #000;
+  font-family: Tahoma;
+  font-size: 10.5pt;
+  padding: 0px 0px 10px 0px;
+  font-weight: normal;
+  text-shadow: 1px 1px 1px #999; }
+
+h6 {
+  color: #000;
+  font-family: Tahoma;
+  font-size: 10.5pt;
+  padding: 0px 10px 10px 10px;
+  font-weight: bold;
+  text-shadow: 0px 0px 1px #999;
+  background: url("/assets/cc.gif") 0 bottom repeat-x;
+  margin: 0 0 5px 0; }
+
+p {
+  padding: 0px 0px 15px 0px; }
+
+ol, ul {
+  margin: 0px 0px 10px 10px; }
+
+li {
+  margin: 5px 0px 10px 15px; }
+
+table {
+  border-collapse: collapse; }
+
+input, select, textarea {
+  font-family: tahoma;
+  font-size: 8pt;
+  color: #000000; }
+
+.clear {
+  clear: both;
+  font-size: 0pt;
+  line-height: 0px;
+  height: 0px; }
+
+.rel {
+  position: relative; }
+
+/* ----- special classes styles ----- */
+
+.main {
+  position: relative;
+  width: 1000px;
+  margin: 0 auto;
+  min-height: 100%; }
+
+*html .main {
+  height: 100%; }
+
+/* ----- header styles ----- */
+
+.header {
+  height: 130px;
+  position: relative;
+  background: url("/assets/h-bk.png") no-repeat; }
+
+/* ----- logo ----- */
+
+.logo {
+  left: 50px;
+  top: 40px;
+  position: absolute;
+  color: #aaa;
+  text-decoration: none;
+  font-size: 18pt;
+  font-weight: bold;
+  &:hover {
+    color: #dcb4b4; } }
+
+/* ----- h-search ----- */
+
+.h-search {
+  right: 47px;
+  top: 37px;
+  position: absolute;
+  width: 320px; }
+
+.h-field {
+  width: 202px;
+  height: 34px;
+  padding: 0 15px;
+  color: #fff;
+  line-height: 34px;
+  background: url("/assets/search-field.gif") no-repeat;
+  border: 0;
+  border-width: 0; }
+
+.h-but {
+  width: 86px;
+  height: 34px;
+  background: url("/assets/search-but.gif") no-repeat;
+  border: 0;
+  border-width: 0;
+  right: 0px;
+  top: 0px;
+  position: absolute;
+  cursor: pointer; }
+
+/* ----- content styles ----- */
+
+.content {
+  position: relative;
+  background: url("/assets/bk.png") repeat-y;
+  padding: 0 0 70px 0;
+  height: 1%; }
+
+.left {
+  float: left;
+  width: 125px;
+  margin: 0 25px; }
+
+.center {
+  float: left;
+  width: 570px; }
+
+.right {
+  float: right;
+  width: 205px;
+  margin: 0 25px 0 0; }
+
+.content img {
+  float: left;
+  margin: 5px 10px 5px 0;
+  border: 1px solid #000; }
+
+.block {
+  background: url("/assets/cc.gif") 0 bottom repeat-x;
+  margin: 0 0 15px 0;
+  padding: 0 0 0px 0; }
+
+.l-menu {
+  line-height: 18px;
+  padding: 0 0 10px 0;
+  ul {
+    margin: 0;
+    list-style: none; }
+  li {
+    border-bottom: 1px dotted #999;
+    margin: 0;
+    padding: 0 10px 0 10px;
+    &:last-child {
+      border: none; } }
+  a {
+    text-decoration: none;
+    &:hover {
+      color: #999; } } }
+
+.t-right {
+  text-align: right;
+  font-size: 8pt;
+  a {
+    color: #6d6d6d;
+    margin: 0 10px; } }
+
+.more {
+  font-size: 8pt;
+  a {
+    color: #6d6d6d; } }
+
+.items {
+  padding: 0 0 5px 0;
+  ul {
+    margin: 0;
+    list-style: none; }
+  li {
+    border-bottom: 1px dotted #999;
+    margin: 0 0 10px 0;
+    padding: 0 0px 10px 0px;
+    &:last-child {
+      border: none; } } }
+
+.sm-news {
+  color: #6d6d6d;
+  font-size: 8pt;
+  padding: 0 0 10px 0;
+  ul {
+    margin: 0;
+    list-style: none; }
+  li {
+    margin: 0;
+    padding: 0 0 10px 0; }
+  h3 {
+    padding: 0 0 0 0;
+    font-size: 8pt; } }
+
+/* ----- footer styles ----- */
+
+.footer {
+  margin-top: -64px;
+  background: url("/assets/f-bk.gif") repeat-x;
+  font-size: 8pt;
+  color: #9a9a9a;
+  line-height: 36px;
+  text-align: center; }
+
+.f-in {
+  position: relative;
+  margin: 0 auto;
+  height: 40px;
+  padding: 24px 0 0 0;
+  width: 1000px; }
+
+/* -----
+.field, x:-moz-any-link {  }
+*html .field {  }
+*:first-child+html .field {  }
+  ----- */

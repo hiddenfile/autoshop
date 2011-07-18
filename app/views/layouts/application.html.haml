@@ -1,50 +1,99 @@
 !!!
-%html
+%html{:dir => "ltr", :xmlns => "http://www.w3.org/1999/xhtml"}
   %head
-    %title Авто портал
-    =stylesheet_link_tag "application"
-    =javascript_include_tag "application"
-    =csrf_meta_tags
-
+    %title
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
+    %meta{:content => "", :name => "keywords"}/
+    %meta{:content => "", :name => "description"}/
+    = stylesheet_link_tag :application
   %body
-    #content
-      #titlediv
-
-        .inline_div_left
-          =link_to 'Авто портал',root_path, :id=>'titlediv'
-
-        .inline_div_right
-          =form_for :search_form, :url=>'/index' do |f|
-            =f.text_field 'search_str'
-            =f.submit('',:id => 'search_submit')
-        .cleaner
-
-      %div.flash
-        -flash.each do |type, message|
-          .message{:class => "#{type}"}
-            %p=message
-
-      #leftsidebar.piece
-        #m-navigation
-          %h6 Навигация
-          %ul
-            %li
-              =link_to 'Товары', products_path
-            %li.last
-              =link_to 'Товары', products_path
-            -#%li
-            -#  =link_to 'Категории', groups_path
-            -#%li
-            -#  =link_to 'Компании', companies_path
-
-      #centerbar
-        .content
-          =yield
-
-      #rightsidebar
-
-      .cleaner
-
-    #m-footer
-      #copy
-        Copyright &copy; 2009 - #{Time.now.year} Face It.
+    / main styles
+    .main.index
+      / H E A D E R  start
+      .header
+        %a.logo{:href => "#"} Авто магазин
+        .h-search
+          .rel
+            %form{:action => "", :method => "post"}
+              %input.h-field{:type => "text"}/
+              %input.h-but{:type => "submit", :value => ""}/
+      / H E A D E R  end
+      / C O N T E N T  start
+      .content
+        / L E F T start
+        .left
+          %h6 News Topics
+          .block.l-menu
+            %ul
+              %li
+                %a{:href => "#"} Business
+              %li
+                %a{:href => "#"} Social
+              %li
+                %a{:href => "#"} Technology
+              %li
+                %a{:href => "#"} Showbiz
+              %li
+                %a{:href => "#"} Culture
+              %li
+                %a{:href => "#"} Incidents
+              %li
+                %a{:href => "#"} Health
+              %li
+                %a{:href => "#"} Politics
+              %li
+                %a{:href => "#"} Transport
+              %li
+                %a{:href => "#"} Finance
+              %li
+                %a{:href => "#"} Sports
+        / L E F T end
+        / C E N T E R  start
+        .center
+          = yield
+          .clear
+        / C E N T E R  end
+        / R I G H T
+        .right
+          %h6 The main thing for the day
+          .block.items
+            %ul
+              %li
+                %a{:href => "#"}
+                  %img{:alt => "", :height => "78", :src => "images/pic002.gif", :width => "78"}/
+                %p In Japanese products have found elevated levels of radiation
+                .more
+                  %a{:href => "#"} more
+              %li
+                %a{:href => "#"}
+                  %img{:alt => "", :height => "78", :src => "images/pic002.gif", :width => "78"}/
+                %p In Japanese products have found elevated levels of radiation
+                .more
+                  %a{:href => "#"} more
+              %li
+                %a{:href => "#"}
+                  %img{:alt => "", :height => "78", :src => "images/pic002.gif", :width => "78"}/
+                %p In Japanese products have found elevated levels of radiation
+                .more
+                  %a{:href => "#"} more
+          %h6 Popular News
+          .block.sm-news
+            %ul
+              %li
+                %h3 Tymoshenko: Yanukovych personally released me in Brussels
+                %span view: 2157
+              %li
+                %h3 Tymoshenko told a meeting with Gaddafi
+                %span view: 2385
+              %li
+                %h3 Tymoshenko: I will admit its human error
+                %span view: 2385
+        / R I G H T
+        .clear
+      / C O N T E N T  end
+    / /main styles
+    / F O O T E R  start
+    .footer
+      .f-in
+        \© Copyright 2009-2011 Face IT
+    / F O O T E R  end

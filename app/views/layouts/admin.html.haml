@@ -2,8 +2,7 @@
 %html
   %head
     %title Авто портал
-    = stylesheet_link_tag :application
-    = stylesheet_link_tag :custom
+    = stylesheet_link_tag :admin_panel
     = javascript_include_tag :application
     = csrf_meta_tag
   %body
@@ -41,7 +40,9 @@
 
 
         #main.content
-          = yield
+          .block
+            .content
+              = yield
           #footer
             .block
               %p Copyright &copy; #{Time.now.year} Web App.
