@@ -1,18 +1,11 @@
 Autoshop::Application.routes.draw do
 
-  match '/products' => 'products#index'
-
-
-  resource :product,:except => :show do
-    collection do
-     match '/show/:id' => 'products#show' , :as => 'show'
-    end
-  end
-
+  resources :products, :except => [:new, :update, :create, :destroy]
+  resources :groups, :only => :show
 #  root :to => 'admin/admins#index', :constraints => {}
-  root :to => 'products#index'
+  root :to => 'main_users#index'
   match '/adminroot' => 'admin_panel/admins#index', :as => 'adminroot'
-  match '/admin_panel' => 'admin_panel/users#index', :as => 'adminroot'
+  match '/admin_panel' => 'admin_panel/users#index', :as => 'admin_users'
 
   devise_for :admin
 

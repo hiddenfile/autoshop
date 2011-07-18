@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :main_menu
 
   layout 'application'
 
@@ -12,4 +13,9 @@ class ApplicationController < ActionController::Base
 #      "application"
 #    end
 #  end
+  protected
+  def main_menu
+    @groups = Group.includes(:companies).all
+    @companies = Company.includes(:groups).all
+  end
 end

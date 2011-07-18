@@ -26,3 +26,8 @@ function deletePhoto(path)
         }
     })
 }
+
+function showCategory(id){
+    $(".category").hide();
+    $(".category"+id).show();
+}
