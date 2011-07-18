@@ -34,6 +34,4 @@ describe Admin do
   it "is valid" do
     @admin.should be_valid
   end
-
-  it_has_one
 end
