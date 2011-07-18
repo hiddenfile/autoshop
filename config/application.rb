@@ -9,13 +9,8 @@ module Autoshop
     config.encoding = "utf-8"
     config.filter_parameters += [:password]
     config.assets.enabled = true
+    config.to_prepare do
+      Devise::SessionsController.layout proc { |controller| resource_name == :admin ? false : 'application' }
+    end
   end
 end
-
-#module Paperclip
-#  module Interpolations
-#    def rails_root attachment, style
-#      Rails.root
-#    end
-#  end
-#end

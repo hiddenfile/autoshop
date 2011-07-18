@@ -1,0 +1,63 @@
+/*
+CSS-Tricks Example
+by Chris Coyier
+http://css-tricks.com
+*/
+
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  font: 14px Georgia, serif; }
+
+#center {
+  width: 260px;
+  height: 200px;
+  position: absolute;
+  top: 45%;
+  left: 48%;
+  margin: -100px auto auto -100px; }
+
+#page-wrap {
+  width: 960px;
+  margin: 0 auto; }
+
+h3 {
+  margin: 20px 0 10px 0; }
+
+.login-block {
+  float: left;
+  margin: 0 49px 25px 0;
+  text-align: center;
+  width: 260px;
+  form {
+    -moz-border-radius: 15px;
+    -moz-box-shadow: 0 0 10px #333;
+    -webkit-border-radius: 15px;
+    -webkit-box-shadow: 0 0 10px #333;
+    border: 3px solid white;
+    padding: 20px; }
+  .active-form {
+    border-color: #d09e6d; }
+  form p {
+    margin: 0;
+    text-align: left; }
+  label {
+    color: #7C6767;
+    font-size: 14px; }
+  input {
+    &[type="text"], &[type="password"] {
+      border-color: #EEEEEE #CCCCCC #CCCCCC #EEEEEE;
+      border-right: 1px solid #CCCCCC;
+      border-style: solid;
+      border-width: 1px;
+      font-size: 15px;
+      margin: 0 0 15px;
+      padding: 5px;
+      width: 200px; } }
+  a.button {
+    text-decoration: none; }
+  input {
+    &[type="text"]:focus, &[type="password"]:focus {
+      border-color: #555555; } } }
