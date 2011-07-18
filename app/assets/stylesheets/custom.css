@@ -173,3 +173,11 @@ h6
     background: url("cc.gif") repeat-x scroll 0 bottom transparent !important;
     padding-bottom: 10px;
 }
+
+.box
+{
+     /*background-color: #242424;*/
+    width: 300px;
+    margin: 0 auto 150px;
+
+}

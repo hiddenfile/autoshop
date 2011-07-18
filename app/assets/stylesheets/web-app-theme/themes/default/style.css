@@ -80,6 +80,13 @@ hr {
   width: 71%;
 }
 
+.signform{
+position:absolute;
+width:96%;
+/*background-color: #868686;*/
+padding-top: 100px;
+}
+
 #main .block {
   padding-top: 0px;
   background: #fff;
