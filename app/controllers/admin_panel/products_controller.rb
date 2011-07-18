@@ -1,4 +1,5 @@
 class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
+
   before_filter :find_product, :only => [:update, :show, :edit, :destroy]
 
   def create
@@ -32,6 +33,7 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
   end
 
   def show
+
   end
 
   def edit
@@ -57,6 +59,7 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
       flash[:error] = "Could not find id: #{params[:id]}"
       redirect_to admin_panel_products_path
     end
+
   end
 
   def photo_build

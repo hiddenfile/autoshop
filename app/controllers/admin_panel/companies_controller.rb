@@ -4,6 +4,7 @@ class AdminPanel::CompaniesController < AdminPanel::AdminApplicationController
   def create
     @company = Company.new(params[:company])
     photo_build
+
     if @company.save
       redirect_to(admin_panel_companies_path, :notice => 'Company was successfully created.')
     else

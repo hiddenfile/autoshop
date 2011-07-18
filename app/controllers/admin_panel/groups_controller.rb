@@ -1,9 +1,11 @@
 class AdminPanel::GroupsController < AdminPanel::AdminApplicationController
+
   before_filter :find_group, :only => [:update, :show, :edit, :destroy]
 
   def create
     @group = Group.new(params[:group])
     photo_build
+
     if @group.save
       redirect_to(admin_panel_groups_path, :notice => 'Group was successfully created.')
     else
