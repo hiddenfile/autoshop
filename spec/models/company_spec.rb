@@ -2,38 +2,30 @@ require "spec_helper"
 
 describe Company do
   before do
-    @company = Company.new(:name => "test_company")
+    @company = Factory.build(:company)
   end
 
-  it "should have many products" do
+  it "should have name" do
+    @company.name = nil
+    lambda{@company.save!}.should raise_error
+  end
+
+  it "should has_many :products, :dependent => :destroy" do
     g = Company.reflect_on_association(:products)
     g.macro.should == :has_many
+    g.options[:dependent].should == :destroy
   end
 
-  it "should destroy all products on self destroy" do
-    Product.delete_all
-    3.times do |i|
-      @company.products.build(:title => "product - #{i}")
-    end
-    lambda{@company.save!}.should_not raise_error
-    Product.all.should_not == []
-    @company.destroy
-    Product.all.should == []
-  end
-
-  it "should have many groups" do
+  it "should has_many :groups, :through => :products" do
     g = Company.reflect_on_association(:groups)
     g.macro.should == :has_many
+    g.options[:through].should == :products
   end
 
-#  it "should have has_many :groups, :throught => :products relation" do
-#    Group.delete_all
-#    ctr = 0
-#    3.times do |i|
-#      @company.group.build(:name => "group - #{i}")
-#    end
-#    lambda{@company.save!}.should_not raise_error
-#    Group.all.size.should == 3
-#  end
-
+  it "should has_many :photos, :as => :entity, :dependent => :destroy" do
+    g = Company.reflect_on_association(:photos)
+    g.macro.should == :has_many
+    g.options[:as].should == :entity
+    g.options[:dependent].should == :destroy
+  end
 end

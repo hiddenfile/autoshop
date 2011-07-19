@@ -4,6 +4,4 @@ class Product < ActiveRecord::Base
   has_many :photos, :as => :entity, :dependent => :destroy
   belongs_to :price
   validates :title, :presence => true
-
-
 end
