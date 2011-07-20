@@ -5,9 +5,12 @@ photo_index = 0
   $($(".photo_fields > input:first").clone().attr("name", "photos[" + photo_index + "][photo]").val("")).appendTo ".photo_fields"
 true
 
-@deletePhoto = (path) ->
+@deletePhoto = (elem, path) ->
   $.ajax
     type: "POST"
     url: path
     success: (response) ->
-      $("#images-list").html response
+      if response == "true"
+        $("br").remove()
+        elem.prev("a:first").remove()
+        elem.remove()
