@@ -45,8 +45,7 @@ class AdminPanel::GroupsController < AdminPanel::AdminApplicationController
   def delete_photo
     @group = Group.find(params[:group_id])
     @group.photos.find(params[:photo_id]).destroy
-    @group = Group.includes(:photos).find(params[:group_id])
-    render :partial => "admin_panel/shared/images", :layout => false, :locals => {:target => @group, :target_link_ => "group"}
+    render :text => "true"
   end
 
   private
