@@ -11,6 +11,6 @@ true
     url: path
     success: (response) ->
       if response == "true"
-        $("br").remove()
+        $("br:first").remove()
         elem.prev("a:first").remove()
         elem.remove()
