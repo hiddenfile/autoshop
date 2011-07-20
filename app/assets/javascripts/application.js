@@ -7,27 +7,3 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-
-var photo_index = 0
-function addFileField()
-{   photo_index++;
-    $("<br/>").appendTo(".photo_fields");
-    $($(".photo_fields > input:first").clone().attr("name","photos["+photo_index+"][photo]").val("")).appendTo(".photo_fields");
-    return true;
-}
-
-function deletePhoto(path)
-{
-    $.ajax({
-        type: 'POST',
-        url: path,
-        success: function(response){
-            $("#images-list").html(response);
-        }
-    })
-}
-
-function showCategory(id){
-    $(".category").hide();
-    $(".category"+id).show();
-}
