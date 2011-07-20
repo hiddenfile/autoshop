@@ -45,7 +45,8 @@ class AdminPanel::GroupsController < AdminPanel::AdminApplicationController
   def delete_photo
     @group = Group.find(params[:group_id])
     @group.photos.find(params[:photo_id]).destroy
-    render :text => true  end
+    render :text => true
+  end
 
   private
   def find_group
