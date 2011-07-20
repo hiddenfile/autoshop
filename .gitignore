@@ -6,3 +6,4 @@ tmp/
 .idea/
 config/database.yml
 autoshop.ids
+app/assets/images/photos/*
