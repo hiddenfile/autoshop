@@ -1,7 +1,13 @@
-## Place all the behaviors and hooks related to the matching controller here.
-## All this logic will automatically be available in application.js.
-## You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-#
-#addFileField = ->
-#  $($(".empty-row").clone()[0]).appendTo ".photo_fields"
-#  true
+photo_index = 0
+@addFileField = ->
+  photo_index+=1
+  $("<br/>").appendTo ".photo_fields"
+  $($(".photo_fields > input:first").clone().attr("name", "photos[" + photo_index + "][photo]").val("")).appendTo ".photo_fields"
+true
+
+@deletePhoto = (path) ->
+  $.ajax
+    type: "POST"
+    url: path
+    success: (response) ->
+      $("#images-list").html response
