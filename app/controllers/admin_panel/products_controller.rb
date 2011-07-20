@@ -49,8 +49,7 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
   def delete_photo
     @product = Product.find(params[:product_id])
     @product.photos.find(params[:photo_id]).destroy
-    @product = Product.includes(:photos).find(params[:product_id])
-    render :partial => "admin_panel/shared/images", :layout => false, :locals => {:target => @product, :target_link_ => "product"}
+    render :text => true
   end
 
   private

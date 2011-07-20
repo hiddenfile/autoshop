@@ -44,8 +44,7 @@ class AdminPanel::CompaniesController < AdminPanel::AdminApplicationController
   def delete_photo
     @company = Company.find(params[:company_id])
     @company.photos.find(params[:photo_id]).destroy
-    @company = Company.includes(:photos).find(params[:company_id])
-    render :partial => "admin_panel/shared/images", :layout => false, :locals => {:target => @company, :target_link_ => "company"}
+    render :text => true
   end
 
   private

@@ -11,6 +11,4 @@ true
     url: path
     success: (response) ->
       if response == "true"
-        $("br:first").remove()
-        elem.prev("a:first").remove()
-        elem.remove()
+        elem.parent("p:first").remove()
