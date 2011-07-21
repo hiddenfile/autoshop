@@ -1,2 +1,9 @@
-=render :partial => 'form'
-=render :partial => 'admin_panel/shared/images', :locals => {:target => @product}
+= form_for @product, {:url => admin_panel_product_path, :html => {:multipart => true} } do |f|
+  =render :partial => 'form', :locals => {:f => f}
+  = f.submit 'Обновить'
+
+#images-list
+  -@product.photos.each do |p|
+    %p
+      = link_to image_tag(p.photo.url(:medium))
+      = link_to_function 'Удалить', "deletePhoto($(this),'#{admin_panel_photo_path(p)}','#{form_authenticity_token}')"

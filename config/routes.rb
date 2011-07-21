@@ -10,4 +10,12 @@ Autoshop::Application.routes.draw do
     resources :products, :companies , :groups, :users ,:admins
     resources :photos, :only => [:index, :destroy]
   end
+
+  resources :companies do
+    resources :groups do
+      resources :products
+    end
+  end
+
+
 end
