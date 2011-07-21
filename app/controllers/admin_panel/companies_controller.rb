@@ -41,12 +41,6 @@ class AdminPanel::CompaniesController < AdminPanel::AdminApplicationController
     redirect_to admin_panel_companies_path, :notice => 'Company was successfully deleted.'
   end
 
-  def delete_photo
-    @company = Company.find(params[:company_id])
-    @company.photos.find(params[:photo_id]).destroy
-    render :text => true
-  end
-
   private
 
   def find_company

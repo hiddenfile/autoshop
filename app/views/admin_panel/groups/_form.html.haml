@@ -5,6 +5,6 @@
   %p
     =render :partial => 'admin_panel/shared/form', :locals => {:f => f}
   %p
-    =render :partial => 'admin_panel/shared/images', :locals => {:target => @group, :target_link_ => "group"}
+    =render :partial => 'admin_panel/shared/images', :locals => {:target => @group}
   %p
     = f.submit @group.new_record? ? 'Добавить' : 'Обновить'

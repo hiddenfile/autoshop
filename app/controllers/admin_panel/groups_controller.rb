@@ -41,13 +41,6 @@ class AdminPanel::GroupsController < AdminPanel::AdminApplicationController
     redirect_to(admin_panel_groups_path, :notice => 'Group was successfully deleted.')
   end
 
-
-  def delete_photo
-    @group = Group.find(params[:group_id])
-    @group.photos.find(params[:photo_id]).destroy
-    render :text => true
-  end
-
   private
   def find_group
     unless @group = Group.find_by_id(params[:id])

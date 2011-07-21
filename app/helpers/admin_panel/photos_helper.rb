@@ -1,0 +1,2 @@
+module AdminPanel::PhotosHelper
+end
