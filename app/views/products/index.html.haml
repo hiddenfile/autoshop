@@ -1,15 +1,13 @@
-%h6.title Товары
+%h6.title Товары >> #{@products.first.company.name} >> #{@products.first.group.name}
 
 %table#tablecontent.table
   %tr
-    %th.first Производитель
-    %th Категория
-    %th Наименование
-    %th.last Описание
+    %th.first
+    %th
+    %th.last
 
   - @products.each do |product|
     %tr
-      %td=link_to product.company.name,show_product_path(product)
-      %td=product.group.name
-      %td=product.title
+      %td.offset=image_tag product.photos.first.photo.url(:thumb)
+      %td.offset=link_to product.title,company_group_product_path(@company,@group,product)
       %td=product.description

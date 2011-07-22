@@ -1,0 +1,2 @@
+- @company.groups.each do |group|
+  = link_to (image_tag group.photos.first.photo.url(:medium)), company_group_products_path(@company,group)

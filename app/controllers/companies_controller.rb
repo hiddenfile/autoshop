@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
 
   def show
-    @company = Company.includes(:group).find(params[:id])
+    @company = Company.includes(:groups).find(params[:id])
   end
 
 end

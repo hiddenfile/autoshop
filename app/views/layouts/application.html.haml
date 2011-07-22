@@ -35,7 +35,7 @@
                   %li= link_to group.name, group_path(group)
               %div#brends.category{:style => "display:none"}
                 - @companies.each do |company|
-                  %li= link_to company.name, "#"
+                  %li= link_to company.name, company_path(company)
         / L E F T end
         / C E N T E R  start
         .center
