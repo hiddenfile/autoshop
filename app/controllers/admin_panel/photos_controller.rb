@@ -1,6 +1,6 @@
-class AdminPanel::PhotosController < ApplicationController
+class AdminPanel::PhotosController < AdminPanel::AdminApplicationController
   def index
-    @photo = Photo.all
+    @photos = Photo.all
   end
 
   def destroy

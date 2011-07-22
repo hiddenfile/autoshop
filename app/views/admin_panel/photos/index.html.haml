@@ -1,0 +1,16 @@
+.secondary-navigation
+  %ul.wat-cf
+
+%h2.title Картинки
+- @photos.each do |p|
+  %p.foto_p{:style=>"float:left"}
+    = link_to image_tag(p.photo.url(:thumb))
+    %br
+    = p.photo_file_size.to_s() +" byte"
+    %br
+    = l(p.created_at)
+    %br
+    = p.entity_type + ": "+(p.entity_type=="Product" ? p.entity.title : p.entity.name)
+    %br
+    = link_to_function 'Удалить', "deletePhoto($(this),'#{admin_panel_photo_path(p)}','#{form_authenticity_token}')"
+%div{:style=>"clear:both;height:0px"}
