@@ -1,4 +1,8 @@
-%h6.title Товары >> #{@products.first.company.name} >> #{@products.first.group.name}
+%h6.title
+  =link_to @products.first.company.name,company_path(@products.first.company)
+  >>
+  =link_to @products.first.group.name,group_path(@products.first.group)
+  >> Товары
 
 %table#tablecontent.table
   %tr
