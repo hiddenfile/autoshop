@@ -1,0 +1,8 @@
+
+-items = $redis.hgetall(session[:session_id])
+-keys = $redis.hkeys(session[:session_id])
+
+-if keys.count>0
+  %p В корзине :
+  -keys.each do |key|
+    %p Товар : #{key} - Количество : #{items[key]}

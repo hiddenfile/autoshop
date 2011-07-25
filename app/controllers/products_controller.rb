@@ -10,4 +10,12 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  def add_to_cart
+    count = $redis.hget(session[:session_id],params[:id]).to_i()
+    $redis.hset(session[:session_id],params[:id],(count==nil ? 1 : count+1).to_s())
+
+#    render :text => "true"
+    render :template => 'products/add_to_cart', :layout => false
+  end
+
 end

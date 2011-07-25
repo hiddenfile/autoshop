@@ -18,6 +18,8 @@ gem 'hpricot'
 
 gem "paperclip", "= 2.3.12"
 
+gem "redis", "~> 2.2.1"
+
 group :test do
   gem "test-unit", :require => "test/unit"
   gem 'turn', :require => false
