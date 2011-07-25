@@ -1,9 +1,16 @@
 Autoshop::Application.routes.draw do
+
+  root :to => 'main_users#index'
+
   resources :products, :except => [:new, :update, :create, :destroy] do
     get 'add_to_cart', :on => :member
   end
+  resources :orders, :only => [:new,:show] do
+    get 'cancel', :on => :member
+    get 'accept', :on => :member
+  end
   resources :groups, :only => :show
-  root :to => 'main_users#index'
+
   match '/admin_panel' => 'admin_panel/users#index', :as => 'admin_users'
 
   devise_for :admin
