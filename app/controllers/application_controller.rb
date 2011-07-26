@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :main_menu,:cart_items_names
+  before_filter :main_menu,:set_cart_cookie,:authcookie
 
   layout 'application'
 
@@ -19,13 +19,31 @@ class ApplicationController < ActionController::Base
     @companies = Company.includes(:groups).all
   end
 
-  def cart_items_names
-    keys = $redis.hkeys(session[:session_id])
+  def change_cart_cookie(new_value)
+    cookies[:auto_shop_cart_cookie] = { :value => new_value, :expires => 30.day.from_now }
+  end
 
-    @products_names=[]
+  def set_cart_cookie
+    if current_user
 
-    keys.each do |key|
-      @products_names<<Product.find(key).title
+      return if current_user.id.to_s()==authcookie
+      nval=current_user.id.to_s()
+
+      items = $redis.hgetall(@authcookie)
+      keys = $redis.hkeys(@authcookie)
+
+      keys.each do |key|
+        $redis.hset(nval,key,items[key])
+        $redis.hdel(authcookie,key)
+      end
+
+      change_cart_cookie(current_user.id.to_s())
+    else
+      change_cart_cookie(session[:session_id])
     end
+  end
+
+  def authcookie
+    @authcookie=cookies[:auto_shop_cart_cookie]
   end
 end

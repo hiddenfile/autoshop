@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   end
 
   def cancel
-    clear_cart(session[:session_id])
+    clear_cart
     redirect_to root_path
   end
 
@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
       flash[:error] ="Error in order save process"
     end
 
-    clear_cart(session[:session_id])
+    clear_cart
     redirect_to root_path
   end
 
@@ -28,19 +28,33 @@ class OrdersController < ApplicationController
   end
 
   def build_order_items(order)
-    items = $redis.hgetall(session[:session_id])
-    keys = $redis.hkeys(session[:session_id])
+#    hash = $redis.smembers(authcookie)
+
+
+    items = $redis.hgetall(authcookie)
+    keys = $redis.hkeys(authcookie)
 
     keys.each do |key|
        order.order_items.build({:product_id => key,:count => items[key].to_i()}) if items[key].to_i()>0
     end
   end
 
-  def clear_cart(session_id)
-    keys = $redis.hkeys(session_id)
+  def clear_cart()
+    keys = $redis.hkeys(authcookie)
 
     keys.each do |key|
-      $redis.hdel(session_id,key)
+      $redis.hdel(authcookie,key)
     end
   end
+
+#  def clear_cart(session_id)
+#
+#
+#
+#    keys = $redis.smembers(session_id)
+#
+#    keys.each do |key|
+#      $redis.srem(session_id,key)
+#    end
+#  end
 end

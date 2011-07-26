@@ -1,9 +1,10 @@
 
--items = $redis.hgetall(session[:session_id])
--keys = $redis.hkeys(session[:session_id])
+-items = $redis.hgetall(@authcookie)
+-keys = $redis.hkeys(@authcookie)
 
 
 -if keys.count>0
+  -price=0
   %p В корзине :
   %table#cart_table
     %tr
@@ -13,18 +14,22 @@
       %th.off
       %th.off
 
-    -(0..keys.count-1).each do |index|
+    -keys.each do |key|
+      - price=price+$redis.hget(key,'price').to_i();
       %tr
         %td.off
-          =@products_names[index]
+          =$redis.hget(key,'name')
         %td.off
-          =items[keys[index]]
+          =items[key]
         %td.off
-          =link_to_function "+","addToCart('#{keys[index]}','#{1}')"
+          =link_to_function "+","addToCart('#{key}','#{1}')"
         %td.off
-          =link_to_function "-","addToCart('#{keys[index]}','#{-1}')"
+          =link_to_function "-","addToCart('#{key}','#{-1}')"
         %td.off
-          =link_to_function "x","deleteCartItem('#{keys[index]}')"
+          =link_to_function "x","deleteCartItem('#{key}')"
+
+  %br
+  %p Всего : #{price.to_s()}
   %br
   -if user_signed_in?
     -#= link_to 'Оформить заказ',new_order_path,:id=>'to_order'
