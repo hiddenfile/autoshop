@@ -6,5 +6,5 @@
   -keys.each do |key|
     %p Товар : #{key} - Количество : #{items[key]}
   %br
-  = link_to 'Оформить заказ',accept_order_path(:id),:id=>'accept_order'
-  = link_to 'Отменить заказ',cancel_order_path(:id),:id=>'cancel_order'
+  = link_to 'Оформить',accept_order_path(:id),:id=>'accept_order'
+  = link_to 'Отменить',cancel_order_path(:id),:id=>'cancel_order'

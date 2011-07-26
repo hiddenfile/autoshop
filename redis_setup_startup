@@ -1,0 +1,21 @@
+Installing Redis
+
+Installation is simple:
+
+curl -O http://redis.googlecode.com/files/redis-2.2.2.tar.gz
+tar xzf redis-2.2.2.tar.gz
+cd redis-2.2.2
+make
+cp src/redis-server src/redis-cli /usr/bin
+
+Starting Redis Server
+
+If you’re using redis-server locally, you can get away with just running the following, which will use the default Redis config file:
+
+redis-server
+
+If you’re running it on a server you’ll probably want to use your own config file:
+
+redis-server /path/to/redis.conf
+
+

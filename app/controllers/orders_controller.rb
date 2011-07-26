@@ -5,12 +5,12 @@ class OrdersController < ApplicationController
   end
 
   def cancel
-    $redis.hdel(session[:session_id])
+    clear_cart(session[:session_id])
     redirect_to root_path
   end
 
   def accept
-    @order = Order.new(current_user.id,"In process")
+    @order = Order.new(:user_id=>current_user.id,:order_state=>"In process")
     build_order_items(@order)
 
     if @order.save!
@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
       flash[:error] ="Error in order save process"
     end
 
-    $redis.hdel(session[:session_id])
+    clear_cart(session[:session_id])
     redirect_to root_path
   end
 
@@ -32,7 +32,15 @@ class OrdersController < ApplicationController
     keys = $redis.hkeys(session[:session_id])
 
     keys.each do |key|
-       order.order_items.build({:product_id => key,:count => items[key].to_i()}) if items[key]>0
+       order.order_items.build({:product_id => key,:count => items[key].to_i()}) if items[key].to_i()>0
+    end
+  end
+
+  def clear_cart(session_id)
+    keys = $redis.hkeys(session_id)
+
+    keys.each do |key|
+      $redis.hdel(session_id,key)
     end
   end
 end

@@ -4,6 +4,7 @@ Autoshop::Application.routes.draw do
 
   resources :products, :except => [:new, :update, :create, :destroy] do
     get 'add_to_cart', :on => :member
+    get 'remove_from_cart', :on => :member
   end
   resources :orders, :only => [:new,:show] do
     get 'cancel', :on => :member

@@ -2,10 +2,31 @@
 -items = $redis.hgetall(session[:session_id])
 -keys = $redis.hkeys(session[:session_id])
 
+
 -if keys.count>0
   %p В корзине :
-  -keys.each do |key|
-    %p Товар : #{key} - Количество : #{items[key]}
+  %table#cart_table
+    %tr
+      %th.off Товар
+      %th.off Количество
+      %th.off
+      %th.off
+      %th.off
+
+    -(0..keys.count-1).each do |index|
+      %tr
+        %td.off
+          =@products_names[index]
+        %td.off
+          =items[keys[index]]
+        %td.off
+          =link_to_function "+","addToCart('#{keys[index]}','#{1}')"
+        %td.off
+          =link_to_function "-","addToCart('#{keys[index]}','#{-1}')"
+        %td.off
+          =link_to_function "x","deleteCartItem('#{keys[index]}')"
   %br
   -if user_signed_in?
-    = link_to 'Оформить заказ',new_order_path,:id=>'to_order'
+    -#= link_to 'Оформить заказ',new_order_path,:id=>'to_order'
+    = link_to 'Оформить',accept_order_path(:id),:id=>'accept_order'
+    = link_to 'Отменить',cancel_order_path(:id),:id=>'cancel_order'

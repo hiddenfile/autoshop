@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :main_menu
+  before_filter :main_menu,:cart_items_names
 
   layout 'application'
 
@@ -17,5 +17,15 @@ class ApplicationController < ActionController::Base
   def main_menu
     @groups = Group.includes(:companies).all
     @companies = Company.includes(:groups).all
+  end
+
+  def cart_items_names
+    keys = $redis.hkeys(session[:session_id])
+
+    @products_names=[]
+
+    keys.each do |key|
+      @products_names<<Product.find(key).title
+    end
   end
 end
