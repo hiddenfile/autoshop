@@ -1,0 +1,18 @@
+%h6.title Товары
+
+%table#tablecontent.table
+  %tr
+    %th.first Производитель
+    %th Категория
+    %th Наименование
+    %th.last Описание
+
+  - @products.each do |product|
+    %tr
+      %td=link_to product.company.name,show_product_path(product)
+      %td=product.group.name
+      %td=product.title
+      %td=product.description
+
+
+

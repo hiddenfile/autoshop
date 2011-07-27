@@ -1,0 +1,27 @@
+brend:
+  -
+  Acura:
+    photo:
+      - Acura.jpg
+    Subcompact:
+      photo:
+        - Subcompact.jpg
+      product:
+        -
+          description: sdfjk
+          name: blabla
+          price: 10
+          photo:
+            - sdfjk.jpg
+        -
+          description: asd
+          name: fghfg
+          price: 999
+          photo:
+            - asd.jpg
+        -
+          description: dghh
+          name: fghfgh
+          price: 88
+          photo:
+            - dghh.jpg
