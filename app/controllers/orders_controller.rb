@@ -43,6 +43,12 @@ class OrdersController < ApplicationController
     keys = $redis.hkeys(authcookie)
 
     keys.each do |key|
+      subkeys = $redis.hkeys(key)
+
+      subkeys.each do |subkey|
+        $redis.hdel(key,subkey)
+      end
+
       $redis.hdel(authcookie,key)
     end
   end

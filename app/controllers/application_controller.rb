@@ -26,8 +26,8 @@ class ApplicationController < ActionController::Base
   def set_cart_cookie
     if current_user
 
-      return if current_user.id.to_s()==authcookie
-      nval=current_user.id.to_s()
+      return if (-current_user.id).to_s()==authcookie
+      nval=(-current_user.id).to_s()
 
       items = $redis.hgetall(@authcookie)
       keys = $redis.hkeys(@authcookie)
@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
         $redis.hdel(authcookie,key)
       end
 
-      change_cart_cookie(current_user.id.to_s())
+      change_cart_cookie(nval)
     else
       change_cart_cookie(session[:session_id])
     end
