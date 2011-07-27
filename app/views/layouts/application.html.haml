@@ -48,6 +48,7 @@
           #user_panel.block
             - if user_signed_in?
               =link_to('Выход',destroy_user_session_path)
+              =link_to('Заказы',orders_path)
               -#%h7 Привет, current_user.name
             - else
               =link_to('Зарегистрироватся',new_user_registration_path)

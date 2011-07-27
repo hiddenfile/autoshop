@@ -1,0 +1,17 @@
+%h6 Заказы
+
+-if @user_orders.count>0
+
+  %table#orders
+    %tr
+      %th.off Дата
+      %th.off Состояние
+      %th.off Позиций
+      %th.off
+
+    -@user_orders.each do |order|
+      %tr
+        %td.off=link_to(order.created_at,order_path(order))
+        %td.off=order.order_state
+        %td.off=order.order_items.count
+        %td.off=link_to("Отменить",remove_order_path(order.id)) if order.order_state=='In process'

@@ -1,0 +1,12 @@
+%h6 #{link_to('Заказы',orders_path)} >> Заказ от #{@order.created_at}
+
+%table
+  %th.off Наименование
+  %th.off Количество
+  %th.off Цена
+
+  -@order.order_items.each do |order_item|
+    %tr
+      %td.off=order_item.product.title
+      %td.off=order_item.count
+      %td.off=order_item.product.price

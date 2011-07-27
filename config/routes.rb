@@ -6,9 +6,10 @@ Autoshop::Application.routes.draw do
     get 'add_to_cart', :on => :member
     get 'remove_from_cart', :on => :member
   end
-  resources :orders, :only => [:new,:show] do
+  resources :orders, :only => [:show,:index] do
     get 'cancel', :on => :member
     get 'accept', :on => :member
+    get 'remove', :on => :member
   end
   resources :groups, :only => :show
 

@@ -1,12 +1,27 @@
 class OrdersController < ApplicationController
 
-  def new
+  def index
+    @user_orders=Order.find_all_by_user_id(current_user.id)
+  end
 
+  def show
+    @order=Order.find(params[:id])
   end
 
   def cancel
     clear_cart
     redirect_to root_path
+  end
+
+  def remove
+    @order = Order.find(params[:id])
+    if @order.destroy
+      flash[:notice]="Order was deleted"
+    else
+      flash[:error] ="Error in delete process"
+    end
+
+    redirect_to orders_path
   end
 
   def accept
@@ -23,14 +38,7 @@ class OrdersController < ApplicationController
     redirect_to root_path
   end
 
-  def show
-
-  end
-
   def build_order_items(order)
-#    hash = $redis.smembers(authcookie)
-
-
     items = $redis.hgetall(authcookie)
     keys = $redis.hkeys(authcookie)
 
@@ -52,15 +60,4 @@ class OrdersController < ApplicationController
       $redis.hdel(authcookie,key)
     end
   end
-
-#  def clear_cart(session_id)
-#
-#
-#
-#    keys = $redis.smembers(session_id)
-#
-#    keys.each do |key|
-#      $redis.srem(session_id,key)
-#    end
-#  end
 end

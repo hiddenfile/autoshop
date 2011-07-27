@@ -1,8 +1,13 @@
 /* ----- main styles ----- */
 
-#cart_table th
+#cart_table th, #orders th
 {
 text-align: left;
+}
+
+#cart_table a
+{
+    text-decoration: none;
 }
 
 .up_border

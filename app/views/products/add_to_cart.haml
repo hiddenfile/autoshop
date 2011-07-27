@@ -20,7 +20,7 @@
       - price=price+curr_price;
       %tr
         %td.off
-          =$redis.hget(key,'name')
+          =link_to(truncate($redis.hget(key,'name'), :length =>10),product_path(key))
         %td.off
           =items[key]
         %td.off

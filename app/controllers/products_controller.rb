@@ -28,13 +28,19 @@ class ProductsController < ApplicationController
       count=count+inc
     end
 
-
     $redis.hset(authcookie,params[:id],count.to_s())
     render :template => 'products/add_to_cart', :layout => false
   end
 
   def remove_from_cart
+    subkeys = $redis.hkeys(params[:id])
+
+    subkeys.each do |subkey|
+      $redis.hdel(key,subkey)
+    end
+
     $redis.hdel(authcookie,params[:id])
+
     render :template => 'products/add_to_cart', :layout => false
   end
 
