@@ -26,6 +26,6 @@ class ShopCartsController < ApplicationController
     render :template => 'shop_carts/shop_cart_info', :layout => false
   end
 
-  def index
+  def cart_items
   end
 end
