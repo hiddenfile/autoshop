@@ -1,0 +1,72 @@
+companyname:
+  - Acura
+  - Ford
+  - Lexus
+  - Subaru
+  - Alfa Romeo
+  - GMC
+  - Mazda
+  - Suzuki
+  - Audi
+  - Great Wall
+  - Mercedes
+  - Toyota
+  - BMW
+  - Honda
+  - Mitsubishi
+  - Volkswagen
+  - Chery
+groupname:
+  - Subcompact
+  - Compact
+  - Intermediate
+  - Full-Size Vehicle
+  - Compact Pickup
+  - Full-size Pickup
+  - Compact Utility
+  - Intermediate Utility
+  - Full-Size Utility
+  - Mini-Van
+  - Full-Size Van
+titles:
+  - Acura TL
+  - Acura TSX
+  - Acura ZDX
+  - BMW X1
+  - BMW Z1
+  - BMW 7
+  - BMW X6
+  - Alfa Romeo GT
+  - Alfa Romeo Scighera
+  - Alfa Romeo Tipo 33
+  - Ford Quadricycle
+  - Ford Rheinland
+  - Ford Taunus
+  - Lexus GX
+  - Lexus LX
+  - Lexus LS
+  - Subaru FF-1 Star
+  - Subaru Impreza WRC
+  - Subaru Alcyone SVX
+  - Chevrolet Silverado
+  - DUKW-353
+  - GMC Typhoon
+  - Mazda Verisa
+  - Mazda2
+  - Mazda MPV
+  - Suzuki Grand Vitara
+  - Suzuki Jimny
+  - Suzuki XL-7
+  - Audi RS4
+  - Audi RSQ
+  - Audi S2
+  - Great Wall Safe
+  - Mercedes-Benz R170
+  - Mercedes-Benz R171
+  - Mercedes-Benz R172
+  - Toyota Fine-X
+  - Toyota FJ Cruiser
+  - Toyota FT-HS
+  - Honda City
+  - Honda Elysion
+  - Honda HR-V
