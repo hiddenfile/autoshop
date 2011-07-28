@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-
   def index
     @user_orders=Order.find_all_by_user_id(current_user.id)
   end
@@ -25,6 +24,7 @@ class OrdersController < ApplicationController
   end
 
   def accept
+    if user_signed_in?
     @order = Order.new(:user_id=>current_user.id,:order_state=>"In process")
     build_order_items(@order)
 
@@ -36,6 +36,9 @@ class OrdersController < ApplicationController
 
     clear_cart
     redirect_to root_path
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def build_order_items(order)
@@ -51,11 +54,11 @@ class OrdersController < ApplicationController
     keys = $redis.hkeys(authcookie)
 
     keys.each do |key|
-      subkeys = $redis.hkeys(key)
-
-      subkeys.each do |subkey|
-        $redis.hdel(key,subkey)
-      end
+  #    subkeys = $redis.hkeys(key)
+  #
+  #    subkeys.each do |subkey|
+  #      $redis.hdel(key,subkey)
+  #    end
 
       $redis.hdel(authcookie,key)
     end

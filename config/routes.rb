@@ -2,14 +2,15 @@ Autoshop::Application.routes.draw do
 
   root :to => 'main_users#index'
 
-  resources :products, :except => [:new, :update, :create, :destroy] do
-    get 'add_to_cart', :on => :member
-    get 'remove_from_cart', :on => :member
-  end
+  resources :products, :except => [:new, :update, :create, :destroy]
   resources :orders, :only => [:show,:index] do
     get 'cancel', :on => :member
     get 'accept', :on => :member
     get 'remove', :on => :member
+  end
+  resources :shop_carts,:only => [:index] do
+    get 'add_to_cart', :on => :member
+    get 'remove_from_cart', :on => :member
   end
   resources :groups, :only => :show
 

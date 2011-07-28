@@ -49,17 +49,27 @@
             - if user_signed_in?
               =link_to('Выход',destroy_user_session_path)
               =link_to('Заказы',orders_path)
-              -#%h7 Привет, current_user.name
             - else
               =link_to('Зарегистрироватся',new_user_registration_path)
               =link_to('Авторизоватся',new_user_session_path)
 
             #cart
-              -#%img{:alt => "", :height => "78", :src => "images/pic002.gif", :width => "78"}/
+              #cart_box
+                %a{:href=>new_user_session_path, :id=> 'cart_box_list'}
+                  %img{:width=>"80",:height=>"60",:border=>"0",:src=>"/assets/shopping_cart.png", :alt=>"", :id=> 'cart_box_list_img'}
               %br
 
-              #cart_items
-                = render :template => 'products/add_to_cart', :layout => false
+              #cart_info
+                %p Позиций : #{$redis.hlen(@authcookie)}
+                %p Сумма : #{order_summ()}
+
+              - if $redis.hlen(@authcookie)>0
+                %br
+                = link_to 'Оформить',accept_order_path(:id),:id=>'accept_order'
+                = link_to 'Отменить',cancel_order_path(:id),:id=>'cancel_order'
+
+              -##cart_items
+                = render :template => 'shop_carts/add_to_cart', :layout => false
             .clear
 
           %h6 The main thing for the day

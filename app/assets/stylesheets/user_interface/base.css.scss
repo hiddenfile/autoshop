@@ -1,5 +1,15 @@
 /* ----- main styles ----- */
 
+#cart_box
+{
+    background: url("/assets/shopping_cart.png") repeat scroll 0 0 transparent;
+}
+
+#cart_box_list_img
+{
+    border : 0px;
+}
+
 #cart_table th, #orders th
 {
 text-align: left;

@@ -1,4 +1,3 @@
-
 -items = $redis.hgetall(@authcookie)
 -keys = $redis.hkeys(@authcookie)
 
@@ -20,7 +19,7 @@
       - price=price+curr_price;
       %tr
         %td.off
-          =link_to(truncate($redis.hget(key,'name'), :length =>10),product_path(key))
+          =link_to($redis.hget(key,'name'),product_path(key))
         %td.off
           =items[key]
         %td.off
@@ -39,6 +38,5 @@
 
   %br
   -if user_signed_in?
-    -#= link_to 'Оформить заказ',new_order_path,:id=>'to_order'
     = link_to 'Оформить',accept_order_path(:id),:id=>'accept_order'
     = link_to 'Отменить',cancel_order_path(:id),:id=>'cancel_order'
