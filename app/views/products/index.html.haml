@@ -1,7 +1,7 @@
 %h6.title
-  =link_to @products.first.company.name,company_path(@products.first.company)
+  =link_to @company.name,company_path(@company)
   >>
-  =link_to @products.first.group.name,group_path(@products.first.group)
+  =link_to @group.name,group_path(@group)
   >> Товары
 
 
@@ -15,6 +15,6 @@
   - @products.each do |product|
     %tr
       %td.offset=image_tag product.photos.first.photo.url(:thumb)
-      %td.offset=link_to_function "Добавить в корзину","addToCart('#{product.id}',1)"
+      %td.offset=link_to_function "Добавить в корзину","addToCartC('#{product.id}',1)"
       %td.offset=link_to product.title,company_group_product_path(@company,@group,product)
       %td=product.description

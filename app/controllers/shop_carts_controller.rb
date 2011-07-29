@@ -18,14 +18,45 @@ class ShopCartsController < ApplicationController
     end
 
     $redis.hset(authcookie,params[:id],count.to_s())
+  end
+
+  def add_to_cart_update_cart_and_table
+    add_to_cart()
+    render :text => "true"
+  end
+
+  def add_to_cart_update_cart
+    add_to_cart()
     render :template => 'shop_carts/shop_cart_info', :layout => false
   end
 
   def remove_from_cart
-    $redis.hdel(authcookie,params[:id])
-    render :template => 'shop_carts/shop_cart_info', :layout => false
+    @res = $redis.hdel(authcookie,params[:id])
+    render :text => @res>0 ? "true" : "false"
+
+#    render :text => redis_to_json
   end
 
   def cart_items
+  end
+
+  def redis_to_json
+
+    retstr="{ \"items\": ["
+
+    items = $redis.hgetall(@authcookie)
+    keys = $redis.hkeys(@authcookie)
+
+    keys.each do |key|
+     curr_price = $redis.hget(key,'price').to_f()*items[key].to_i()
+
+     retstr+="{"
+       retstr+="\"name\" : \"#{$redis.hget(key,'name')}\","
+       retstr+="\"count\" : \"#{items[key]}\","
+       retstr+="\"price\" : \"#{curr_price.to_s()}\""
+       retstr+="},"
+    end
+
+    retstr=retstr[0,retstr.length-1]+"]}"
   end
 end

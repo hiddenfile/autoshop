@@ -1,42 +1,47 @@
 -items = $redis.hgetall(@authcookie)
 -keys = $redis.hkeys(@authcookie)
 
-
--if keys.count>0
-  -price=0
-  %p В корзине :
-  %table#cart_table
-    %tr
-      %th.off Товар
-      %th.off Количество
-      %th.off Цена
-      %th.off
-      %th.off
-      %th.off
-
-    -keys.each do |key|
-      - curr_price = $redis.hget(key,'price').to_f()*items[key].to_i()
-      - price=price+curr_price;
+#order_items_table
+  -if keys.count>0
+    -price=0
+    %p В корзине :
+    %table#cart_table
       %tr
-        %td.off
-          =link_to($redis.hget(key,'name'),product_path(key))
-        %td.off
-          =items[key]
-        %td.off
-          =curr_price.to_s()
-        %td.off
-          =link_to_function "+","addToCart('#{key}','#{1}')"
-        %td.off
-          =link_to_function "-","addToCart('#{key}','#{-1}')"
-        %td.off
-          =link_to_function "x","deleteCartItem('#{key}')"
-    %tr.up_border
-      %td.off
-        Всего :
-      %td.off
-      %td.off=price.to_s()
+        %th.off Товар
+        %th.off Количество
+        %th.off Цена за еденицу
+        %th.off Цена по позиции
+        %th.off
+        %th.off
+        %th.off
 
-  %br
-  -if user_signed_in?
-    = link_to 'Оформить',accept_order_path(:id),:id=>'accept_order'
-    = link_to 'Отменить',cancel_order_path(:id),:id=>'cancel_order'
+      -keys.each do |key|
+        - curr_ed_price = $redis.hget(key,'price').to_f()
+        - curr_price = curr_ed_price*items[key].to_i()
+        - price=price+curr_price;
+        %tr{:id => "order_items_row#{key}", :class => "order_items_row"}
+          %td.off
+            =link_to($redis.hget(key,'name'),product_path(key))
+          %td.off.count_of_order_item
+            =items[key]
+          %td.off.price_of_order_item
+            =curr_ed_price
+          %td.off.sum_price_of_order_item
+            =curr_price.to_s()
+          %td.off
+            =link_to_function "+","addToCartTC('#{key}','#{1}')"
+          %td.off
+            =link_to_function "-","addToCartTC('#{key}','#{-1}')"
+          %td.off
+            =link_to_function "x","deleteCartItem('#{key}')"
+      %tr.up_border
+        %td.off
+          Всего :
+        %td.off
+        %td.off
+        %td.off#order_common_price=price.to_s()
+
+    %br
+    -if user_signed_in?
+      = link_to 'Оформить',accept_order_path(:id),:id=>'accept_order'
+      = link_to 'Отменить',cancel_order_path(:id),:id=>'cancel_order'

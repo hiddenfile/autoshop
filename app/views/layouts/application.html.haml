@@ -60,8 +60,8 @@
               %br
 
               #cart_info
-                %p Позиций : #{$redis.hlen(@authcookie)}
-                %p Сумма : #{order_summ()}
+                %p#order_pos_count Позиций : #{$redis.hlen(@authcookie)}
+                %p#order_sum Сумма : #{order_summ()}
 
               - if $redis.hlen(@authcookie)>0
                 %br
