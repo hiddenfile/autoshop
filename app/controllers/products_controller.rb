@@ -9,4 +9,9 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
   end
+
+  def search
+    @search_req =  params[:search_req ].gsub('%','\%').gsub('_','\_')
+    @products = Product.includes(:company,:group,:photos).where("title like '%#{@search_req}%'").all
+  end
 end

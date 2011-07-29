@@ -2,7 +2,9 @@ Autoshop::Application.routes.draw do
 
   root :to => 'main_users#index'
 
-  resources :products, :except => [:new, :update, :create, :destroy]
+  resources :products, :except => [:new, :update, :create, :destroy] do
+    get 'search', :on => :member
+  end
   resources :orders, :only => [:show,:index] do
     get 'cancel', :on => :member
     get 'accept', :on => :member
@@ -31,7 +33,4 @@ Autoshop::Application.routes.draw do
       resources :products
     end
   end
-
-
-
 end
