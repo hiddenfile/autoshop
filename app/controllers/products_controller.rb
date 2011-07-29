@@ -12,6 +12,6 @@ class ProductsController < ApplicationController
 
   def search
     @search_req =  params[:search_req ].gsub('%','\%').gsub('_','\_')
-    @products = Product.includes(:company,:group,:photos).where("title like '%#{@search_req}%'").all
+    @products = Product.includes(:company,:group,:photos).where("lower(title) like '%#{@search_req.downcase}%'").all
   end
 end
