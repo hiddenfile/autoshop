@@ -17,7 +17,7 @@ gem 'haml'
 gem 'hpricot'
 
 gem "paperclip", "= 2.3.12"
-
+gem "passenger"
 gem "redis", "~> 2.2.1"
 
 group :test do
