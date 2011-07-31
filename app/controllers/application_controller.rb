@@ -2,17 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :main_menu,:set_cart_cookie,:authcookie
 
-  layout 'application'
-
-#  layout :layout_by_resource
-#
-#  def layout_by_resource
-#    if devise_controller? && current_admin
-#      "admin"
-#    else
-#      "application"
-#    end
-#  end
   protected
   def main_menu
     @groups = Group.includes(:companies).all
@@ -20,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def change_cart_cookie(new_value)
-    cookies[:auto_shop_cart_cookie] = { :value => new_value, :expires => 30.day.from_now }
+    cookies[:auto_shop_cart_cookie] = { :value => new_value, :expires => 1.day.from_now }
   end
 
   def set_cart_cookie
