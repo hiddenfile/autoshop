@@ -1,0 +1,41 @@
++ Project test server
+    http://autoshop.heroku.com/
+
+1.Clone project:
+    sudo apt-get install git curl
+    git clone git@github.com:hiddenfile/autoshop.git
+    cd autoshop //переход в каталог сайта
+
+2.Create gem-set:
+    rvm --default use 1.9.2@autoshop --create
+
+3.Install gems:
+    gem install bundler
+    bundle install
+
+4.Install Passenger:
+    passenger-install-nginx-module
+    passenger start
+
+5.Install PostgreSQL:
+    sudo apt-get install postgresql pgadmin3
+    sudo -u postgres psql postgres
+    \password postgres
+    sudo -u postgres createdb mydb
+
+6.Install Redis:
+    curl -O http://redis.googlecode.com/files/redis-2.2.2.tar.gz
+    tar xzf redis-2.2.2.tar.gz
+    cd redis-2.2.2
+    make
+    cp src/redis-server src/redis-cli /usr/bin
+    redis-server //Для локального использования
+    redis-server /path/to/redis.conf
+
+7.Create db and test content:
+    rake db:create
+    rake db:migrate
+    rake data:reset_admin
+    rake data:add_content
+
+
