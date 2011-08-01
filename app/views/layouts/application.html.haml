@@ -53,7 +53,7 @@
               =link_to('Зарегистрироватся',new_user_registration_path)
               -#=link_to('Авторизоватся',new_user_session_path)
 
-              = form_for(@user, :as => 'user', :url => '/users/sign_in') do |f|
+              = form_for(:user, :as => 'user', :url => '/users/sign_in') do |f|
                 -#= devise_error_messages!
                 %p
                   = f.label :email

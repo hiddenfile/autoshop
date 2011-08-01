@@ -2,8 +2,11 @@ Autoshop::Application.routes.draw do
 
   root :to => 'main_users#index'
 
-  devise_for :admin
-  devise_for :user
+  devise_for :admins
+  devise_for :users, :controllers => { :sessions => "sessions" }
+
+#  get "users/sign_in", :to => "devise#users#sessions#new"
+#  get "admins/sign_in", :to => "devise#admins#sessions#new"
 
   resources :products, :except => [:new, :update, :create, :destroy] do
     get 'search', :on => :member
