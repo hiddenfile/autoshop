@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :main_menu,:set_cart_cookie,:authcookie
+  before_filter :main_menu,:set_cart_cookie,:authcookie, :build_user
 
   protected
   def main_menu
@@ -34,5 +34,9 @@ class ApplicationController < ActionController::Base
 
   def authcookie
     @authcookie=cookies[:auto_shop_cart_cookie]
+  end
+
+  def build_user
+    @user = User.new if current_user==nil
   end
 end

@@ -15,11 +15,7 @@
         %a.logo{:href => "/"} Авто магазин
         .h-search
           .rel
-            -#%form{:action => "#{search_product_path(:id)}", :method => "post"}
-            -#  %input.h-field{:type => "text", :id => 'search_req'}/
-            -#  %input.h-but{:type => "submit", :value => ""}/
-
-            =form_tag('/products/:id/search',:id => 'mainForm', :method => "get")
+            -form_tag('/products/:id/search',:id => 'mainForm', :method => "get")
             =text_field_tag("search_req","", :class =>'h-field')
             =submit_tag("",:class => 'h-but')
       / H E A D E R  end
@@ -55,7 +51,21 @@
               =link_to('Заказы',orders_path)
             - else
               =link_to('Зарегистрироватся',new_user_registration_path)
-              =link_to('Авторизоватся',new_user_session_path)
+              -#=link_to('Авторизоватся',new_user_session_path)
+
+              = form_for(@user, :as => 'user', :url => '/users/sign_in') do |f|
+                -#= devise_error_messages!
+                %p
+                  = f.label :email
+                  = f.text_field :email
+                %p
+                  = f.label :password
+                  = f.password_field :password
+                -#- if devise_mapping.rememberable?
+                -#  %p
+                -#  = f.check_box :remember_me
+                -#  = f.label :remember_me
+                = f.submit "Войти"
 
             #cart
               #cart_box
