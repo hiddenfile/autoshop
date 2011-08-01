@@ -1,6 +1,6 @@
 class Photo < ActiveRecord::Base
 
-  has_attached_file :photo, :styles => {:medium => "300x300", :thumb => "100x100#"},
+  has_attached_file :photo, :styles => {:medium => "178x178", :thumb => "78x78#"},
                     :path => "#{Rails.root}/app/assets/images/photos/:id/:style/:id-:style.:extension",
                     :url => "photos/:id/:style/:id-:style.:extension"
 
