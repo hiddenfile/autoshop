@@ -8,9 +8,9 @@ namespace :data do
   desc 'generation test data'
   task :add_content => :environment do
     db_data = YAML::load(File.read("#{Rails.root}/lib/tasks/data.yml"))
-    Company.delete_all
-    Group.delete_all
-    Product.delete_all
+    Company.destroy_all
+    Group.destroy_all
+    Product.destroy_all
     db_data["companyname"].each do |company_name|
       company = Company.new(:name => company_name)
       company.photos.build(:photo => File.open("#{Rails.root}/lib/tasks/img/company/#{company_name}.jpg"))
