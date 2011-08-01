@@ -1,0 +1,19 @@
+%h6.title Результаты запроса : #{@search_req}
+
+-if @products.length>0
+
+  %table#tablecontent.table
+    %tr
+      %th.first
+      %th
+      %th
+      %th.last
+
+    - @products.each do |product|
+      %tr
+        %td.offset=image_tag product.photos.first.photo.url(:thumb)
+        %td.offset=link_to_function "Добавить в корзину","addToCartC('#{product.id}',1)"
+        %td.offset=link_to product.title,company_group_product_path(product.company,product.group,product)
+        %td=product.description
+-else
+  %p Ничего не найдено

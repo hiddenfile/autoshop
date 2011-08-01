@@ -15,9 +15,13 @@
         %a.logo{:href => "#"} Авто магазин
         .h-search
           .rel
-            %form{:action => "", :method => "post"}
-              %input.h-field{:type => "text"}/
-              %input.h-but{:type => "submit", :value => ""}/
+            -#%form{:action => "#{search_product_path(:id)}", :method => "post"}
+            -#  %input.h-field{:type => "text", :id => 'search_req'}/
+            -#  %input.h-but{:type => "submit", :value => ""}/
+
+            =form_tag('/products/:id/search',:id => 'mainForm', :method => "get")
+            =text_field_tag("search_req","", :class =>'h-field')
+            =submit_tag("",:class => 'h-but')
       / H E A D E R  end
       / C O N T E N T  start
       .content
