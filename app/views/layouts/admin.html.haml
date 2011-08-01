@@ -50,4 +50,4 @@
           -#= yield :sidebar
       #footer
         .block
-          %p Copyright &copy; #{Time.now.year} Web App.
+          %p= link_to("© Copyright 2009-#{Time.now.year} Face IT",'http://faceit-team.com/',:style => 'text-decoration: none; color:#e8e8e8;')
