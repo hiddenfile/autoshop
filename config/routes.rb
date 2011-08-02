@@ -9,10 +9,8 @@ Autoshop::Application.routes.draw do
     get 'search', :on => :member
   end
   resources :orders, :only => [:show,:index,:create, :destroy]
-  resources :shop_carts,:except => [:new, :update, :create, :index, :edit] do
-    get 'add_to_cart', :on => :member
-    get 'remove_from_cart', :on => :member
-  end
+  resources :shop_carts,:except => [:new, :update, :create, :index, :edit]
+  resources :shop_cart_items, :only => [:create,:destroy]
   resources :groups, :only => :show
 
   match '/admin_panel' => 'admin_panel/users#index', :as => 'admin_users'

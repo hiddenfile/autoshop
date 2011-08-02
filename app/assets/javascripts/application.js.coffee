@@ -36,9 +36,9 @@
 
 @addToCart = (product_id,inc,title,price) ->
   $.ajax
-    type: "GET"
-    url: "/shop_carts/"+product_id+"/add_to_cart"
-    data: ({'inc' : inc, 'title' : title, 'price' : price})
+    type: "POST"
+    url: "/shop_cart_items"
+    data: ({'id' : product_id ,'inc' : inc, 'title' : title, 'price' : price})
     success: (response) ->
       procResultChange(product_id,inc,price,response);
       return false;
@@ -65,8 +65,8 @@
 
 @deleteCartItem = (product_id) ->
   $.ajax
-    type: "GET"
-    url: "/shop_carts/"+product_id+"/remove_from_cart"
+    type: "DELETE"
+    url: "/shop_cart_items/"+product_id
     data: ({})
     success: (response) ->
       if response=="true"
