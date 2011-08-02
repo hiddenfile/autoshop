@@ -2,11 +2,11 @@ class OrdersController < ApplicationController
   before_filter :authenticate_user! ,:only => :accept
 
   def index
-    @user_orders=Order.find_all_by_user_id(current_user.id)
+    @user_orders=current_user.orders
   end
 
   def show
-    @order=Order.find(params[:id])
+    find_order()
   end
 
   def cancel
@@ -14,8 +14,8 @@ class OrdersController < ApplicationController
     redirect_to root_path
   end
 
-  def remove
-    @order = Order.find(params[:id])
+  def destroy
+    find_order()
     if @order.destroy
       flash[:notice]="Order was deleted"
     else
@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
     redirect_to orders_path
   end
 
-  def accept
+  def new
     @order = Order.new(:user_id=>current_user.id,:order_state=>"In process")
     build_order_items(@order)
 
@@ -53,6 +53,13 @@ class OrdersController < ApplicationController
 
     keys.each do |key|
       $redis.hdel(authcookie,key)
+    end
+  end
+
+  def find_order
+    unless @order = Order.find(params[:id])
+      flash[:error] = "Could not find id: #{params[:id]}"
+      redirect_to root_path
     end
   end
 end

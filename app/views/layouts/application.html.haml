@@ -7,6 +7,7 @@
     %meta{:content => "", :name => "description"}/
     = javascript_include_tag :application
     = stylesheet_link_tag :application
+    = csrf_meta_tag
   %body
     / main styles
     .main.index
@@ -44,7 +45,6 @@
         / C E N T E R  end
         / R I G H T
         .right
-
           #user_panel.block
             - if user_signed_in?
               =link_to('Выход',destroy_user_session_path)
@@ -68,7 +68,7 @@
 
             #cart
               #cart_box
-                %a{:href=>cart_items_shop_cart_path(:id), :id=> 'cart_box_list'}
+                %a{:href=>shop_cart_path(:id), :id=> 'cart_box_list'}
                   %img{:width=>"80",:height=>"60",:border=>"0",:src=>"/assets/shopping_cart.png", :alt=>"", :id=> 'cart_box_list_img'}
               %br
 
@@ -78,11 +78,8 @@
 
               - if $redis.hlen(@authcookie)>0
                 %br
-                = link_to 'Оформить',accept_order_path(:id),:id=>'accept_order'
+                = link_to 'Оформить',new_order_path,:id=>'accept_order'
                 = link_to 'Отменить',cancel_order_path(:id),:id=>'cancel_order'
-
-              -##cart_items
-                = render :template => 'shop_carts/add_to_cart', :layout => false
             .clear
 
           %h6 The main thing for the day
