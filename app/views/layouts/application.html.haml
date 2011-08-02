@@ -54,7 +54,6 @@
               -#=link_to('Авторизоватся',new_user_session_path)
 
               = form_for(:user, :as => 'user', :url => '/users/sign_in') do |f|
-                -#= devise_error_messages!
                 %p
                   = f.label :email
                   = f.text_field :email
