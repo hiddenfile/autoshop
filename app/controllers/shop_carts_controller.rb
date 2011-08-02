@@ -3,11 +3,9 @@ class ShopCartsController < ApplicationController
     inc = params[:inc].to_i()
     count = $redis.hget(authcookie,params[:id]).to_i()
 
-    product=Product.find(params[:id])
-
-    if !$redis.hexists(product.id,'name')
-      $redis.hset(product.id,'name',product.title)
-      $redis.hset(product.id,'price',product.price==nil ? 0 : product.price.price)
+    if !$redis.hexists(params[:id],'name')
+      $redis.hset(params[:id],'name',params[:title])
+      $redis.hset(params[:id],'price',params[:price])
 
 #      $redis.expire(product.id, 1.day)
     end
@@ -15,17 +13,8 @@ class ShopCartsController < ApplicationController
     count = 0 if count==nil
     count = (count+inc<0) ? 0 : count+inc
 
-    $redis.hset(authcookie,params[:id],count.to_s())
-  end
-
-  def add_to_cart_update_cart_and_table
-    add_to_cart()
-    render :text => "true"
-  end
-
-  def add_to_cart_update_cart
-    add_to_cart()
-    render :template => 'shop_carts/shop_cart_info', :layout => false
+    res=$redis.hset(authcookie,params[:id],count.to_s())
+    render :text => res.to_s()
   end
 
   def remove_from_cart
@@ -34,5 +23,10 @@ class ShopCartsController < ApplicationController
   end
 
   def show
+  end
+
+  def destroy
+    RedisMethods.clear_cart(authcookie)
+    redirect_to root_path
   end
 end

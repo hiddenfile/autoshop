@@ -73,14 +73,17 @@
               %br
 
               #cart_info
-                %p#order_pos_count Позиций : #{$redis.hlen(@authcookie)}
-                %p#order_sum Сумма : #{order_summ()}
-
-              - if $redis.hlen(@authcookie)>0
-                %br
-                = link_to 'Оформить',new_order_path,:id=>'accept_order'
-                = link_to 'Отменить',cancel_order_path(:id),:id=>'cancel_order'
+                %span Позиций :
+                %span#order_pos_count=$redis.hlen(@authcookie)
+                %br/
+                %span Сумма :
+                %span#order_sum=order_summ()
+                %br/
             .clear
+            #cart_control_links{:style => "display : #{$redis.hlen(@authcookie)>0 ? "block" : "none"}"}
+              = link_to 'Оформить',orders_path,:id=>'accept_order',:method =>"post"
+              = link_to 'Отменить',shop_cart_path(:id),:id=>'cancel_order',:method => "delete"
+
 
           %h6 The main thing for the day
           .block.items

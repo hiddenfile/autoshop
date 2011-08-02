@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_filter :authenticate_user! ,:only => :accept
+  before_filter :authenticate_user!
 
   def index
     @user_orders=current_user.orders
@@ -7,11 +7,6 @@ class OrdersController < ApplicationController
 
   def show
     find_order()
-  end
-
-  def cancel
-    clear_cart
-    redirect_to root_path
   end
 
   def destroy
@@ -25,7 +20,7 @@ class OrdersController < ApplicationController
     redirect_to orders_path
   end
 
-  def new
+  def create
     @order = Order.new(:user_id=>current_user.id,:order_state=>"In process")
     build_order_items(@order)
 
@@ -35,8 +30,8 @@ class OrdersController < ApplicationController
       flash[:error] ="Error in order save process"
     end
 
-    clear_cart
-    redirect_to root_path
+    RedisMethods.clear_cart(authcookie)
+    redirect_to orders_path
   end
 
   def build_order_items(order)
@@ -48,16 +43,8 @@ class OrdersController < ApplicationController
     end
   end
 
-  def clear_cart()
-    keys = $redis.hkeys(authcookie)
-
-    keys.each do |key|
-      $redis.hdel(authcookie,key)
-    end
-  end
-
   def find_order
-    unless @order = Order.find(params[:id])
+    unless @order = Order.find_by_id(params[:id])
       flash[:error] = "Could not find id: #{params[:id]}"
       redirect_to root_path
     end
