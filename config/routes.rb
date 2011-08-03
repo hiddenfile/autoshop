@@ -21,6 +21,7 @@ Autoshop::Application.routes.draw do
   namespace :admin_panel do
     resources :products, :companies , :groups, :users ,:admins
     resources :photos, :only => [:index, :destroy]
+    resources :orders, :only => [:index,:show,:update,:edit]
   end
 
   resources :companies do
