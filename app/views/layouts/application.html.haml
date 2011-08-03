@@ -16,9 +16,9 @@
         %a.logo{:href => "/"} Авто магазин
         .h-search
           .rel
-            -form_tag('/products/:id/search',:id => 'mainForm', :method => "get")
-            =text_field_tag("search_req","", :class =>'h-field')
-            =submit_tag("",:class => 'h-but')
+            = form_for(:search, :url=>'/searches/:id/search_by_products',:id => 'mainForm', :method => "get") do |f|
+              =f.text_field("req", :class =>'h-field', :value=>"")
+              =f.submit("",:class => 'h-but')
       / H E A D E R  end
       / C O N T E N T  start
       .content
