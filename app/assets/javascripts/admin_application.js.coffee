@@ -12,4 +12,4 @@ true
     data: ({'authenticity_token': auth})
     success: (response) ->
       if response == "true"
-        elem.parent("p:first").remove()
+        elem.parent("p:first").remove();

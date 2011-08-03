@@ -1,21 +1,16 @@
 class OrdersController < ApplicationController
-  before_filter :authenticate_user! ,:only => :accept
+  before_filter :authenticate_user!
 
   def index
-    @user_orders=Order.find_all_by_user_id(current_user.id)
+    @user_orders=current_user.orders
   end
 
   def show
-    @order=Order.find(params[:id])
+    find_order()
   end
 
-  def cancel
-    clear_cart
-    redirect_to root_path
-  end
-
-  def remove
-    @order = Order.find(params[:id])
+  def destroy
+    find_order()
     if @order.destroy
       flash[:notice]="Order was deleted"
     else
@@ -25,7 +20,7 @@ class OrdersController < ApplicationController
     redirect_to orders_path
   end
 
-  def accept
+  def create
     @order = Order.new(:user_id=>current_user.id,:order_state=>"In process")
     build_order_items(@order)
 
@@ -35,8 +30,8 @@ class OrdersController < ApplicationController
       flash[:error] ="Error in order save process"
     end
 
-    clear_cart
-    redirect_to root_path
+    RedisMethods.clear_cart(authcookie)
+    redirect_to orders_path
   end
 
   def build_order_items(order)
@@ -48,17 +43,10 @@ class OrdersController < ApplicationController
     end
   end
 
-  def clear_cart()
-    keys = $redis.hkeys(authcookie)
-
-    keys.each do |key|
-  #    subkeys = $redis.hkeys(key)
-  #
-  #    subkeys.each do |subkey|
-  #      $redis.hdel(key,subkey)
-  #    end
-
-      $redis.hdel(authcookie,key)
+  def find_order
+    unless @order = Order.find_by_id(params[:id])
+      flash[:error] = "Could not find id: #{params[:id]}"
+      redirect_to root_path
     end
   end
 end

@@ -7,6 +7,7 @@
     %meta{:content => "", :name => "description"}/
     = javascript_include_tag :application
     = stylesheet_link_tag :application
+    = csrf_meta_tag
   %body
     / main styles
     .main.index
@@ -15,11 +16,7 @@
         %a.logo{:href => "/"} Авто магазин
         .h-search
           .rel
-            -#%form{:action => "#{search_product_path(:id)}", :method => "post"}
-            -#  %input.h-field{:type => "text", :id => 'search_req'}/
-            -#  %input.h-but{:type => "submit", :value => ""}/
-
-            =form_tag('/products/:id/search',:id => 'mainForm', :method => "get")
+            -form_tag('/products/:id/search',:id => 'mainForm', :method => "get")
             =text_field_tag("search_req","", :class =>'h-field')
             =submit_tag("",:class => 'h-but')
       / H E A D E R  end
@@ -48,33 +45,45 @@
         / C E N T E R  end
         / R I G H T
         .right
-
           #user_panel.block
             - if user_signed_in?
               =link_to('Выход',destroy_user_session_path)
               =link_to('Заказы',orders_path)
             - else
               =link_to('Зарегистрироватся',new_user_registration_path)
-              =link_to('Авторизоватся',new_user_session_path)
+              -#=link_to('Авторизоватся',new_user_session_path)
+
+              = form_for(:user, :as => 'user', :url => '/users/sign_in') do |f|
+                %p
+                  = f.label :email
+                  = f.text_field :email
+                %p
+                  = f.label :password
+                  = f.password_field :password
+                -#- if devise_mapping.rememberable?
+                -#  %p
+                -#  = f.check_box :remember_me
+                -#  = f.label :remember_me
+                = f.submit "Войти"
 
             #cart
               #cart_box
-                %a{:href=>cart_items_shop_cart_path(:id), :id=> 'cart_box_list'}
+                %a{:href=>shop_cart_path(:id), :id=> 'cart_box_list'}
                   %img{:width=>"80",:height=>"60",:border=>"0",:src=>"/assets/shopping_cart.png", :alt=>"", :id=> 'cart_box_list_img'}
               %br
 
               #cart_info
-                %p#order_pos_count Позиций : #{$redis.hlen(@authcookie)}
-                %p#order_sum Сумма : #{order_summ()}
-
-              - if $redis.hlen(@authcookie)>0
-                %br
-                = link_to 'Оформить',accept_order_path(:id),:id=>'accept_order'
-                = link_to 'Отменить',cancel_order_path(:id),:id=>'cancel_order'
-
-              -##cart_items
-                = render :template => 'shop_carts/add_to_cart', :layout => false
+                %span Позиций :
+                %span#order_pos_count=$redis.hlen(@authcookie)
+                %br/
+                %span Сумма :
+                %span#order_sum=order_summ()
+                %br/
             .clear
+            .cart_control_links{:style => "display : #{@auth_cookie_items_count>0 ? "block" : "none"}"}
+              = link_to 'Оформить',orders_path,:id=>'accept_order',:method =>"post"
+              = link_to 'Отменить',shop_cart_path(:id),:id=>'cancel_order',:method => "delete"
+
 
           %h6 The main thing for the day
           .block.items

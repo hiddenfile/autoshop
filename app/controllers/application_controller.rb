@@ -34,5 +34,7 @@ class ApplicationController < ActionController::Base
 
   def authcookie
     @authcookie=cookies[:auto_shop_cart_cookie]
+    @auth_cookie_items_count=$redis.hlen(@authcookie)
+    @authcookie
   end
 end

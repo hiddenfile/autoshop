@@ -14,4 +14,4 @@
         %td.off=link_to(order.created_at,order_path(order))
         %td.off=order.order_state
         %td.off=order.order_items.count
-        %td.off=link_to("Отменить",remove_order_path(order.id)) if order.order_state=='In process'
+        %td.off=link_to "Отменить",order_path(order),:method => "delete" if order.order_state=='In process'
