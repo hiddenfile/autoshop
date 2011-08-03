@@ -20,18 +20,22 @@
 
         #main-navigation
           %ul.wat-cf
-            %li
+            %li{:class=>((@curr_path==admin_panel_companies_path)? "main-navigation_selected" :"")}
               =link_to 'Производители',admin_panel_companies_path
-            %li
+
+            %li{:class=>((@curr_path==admin_panel_groups_path)? "main-navigation_selected" :"")}
               =link_to 'Категории',admin_panel_groups_path
-            %li
+
+            %li{:class=>((@curr_path==admin_panel_products_path)? "main-navigation_selected" :"")}
               =link_to 'Товары', admin_panel_products_path
 
-            %li
+            %li{:class=>((@curr_path==admin_panel_admins_path)? "main-navigation_selected" :"")}
               =link_to 'Администраторы', admin_panel_admins_path
-            %li
+
+            %li{:class=>((@curr_path==admin_panel_users_path)? "main-navigation_selected" :"")}
               =link_to 'Пользователи', admin_panel_users_path
-            %li
+
+            %li{:class=>((@curr_path==admin_panel_photos_path)? "main-navigation_selected" :"")}
               =link_to 'Картинки', admin_panel_photos_path
 
       #wrapper.wat-cf

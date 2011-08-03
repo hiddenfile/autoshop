@@ -24,7 +24,7 @@
       $('#order_pos_count').html(""+count);
 
       if (count==1)
-        $('#cart_control_links').show();
+        $('.cart_control_links').show();
 
     n_price = fVal('#order_sum')+parseFloat(price);
     $('#order_sum').html(""+n_price);
@@ -52,8 +52,7 @@
   count = $('#cart_table > tbody> tr.order_items_row').length;
 
   if (count==0)
-    $('#cart_control_links').hide();
-    $('#cart_control_links2').hide();
+    $('.cart_control_links').hide();
 
   $('#order_sum').html(n_price);
   $('#order_pos_count').html(""+count);

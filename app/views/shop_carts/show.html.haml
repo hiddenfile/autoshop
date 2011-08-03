@@ -1,8 +1,5 @@
--items = $redis.hgetall(@authcookie)
--keys = $redis.hkeys(@authcookie)
-
 #order_items_table
-  -if keys.count>0
+  -if @keys.count>0
     -price=0
     %p В корзине :
     %table#cart_table
@@ -15,16 +12,17 @@
         %th.off
         %th.off
 
-      -keys.each do |key|
-        - curr_ed_price = $redis.hget(key,'price').to_f()
-        - curr_price = curr_ed_price*items[key].to_i()
+      -@keys.each do |key|
+        - curr_ed_price = @prices[key]
+        - curr_price = curr_ed_price*@items[key].to_i()
         - price=price+curr_price
-        - title = $redis.hget(key,'name')
+
+        - title = @titles[key]
         %tr{:id => "order_items_row#{key}", :class => "order_items_row"}
           %td.off
             =link_to(title,product_path(key))
           %td.off.count_of_order_item
-            =items[key]
+            =@items[key]
           %td.off.price_of_order_item
             =curr_ed_price
           %td.off.sum_price_of_order_item
@@ -44,6 +42,6 @@
 
     %br
     -if user_signed_in?
-      #cart_control_links2
+      .cart_control_links
         = link_to 'Оформить',orders_path,:id=>'accept_order',:method =>"post"
         = link_to 'Отменить',shop_cart_path(:id),:id=>'cancel_order',:method => "delete"

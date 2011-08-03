@@ -80,7 +80,7 @@
                 %span#order_sum=order_summ()
                 %br/
             .clear
-            #cart_control_links{:style => "display : #{$redis.hlen(@authcookie)>0 ? "block" : "none"}"}
+            .cart_control_links{:style => "display : #{@auth_cookie_items_count>0 ? "block" : "none"}"}
               = link_to 'Оформить',orders_path,:id=>'accept_order',:method =>"post"
               = link_to 'Отменить',shop_cart_path(:id),:id=>'cancel_order',:method => "delete"
 

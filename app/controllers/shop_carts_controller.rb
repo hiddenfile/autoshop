@@ -23,6 +23,15 @@ class ShopCartsController < ApplicationController
   end
 
   def show
+    @items = $redis.hgetall(@authcookie)
+    @keys = $redis.hkeys(@authcookie)
+    @prices={}
+    @titles={}
+
+    @keys.each do |key|
+      @prices[key] = $redis.hget(key,'price').to_f()
+      @titles[key] = $redis.hget(key,'name')
+    end
   end
 
   def destroy
