@@ -2,6 +2,10 @@
   %ul.wat-cf
 
 %h2.title Картинки
+.pagine
+  %div
+    = will_paginate @photos
+    .clear
 - @photos.each do |p|
   %p.foto_p{:style=>"float:left"}
     = link_to image_tag(p.photo.url(:thumb))
@@ -14,3 +18,7 @@
     %br
     = link_to_function 'Удалить', "deletePhoto($(this),'#{admin_panel_photo_path(p)}','#{form_authenticity_token}')"
 %div{:style=>"clear:both;height:0px"}
+.pagine
+  %div
+    = will_paginate @photos
+    .clear

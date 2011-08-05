@@ -152,6 +152,7 @@ GEM
       multi_json (>= 1.0.2)
     warden (1.0.4)
       rack (>= 1.0)
+    will_paginate (3.0.pre4)
 
 PLATFORMS
   ruby
@@ -176,3 +177,4 @@ DEPENDENCIES
   turn
   uglifier
   web-app-theme!
+  will_paginate (~> 3.0.pre4)

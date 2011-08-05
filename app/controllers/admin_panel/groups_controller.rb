@@ -14,7 +14,7 @@ class AdminPanel::GroupsController < AdminPanel::AdminApplicationController
   end
 
   def index
-    @groups = Group.all
+    @groups = Group.all.paginate(:page => params[:page], :per_page => 15)
   end
 
   def new

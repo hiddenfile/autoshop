@@ -19,3 +19,7 @@
         = link_to 'Перейти', admin_panel_company_path(company)
         = link_to 'Редактировать', edit_admin_panel_company_path(company)
         = link_to 'Удалить', admin_panel_company_path(company), :confirm => 'Are you sure?', :method => :delete
+.pagine
+  %div
+    = will_paginate @companies
+    .clear
