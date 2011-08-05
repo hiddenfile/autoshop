@@ -2,7 +2,7 @@ class Product < ActiveRecord::Base
   belongs_to :company
   belongs_to :group
   has_many :photos, :as => :entity, :dependent => :destroy
-  belongs_to :price
+  belongs_to :discount
   has_many :order_items
   validates :title, :presence => true
 end

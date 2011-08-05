@@ -4,9 +4,10 @@ class RefactoringAndModifications < ActiveRecord::Migration
     remove_column :products, :price_id
 
     create_table :discounts
+    add_column :discounts, :value, :float
+
     add_column :products, :discount_id, :integer
     add_column :products, :price, :float
-
 
     remove_column :order_items, :product_id
     add_column :order_items, :product_name, :string
@@ -16,9 +17,13 @@ class RefactoringAndModifications < ActiveRecord::Migration
 
   def down
     create_table :prices
+
+
+
     add_column :products, :price_id, :integer
 
     drop_table :discounts
+
     remove_column :products, :discount_id
     remove_column :products, :price
 
