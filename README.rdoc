@@ -29,7 +29,7 @@
     cd redis-2.2.2
     make
     cp src/redis-server src/redis-cli /usr/bin
-    redis-server //Для локального использования
+    redis-server //using redis-server locally
     redis-server /path/to/redis.conf
 
 7.Create db and test content:
@@ -39,3 +39,7 @@
     rake data:add_content
 
 
+8.Run tests:
+    rake db:schema:dump
+    rake db:test:prepare
+    rake test
