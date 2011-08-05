@@ -3,5 +3,5 @@ class Company < ActiveRecord::Base
   has_many :groups, :through => :products
   has_many :photos, :as => :entity, :dependent => :destroy
 
-  validates :name, :presence => true
+  validates :name, :presence => true, :uniqueness => true, :length => {:minimum => 3, :maximum => 50}
 end
