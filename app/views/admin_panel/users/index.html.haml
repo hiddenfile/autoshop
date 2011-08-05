@@ -17,4 +17,8 @@
       %td=user.last_sign_in_at
       %td.links_column
         = link_to 'Удалить', admin_panel_user_path(user), :confirm => 'Are you sure?', :method => :delete
+.pagine
+  %div
+    = will_paginate @users
+    .clear
 

@@ -25,3 +25,8 @@
       %td.links_column
         = link_to 'Редактировать', edit_admin_panel_product_path(product)
         = link_to 'Удалить', admin_panel_product_path(product), :confirm => 'Are you sure?', :method => :delete
+
+.pagine
+  %div
+    = will_paginate @products
+    .clear

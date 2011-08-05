@@ -13,7 +13,7 @@ class AdminPanel::CompaniesController < AdminPanel::AdminApplicationController
   end
 
   def index
-    @companies = Company.all
+    @companies = Company.all.paginate(:page => params[:page], :per_page => 10)
   end
 
   def new

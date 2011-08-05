@@ -8,7 +8,7 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Autoshop
   class Application < Rails::Application
-    config.encoding = "utf-8"
+    config.encoding = "UTF-8"
     config.filter_parameters += [:password]
     config.assets.enabled = true
     config.autoload_paths << File.join(config.root, "lib")

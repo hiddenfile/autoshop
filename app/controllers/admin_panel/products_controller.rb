@@ -14,7 +14,7 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
   end
 
   def index
-    @products = Product.includes(:company, :group).all
+    @products = Product.includes(:company, :group).paginate(:page => params[:page], :per_page => 10)
   end
 
   def new
