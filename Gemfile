@@ -16,6 +16,7 @@ gem 'web-app-theme', :git => 'git://github.com/cncardoso/web-app-theme.git'
 gem 'haml'
 gem 'hpricot'
 
+gem "searchlogic"
 gem 'will_paginate', '~> 3.0.pre4'
 gem "paperclip", "= 2.3.12"
 gem "passenger"

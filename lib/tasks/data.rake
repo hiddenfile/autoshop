@@ -23,14 +23,15 @@ namespace :data do
       group.photos.build(:photo => File.open("#{Rails.root}/lib/tasks/img/categories/#{group_name}.jpg"))
       group.save!
     end
+  groups=Group.all.map(&:id)
 
     db_data["companyname"].each do |name|
       db_data["titles"].each do |title|
-        Company.find_by_name("#{name}").products.create(:title => title) if title.include?("#{name}")
+        Company.find_by_name("#{name}").products.create(:title => title,:group_id => groups[rand(groups.size)]) if title.include?("#{name}")
         end
     end
 
-    groups=Group.all.map(&:id)
+
 
     (0..rand(Product.all.count)).each do |index|
       discount = Discount.new(:value=>rand(999)-1000)
@@ -38,7 +39,6 @@ namespace :data do
     end
 
     Product.all.each do |product|
-      product.update_attribute(:group_id, groups[rand(groups.size)])
       product.update_attribute(:description, "SOME TEXT")
       product.update_attribute(:price,1+rand(30000-1))
       product.discount=Discount.find_by_id(rand(Discount.all.count+1))
