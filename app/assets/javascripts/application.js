@@ -8,16 +8,3 @@
 //= require jquery_ujs
 //= require_tree .
 
-//function menuClick(elem) {
-//
-//
-//    var currentLi = $(elem).parent();
-//    console.log(currentLi);
-//    $.each($('#main-navigation > .main-navigation_item'),function()
-//    {
-//        $(this).removeClass('main-navigation_selected');
-//    });
-//
-//    $(currentLi).addClass('main-navigation_selected');
-//}
-

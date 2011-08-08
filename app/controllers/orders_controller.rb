@@ -1,16 +1,15 @@
 class OrdersController < ApplicationController
   before_filter :authenticate_user!
+  before_filtet :find_order , :only => [:show, :destroy]
 
   def index
     @user_orders=current_user.orders
   end
 
   def show
-    find_order()
   end
 
   def destroy
-    find_order()
     if @order.destroy
       flash[:notice]="Order was deleted"
     else
@@ -43,7 +42,7 @@ class OrdersController < ApplicationController
        order.order_items.build({:product_id => key,:count => items[key].to_i(),:product_name=>curr_product.title,:product_price=>curr_product.price,:product_discount => curr_product.discount }) if items[key].to_i()>0
     end
   end
-
+ private
   def find_order
     unless @order = Order.find_by_id(params[:id])
       flash[:error] = "Could not find id: #{params[:id]}"
