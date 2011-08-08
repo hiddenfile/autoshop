@@ -6,7 +6,7 @@ Autoshop::Application.routes.draw do
   devise_for :users, :controllers => { :sessions => "sessions" }
 
   resources :searches, :except => [:new, :update, :create, :destroy, :index, :show, :edit] do
-    get 'search_by_products', :on => :member
+    post 'search_by_products', :on => :member
   end
   resources :products, :except => [:new, :update, :create, :destroy]
   resources :orders, :only => [:show,:index,:create, :destroy]
