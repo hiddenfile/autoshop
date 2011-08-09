@@ -8,8 +8,8 @@
 %h2.title Администраторы
 
 %table#tablecontent.table
-  %tr
-    %th.first E-mail
+  %tr.sortheader
+    %th.first= sort_link @search, :email, "E-mail"
     %th Дата последнего посещения
     %th.last
 

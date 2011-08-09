@@ -1,0 +1,20 @@
+
+
+
+%table#tablecontent.table
+  %tr
+    %th.first Наименование
+    %th Количество
+    %th.last Цена
+
+  -@order.order_items.each do |order_item|
+    %tr
+      %td=order_item.product.title
+      %td=order_item.count
+      %td=order_item.product.price
+
+  %tr
+  %tr
+    %td Состояние заказа
+    %td
+    %td=@order.order_state

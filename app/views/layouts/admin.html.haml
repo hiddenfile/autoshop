@@ -38,6 +38,9 @@
             %li{:class=>((@curr_path==admin_panel_photos_path)? "main-navigation_selected" :"")}
               =link_to 'Картинки', admin_panel_photos_path
 
+            %li{:class=>((@curr_path==admin_panel_orders_path)? "main-navigation_selected" :"")}
+              =link_to 'Заказы', admin_panel_orders_path
+
       #wrapper.wat-cf
         .flash
           - flash.each do |type, message|

@@ -8,8 +8,8 @@
 %h2.title Категории
 
 %table#tablecontent.table
-  %tr
-    %th.first Наименование
+  %tr.sortheader
+    %th.first= sort_link @search, :name, "Наименование"
     %th.last
 
   - @groups.each do |group|

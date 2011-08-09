@@ -5,6 +5,5 @@ class AdminPanel::AdminApplicationController < ActionController::Base
 
   def main_navigation_current_tab
      @curr_path=request.env['PATH_INFO']
-  end
-
+     end
 end

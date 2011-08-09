@@ -1,0 +1,24 @@
+%div.secondary-navigation
+  %ul.wat-cf
+    %li
+      = link_to 'Перечень', admin_panel_products_path
+
+%h2.title Заказы
+
+%table#tablecontent.table
+  %tr
+    %th.first Пользователь
+    %th Дата
+    %th Состояние
+    %th.last
+
+  -@orders.each do |order|
+    %tr{:class => cycle("odd", "even")}
+      %td=link_to order.user.email,admin_panel_user_path(order.user_id)
+      %td=link_to order.created_at, admin_panel_order_path(order)
+      %td=order.order_state
+
+
+      %td.links_column
+        = link_to 'Редактировать', edit_admin_panel_order_path(order)
+        = link_to 'Удалить', order_path(order), :confirm => 'Are you sure?', :method => :delete

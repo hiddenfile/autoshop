@@ -13,7 +13,8 @@ class AdminPanel::CompaniesController < AdminPanel::AdminApplicationController
   end
 
   def index
-    @companies = Company.all.paginate(:page => params[:page], :per_page => 10)
+    @search = Company.search(params[:search] || {"meta_sort" => "id.asc"})
+    @companies = @search.all.paginate(:page => params[:page], :per_page => 10)
   end
 
   def new

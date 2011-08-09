@@ -4,6 +4,15 @@ GIT
   specs:
     web-app-theme (0.6.3)
 
+GIT
+  remote: git://github.com/ernie/meta_search.git
+  revision: dfdd9c3a9956c4a2ad96724e2a801ad77a962b70
+  specs:
+    meta_search (1.1.0.pre2)
+      actionpack (~> 3.1.0.alpha)
+      activerecord (~> 3.1.0.alpha)
+      activesupport (~> 3.1.0.alpha)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -165,6 +174,7 @@ DEPENDENCIES
   haml
   hpricot
   jquery-rails
+  meta_search!
   paperclip (= 2.3.12)
   passenger
   pg

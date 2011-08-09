@@ -38,7 +38,8 @@ class OrdersController < ApplicationController
     keys = $redis.hkeys(authcookie)
 
     keys.each do |key|
-       order.order_items.build({:product_id => key,:count => items[key].to_i()}) if items[key].to_i()>0
+       curr_product=Product.includes(:discount).find_by_id(key)
+       order.order_items.build({:product_id => key,:count => items[key].to_i(),:product_name=>curr_product.title,:product_price=>curr_product.price,:product_discount => curr_product.discount }) if items[key].to_i()>0
     end
   end
  private

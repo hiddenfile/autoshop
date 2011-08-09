@@ -11,12 +11,12 @@
     change_price = fVal(tr_id+' > td.price_of_order_item');
 
     $(tr_id+' > td.count_of_order_item').html(""+change_count);
-    $(tr_id+' > td.sum_price_of_order_item').html(""+(change_count*change_price));
+    $(tr_id+' > td.sum_price_of_order_item').html((change_count*change_price).toFixed(1));
 
-    n_price = parseFloat($('#order_common_price').html())+(inc*change_price);
+    n_price = parseFloat($('#order_common_price').html())+parseFloat(inc*change_price);
 
-    $('#order_common_price').html(""+n_price);
-    $('#order_sum').html(""+n_price);
+    $('#order_common_price').html(n_price.toFixed(1));
+    $('#order_sum').html(n_price.toFixed(1));
 
   else
     if (res=="true")
@@ -27,7 +27,7 @@
         $('.cart_control_links').show();
 
     n_price = fVal('#order_sum')+parseFloat(price);
-    $('#order_sum').html(""+n_price);
+    $('#order_sum').html(n_price.toFixed(1));
 
 
 @addToCart = (product_id,inc,title,price) ->
@@ -45,7 +45,7 @@
   del_price = fVal(tr_id+' > td.sum_price_of_order_item');
   $(tr_id).remove();
 
-  n_price = ""+(fVal('#order_common_price')-del_price);
+  n_price = (fVal('#order_common_price')-del_price).toFixed(1);
   $('#order_common_price').html(n_price);
   $('#order_sum').html(n_price);
 

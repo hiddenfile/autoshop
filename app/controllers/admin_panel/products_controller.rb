@@ -9,12 +9,13 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
     if @product.save
       redirect_to(admin_panel_products_path, :notice => 'Product was successfully created.')
     else
-      render :action => "new"
+      redirect_to(new_admin_panel_product_path, :alert => 'Product dont created.')
     end
   end
 
   def index
-    @products = Product.includes(:company, :group).paginate(:page => params[:page], :per_page => 10)
+    @search = Product.includes(:company, :group).search(params[:search] || {"meta_sort" => "id.asc"})
+    @products = @search.all.paginate(:page => params[:page], :per_page => 10)
   end
 
   def new
