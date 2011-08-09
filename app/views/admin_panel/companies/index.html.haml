@@ -8,8 +8,8 @@
 %h2.title Производители
 
 %table#tablecontent.table
-  %tr
-    %th.first Название
+  %tr.sortheader
+    %th.first= sort_link @search, :name, "Название"
     %th.last
 
   - @companies.each do |company|

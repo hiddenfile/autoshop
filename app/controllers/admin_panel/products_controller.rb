@@ -14,7 +14,8 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
   end
 
   def index
-    @products = Product.includes(:company, :group).paginate(:page => params[:page], :per_page => 10)
+    @search = Product.includes(:company, :group).search(params[:search] || {"meta_sort" => "id.asc"})
+    @products = @search.all.paginate(:page => params[:page], :per_page => 10)
   end
 
   def new
