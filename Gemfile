@@ -19,7 +19,7 @@ gem 'hpricot'
 gem "meta_search", :git => 'git://github.com/ernie/meta_search.git'
 gem 'will_paginate', '~> 3.0.pre4'
 gem "paperclip", "= 2.3.12"
-gem "passenger"
+gem "passenger", "~> 3.0.8"
 gem "redis", "~> 2.2.1"
 
 group :test do
