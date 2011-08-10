@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
     @order = Order.new(:user_id=>current_user.id,:order_state=>"In process")
     build_order_items(@order)
 
-    if @order.save!
+    if @order.save
       flash[:notice]="Order was added to queue"
     else
       flash[:error] ="Error in order save process"
@@ -33,16 +33,17 @@ class OrdersController < ApplicationController
     redirect_to orders_path
   end
 
+  private
   def build_order_items(order)
     items = $redis.hgetall(authcookie)
     keys = $redis.hkeys(authcookie)
 
     keys.each do |key|
-       curr_product=Product.includes(:discount).find_by_id(key)
-       order.order_items.build({:product_id => key,:count => items[key].to_i(),:product_name=>curr_product.title,:product_price=>curr_product.price,:product_discount => curr_product.discount }) if items[key].to_i()>0
+       curr_product=Product.find_by_id(key)
+       order.order_items.build({:count => items[key].to_i(),:product_name=>curr_product.title,:product_price=>curr_product.price,:product_discount => current_user.discount.try(:value) }) if curr_product
     end
   end
- private
+
   def find_order
     unless @order = Order.find_by_id(params[:id])
       flash[:error] = "Could not find id: #{params[:id]}"

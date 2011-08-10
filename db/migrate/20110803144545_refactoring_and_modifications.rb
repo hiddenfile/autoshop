@@ -6,7 +6,7 @@ class RefactoringAndModifications < ActiveRecord::Migration
     create_table :discounts
     add_column :discounts, :value, :float
 
-    add_column :products, :discount_id, :integer
+    add_column :users, :discount_id, :integer
     add_column :products, :price, :float
 
     remove_column :order_items, :product_id

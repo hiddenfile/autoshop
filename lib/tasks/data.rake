@@ -33,15 +33,15 @@ namespace :data do
 
 
 
-    (0..rand(Product.all.count)).each do |index|
-      discount = Discount.new(:value=>rand(999)-1000)
-      discount.save!
-    end
+    #(0..rand(Product.all.count)).each do |index|
+    #  discount = Discount.new(:value=>rand(999)-1000)
+    #
+    #  discount.save!
+    #end
 
     Product.all.each do |product|
       product.update_attribute(:description, "SOME TEXT")
       product.update_attribute(:price,1+rand(30000-1))
-      product.discount=Discount.find_by_id(rand(Discount.all.count+1))
       product.photos.build(:photo => File.open(Rails.root.join('lib','tasks','img','products',"#{product.title}.jpg")))
       product.save!
     end
