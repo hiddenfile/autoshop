@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.0.rc4'
 
 gem 'therubyracer', '= 0.8.2'
+gem 'sprockets', '2.0.0.beta.13', :git => 'git://github.com/sstephenson/sprockets.git'
 
 gem "pg"
 gem 'devise'
