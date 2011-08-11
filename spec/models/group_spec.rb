@@ -11,7 +11,7 @@ describe Group do
   end
 
   it "is invalid with short name" do
-    @group.name = "1234"
+    @group.name = "123"
     @group.should_not be_valid
   end
 
