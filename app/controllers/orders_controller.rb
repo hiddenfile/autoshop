@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :find_order , :only => [:show, :destroy]
+  #before_filter :find_order , :only => [:show, :destroy]
 
   def index
     @user_orders=current_user.orders
@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
 
     keys.each do |key|
        curr_product=Product.includes(:discount).find_by_id(key)
-       order.order_items.build({:product_id => key,:count => items[key].to_i(),:product_name=>curr_product.title,:product_price=>curr_product.price,:product_discount => curr_product.discount }) if items[key].to_i()>0
+       order.order_items.build({:count => items[key].to_i(),:product_name=>curr_product.title,:product_price=>curr_product.price,:product_discount => curr_product.discount.value }) if items[key].to_i()>0
     end
   end
  private

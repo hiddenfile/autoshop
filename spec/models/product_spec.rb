@@ -18,11 +18,6 @@ describe Product do
     g.options[:dependent].should == :destroy
   end
 
-  it "should belongs_to :price" do
-    g = Product.reflect_on_association(:price)
-    g.macro.should == :belongs_to
-  end
-
   it "should validates :title, :presence => true" do
     @product = Factory(:product)
     @product.title = nil

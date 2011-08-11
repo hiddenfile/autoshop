@@ -1,3 +1,3 @@
 Factory.define :company, :class => Company do |f|
-    f.name 'qwer'
+    f.name 'megacorp'
 end
