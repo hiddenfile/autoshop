@@ -11,14 +11,14 @@ describe Company do
   end
 
   it "is invalid with short name" do
-    @company.name = "me"
+    @company.name = "12"
     @company.should_not be_valid
   end
 
   it "name already use" do
     @company.save
     @comp_1 = Factory.build(:company)
-    @comp_1.name = "megacorp"
+    @comp_1.name = "123456789"
     @comp_1.should_not be_valid
   end
 
