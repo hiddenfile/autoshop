@@ -1,7 +1,7 @@
 class AdminPanel::UsersController < AdminPanel::AdminApplicationController
   def index
     @search = User.search(params[:search] || {"meta_sort" => "id.asc"})
-    @users = @search.all.paginate(:page => params[:page], :per_page => 20)
+    @users = @search.paginate(:page => params[:page], :per_page => 20)
   end
 
   def destroy

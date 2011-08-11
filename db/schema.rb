@@ -80,7 +80,6 @@ ActiveRecord::Schema.define(:version => 20110803144545) do
     t.datetime "updated_at"
     t.integer  "company_id"
     t.integer  "group_id"
-    t.integer  "discount_id"
     t.float    "price"
   end
 
@@ -97,6 +96,7 @@ ActiveRecord::Schema.define(:version => 20110803144545) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "discount_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

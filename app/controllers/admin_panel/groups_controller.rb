@@ -15,7 +15,7 @@ class AdminPanel::GroupsController < AdminPanel::AdminApplicationController
 
   def index
     @search = Group.search(params[:search] || {"meta_sort" => "id.asc"})
-    @groups = @search.all.paginate(:page => params[:page], :per_page => 15)
+    @groups = @search.paginate(:page => params[:page], :per_page => 15)
   end
 
   def new

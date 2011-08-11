@@ -2,7 +2,7 @@ class AdminPanel::AdminsController < AdminPanel::AdminApplicationController
 
   def index
     @search = Admin.search(params[:search] || {"meta_sort" => "id.asc"})
-    @admins = @search.all.paginate
+    @admins = @search.paginate(:page => params[:page], :per_page => 10)
   end
 
   def new
