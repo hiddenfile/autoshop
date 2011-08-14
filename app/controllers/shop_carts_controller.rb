@@ -1,4 +1,8 @@
 class ShopCartsController < ApplicationController
+  def update
+    render :text=> params
+  end
+
   def add_to_cart
     inc = params[:inc].to_i()
     count = $redis.hget(authcookie,params[:id]).to_i()

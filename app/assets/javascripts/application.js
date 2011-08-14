@@ -8,3 +8,14 @@
 //= require jquery_ujs
 //= require_tree .
 
+function addToCart(auth,id, count, title, price) {
+    console.log([id, count, title, price]);
+    $.ajax({
+        type: "PUT",
+        url: "/shop_carts/add",
+        data: ({'authenticity_token': auth,'id':id,'count':count, 'title':title, 'price':price}),
+        success: function(response) {
+            console.log(response);
+        }
+    });
+}

@@ -37,4 +37,13 @@ class ApplicationController < ActionController::Base
     @auth_cookie_items_count=$redis.hlen(@authcookie)
     @authcookie
   end
+
+  def user_cookies
+    cookies[:auto_shop_cart_cookie]
+  end
+
+  def cart_menu
+    #= { :value => new_value, :expires => 1.day.from_now }
+  end
+
 end
