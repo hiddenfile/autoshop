@@ -10,10 +10,12 @@ padding: 10px;
     background: url("/assets/shopping_cart.png") repeat scroll 0 0 transparent;
 }
 
-#cart_info{
-  font-family: Tahoma;
-  font-size:12px;
-
+#cart_info {
+    display: block;
+    font-family: Tahoma;
+    font-size: 12px;
+    margin: 15px 0 0;
+    position: relative;
 }
 
 #cart_box_list_img
@@ -47,10 +49,34 @@ text-align: left;
 padding: 10px;
 }
 
+.text{
+  width: 180px;
+  height: 25px;
+  padding: 0 10px;
+  color: #000;
+  line-height: 34px;
+  background: url("/assets/input_user.png") no-repeat;
+  border: 0;
+  border-width: 0;
+}
+
+.button{
+  width: 85px;
+  height: 28px;
+  padding: 0 10px;
+  color: #000;
+  background: url("/assets/button_user.png") no-repeat;
+  border: 0;
+  border-width: 0;
+  float:left;
+  margin:0 8px;
+}
+
 #user_panel
 {
-    margin: 0 0 15px;
+    margin: 15px 0 0px;
     min-height: 90px;
+    padding-bottom: 20px;
   /*border: 1px solid #000000;*/
   /*border-radius:4px;*/
 }
@@ -215,8 +241,6 @@ input, select, textarea {
    margin-left:5px;
    color: #a9aaaa;
    text-decoration: none;
-   &:focus, &:active {
-    color: #b2d622; }
 }
 
 .category h6{
