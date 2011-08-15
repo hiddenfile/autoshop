@@ -10,6 +10,12 @@ padding: 10px;
     background: url("/assets/shopping_cart.png") repeat scroll 0 0 transparent;
 }
 
+#cart_info{
+  font-family: Tahoma;
+  font-size:12px;
+
+}
+
 #cart_box_list_img
 {
     border : 0px;
@@ -197,10 +203,30 @@ input, select, textarea {
   padding: 0 0 70px 0;
   height: 1%; }
 
+.leftmenu{
+  padding:10px;
+  width: 150px;
+  height:40px;
+  margin: -40px 25px;
+  background: url("/assets/leftmenu.png") no-repeat;}
+
+.leftmenu a{
+   font-weight: bold;
+   margin-left:5px;
+   color: #a9aaaa;
+   text-decoration: none;
+   &:focus, &:active {
+    color: #b2d622; }
+}
+
+.category h6{
+  color: #b2d622;
+}
+
 .left {
   float: left;
   width: 125px;
-  margin: 0 25px; }
+  margin: 35px 38px; }
 
 .center {
   float: left;

@@ -23,13 +23,13 @@
       / C O N T E N T  start
       .content
         / L E F T start
+        .leftmenu
+          = link_to_function "Группы","showCategory('#groups')"
+          = link_to_function "Бренды","showCategory('#brends')"
         .left
-          %h6
-            = link_to_function "Группы","showCategory('#groups')"
-            |
-            = link_to_function "Бренды","showCategory('#brends')"
           .block.l-menu
             %div
+              %h6
               %div#groups.category
                 %ul
                 - @groups.each do |group|
