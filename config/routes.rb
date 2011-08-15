@@ -26,7 +26,7 @@ Autoshop::Application.routes.draw do
 
   resources :companies, :only => :show do
     resources :groups, :only => :show do
-      resources :products, :only => :show
+      resources :products, :only => [:show,:index]
     end
   end
 end
