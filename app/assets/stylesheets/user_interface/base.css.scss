@@ -51,25 +51,27 @@ padding: 10px;
 
 .text{
   width: 180px;
-  height: 25px;
+  height: 21px;
   padding: 0 10px;
   color: #000;
-  line-height: 34px;
+  line-height: 15px;
   background: url("/assets/input_user.png") no-repeat;
   border: 0;
   border-width: 0;
 }
 
-.button{
-  width: 85px;
-  height: 28px;
-  padding: 0 10px;
-  color: #000;
-  background: url("/assets/button_user.png") no-repeat;
-  border: 0;
-  border-width: 0;
-  float:left;
-  margin:0 8px;
+.button {
+    background: url("/assets/button_user.png") no-repeat scroll 0 0 transparent;
+    border: 0 none;
+    color: #000000;
+    float: left;
+    font-family: tahoma;
+    font-size: 8pt;
+    height: 28px;
+    margin: 0 -2px 0 12px;
+    padding: 7px;
+    text-decoration: none;
+    width: 85px;
 }
 
 #user_panel
@@ -214,7 +216,8 @@ input, select, textarea {
 .h-but {
   width: 86px;
   height: 34px;
-  background: url("/assets/search-but.gif") no-repeat;
+  background: url("/assets/search-but.png") no-repeat;
+  margin: 3px 0 0 0;
   border: 0;
   border-width: 0;
   right: 0px;
@@ -229,19 +232,36 @@ input, select, textarea {
   padding: 0 0 70px 0;
   height: 1%; }
 
-.leftmenu{
-  padding:10px;
-  width: 150px;
-  height:40px;
-  margin: -40px 25px;
-  background: url("/assets/leftmenu.png") no-repeat;}
-
-.leftmenu a{
-   font-weight: bold;
-   margin-left:5px;
-   color: #a9aaaa;
-   text-decoration: none;
+.leftlink {
+    height: 40px;
+    margin: 0;
+    padding: 10px 0 0 15px;
+    width: 60px;
+    display:block;
+    float:left;
+    font-weight: bold;
+    color: #a9aaaa;
+    cursor:pointer;
+    color:#b0d323;
 }
+
+.rightlink {
+    height: 40px;
+    margin: 0;
+    padding: 10px 15px 0 0;
+    width: 56px;
+    display:block;
+    float:right;
+    font-weight: bold;
+    color: #a9aaaa;
+    cursor:pointer;
+}
+
+.leftmenu{
+    background: url("/assets/leftmenu.png") no-repeat scroll 0 0 transparent;
+    height: 40px;
+    margin: -40px 25px;
+    width: 150px;}
 
 .category h6{
   color: #b2d622;
