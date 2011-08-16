@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :find_order , :only => [:show, :destroy]
+  #before_filter :find_order , :only => [:show, :destroy]
 
   def index
     @user_orders=current_user.orders

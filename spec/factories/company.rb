@@ -1,3 +1,3 @@
 Factory.define :company, :class => Company do |f|
-    f.name 'qwer'
+    f.name '123456789'
 end

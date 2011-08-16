@@ -23,13 +23,16 @@
       / C O N T E N T  start
       .content
         / L E F T start
+        .leftmenu
+          .leftlink{:onclick => "showCategory('#groups',$(this))"}
+            Группы
+          .rightlink{:onclick => "showCategory('#brends',$(this))"}
+            Бренды
+          .clear
         .left
-          %h6
-            = link_to_function "Группы","showCategory('#groups')"
-            |
-            = link_to_function "Бренды","showCategory('#brends')"
           .block.l-menu
             %div
+              %h6
               %div#groups.category
                 %ul
                 - @groups.each do |group|
@@ -50,22 +53,23 @@
               =link_to('Выход',destroy_user_session_path)
               =link_to('Заказы',orders_path)
             - else
-              =link_to('Зарегистрироватся',new_user_registration_path)
-              -#=link_to('Авторизоватся',new_user_session_path)
-
+              %h6 Авторизация
               = form_for(:user, :as => 'user', :url => '/users/sign_in') do |f|
                 %p
                   = f.label :email
-                  = f.text_field :email
+                  = f.text_field(:email,:class => 'text')
                 %p
                   = f.label :password
-                  = f.password_field :password
+                  = f.password_field(:password,:class => 'text')
                 -#- if devise_mapping.rememberable?
                 -#  %p
                 -#  = f.check_box :remember_me
                 -#  = f.label :remember_me
-                = f.submit "Войти"
+                = f.submit("Войти",:class => 'button')
 
+              .reguser
+                =link_to('Регистрация',new_user_registration_path,:class => 'button')
+            %h6{:style =>"margin: 35px 0 0;"}
             #cart
               #cart_box
                 %a{:href=>shop_cart_path(:id), :id=> 'cart_box_list'}
