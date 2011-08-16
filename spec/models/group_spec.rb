@@ -5,6 +5,23 @@ describe Group do
     @group = Factory.build(:group)
   end
 
+  it "should be invalid with nil name" do
+    @group.name = nil
+    lambda{@group.save!}.should raise_error
+  end
+
+  it "is invalid with short name" do
+    @group.name = "123"
+    @group.should_not be_valid
+  end
+
+  it "name already use" do
+    @group.save
+    @group_1 = Factory.build(:group)
+    @group_1.name = "123456789"
+    @group_1.should_not be_valid
+  end
+
   it "should  has_many :products, :dependent => :destroy" do
     g = Group.reflect_on_association(:products)
     g.macro.should == :has_many
@@ -22,10 +39,5 @@ describe Group do
     g.macro.should == :has_many
     g.options[:as].should == :entity
     g.options[:dependent].should == :destroy
-  end
-
-  it "should be invalid with nil name" do
-    @group.name = nil
-    lambda{@group.save!}.should raise_error
   end
 end

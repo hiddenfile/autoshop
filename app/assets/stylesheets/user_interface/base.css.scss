@@ -10,6 +10,14 @@ padding: 10px;
     background: url("/assets/shopping_cart.png") repeat scroll 0 0 transparent;
 }
 
+#cart_info {
+    display: block;
+    font-family: Tahoma;
+    font-size: 12px;
+    margin: 15px 0 0;
+    position: relative;
+}
+
 #cart_box_list_img
 {
     border : 0px;
@@ -41,10 +49,36 @@ text-align: left;
 padding: 10px;
 }
 
+.text{
+  width: 180px;
+  height: 21px;
+  padding: 0 10px;
+  color: #000;
+  line-height: 15px;
+  background: url("/assets/input_user.png") no-repeat;
+  border: 0;
+  border-width: 0;
+}
+
+.button {
+    background: url("/assets/button_user.png") no-repeat scroll 0 0 transparent;
+    border: 0 none;
+    color: #000000;
+    float: left;
+    font-family: tahoma;
+    font-size: 8pt;
+    height: 28px;
+    margin: 0 -2px 0 12px;
+    padding: 7px;
+    text-decoration: none;
+    width: 85px;
+}
+
 #user_panel
 {
-    margin: 0 0 15px;
+    margin: 15px 0 0px;
     min-height: 90px;
+    padding-bottom: 20px;
   /*border: 1px solid #000000;*/
   /*border-radius:4px;*/
 }
@@ -182,7 +216,8 @@ input, select, textarea {
 .h-but {
   width: 86px;
   height: 34px;
-  background: url("/assets/search-but.gif") no-repeat;
+  background: url("/assets/search-but.png") no-repeat;
+  margin: 3px 0 0 0;
   border: 0;
   border-width: 0;
   right: 0px;
@@ -197,10 +232,46 @@ input, select, textarea {
   padding: 0 0 70px 0;
   height: 1%; }
 
+.leftlink {
+    height: 40px;
+    margin: 0;
+    padding: 10px 0 0 15px;
+    width: 60px;
+    display:block;
+    float:left;
+    font-weight: bold;
+    color: #a9aaaa;
+    cursor:pointer;
+    color:#b0d323;
+}
+
+.rightlink {
+    text-align:right;
+    height: 40px;
+    margin: 0;
+    padding: 10px 15px 0 0;
+    width: 56px;
+    display:block;
+    float:right;
+    font-weight: bold;
+    color: #a9aaaa;
+    cursor:pointer;
+}
+
+.leftmenu{
+    background: url("/assets/leftmenu.png") no-repeat scroll 0 0 transparent;
+    height: 40px;
+    margin: -40px 25px;
+    width: 150px;}
+
+.category h6{
+  color: #b2d622;
+}
+
 .left {
   float: left;
   width: 125px;
-  margin: 0 25px; }
+  margin: 35px 38px; }
 
 .center {
   float: left;
