@@ -26,10 +26,8 @@
         .leftmenu
           .leftlink{:onclick => "showCategory('#groups',$(this))"}
             Группы
-            -#= link_to_function "Группы","showCategory('#groups',$(this))"
           .rightlink{:onclick => "showCategory('#brends',$(this))"}
             Бренды
-            -#  = link_to_function "Бренды","showCategory('#brends',$(this))"
           .clear
         .left
           .block.l-menu
@@ -55,8 +53,6 @@
               =link_to('Выход',destroy_user_session_path)
               =link_to('Заказы',orders_path)
             - else
-              -#
-              -#=link_to('Авторизоватся',new_user_session_path)
               %h6 Авторизация
               = form_for(:user, :as => 'user', :url => '/users/sign_in') do |f|
                 %p
