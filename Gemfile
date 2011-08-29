@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.rc4'
+gem 'rails', '3.1.0.rc6'
 
 gem 'therubyracer', '= 0.8.2'
 
@@ -21,7 +21,7 @@ gem 'will_paginate', '~> 3.0.pre4'
 gem "paperclip", "= 2.3.12"
 gem "passenger", "~> 3.0.8"
 gem "redis", "~> 2.2.1"
-
+gem "sprockets", "2.0.0.beta.12"
 group :test do
   gem "test-unit", :require => "test/unit"
   gem 'turn', :require => false
