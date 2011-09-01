@@ -1,5 +1,10 @@
 class ShopCartsController < ApplicationController
+
   def update
+    if $redis.get(cookies[:cart_id])
+    elsif cookies[:cart_id] =~ /^[a-f0-9]{32}$/
+
+    end
     render :text=> params
   end
 

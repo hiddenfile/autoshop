@@ -74,19 +74,19 @@
             %h6{:style =>"margin: 35px 0 0;"}
             #cart
               #cart_box
-                %a{:href=>shop_cart_path(:id), :id=> 'cart_box_list'}
-                  %img{:width=>"80",:height=>"60",:border=>"0",:src=>"/assets/shopping_cart.png", :alt=>"", :id=> 'cart_box_list_img'}
+                =link_to shop_cart_path(:id), :id=> 'cart_box_list' do
+                  =image_tag "shopping_cart.png", :id=> 'cart_box_list_img'
               %br
 
               #cart_info
                 %span Позиций :
-                %span#order_pos_count=$redis.hlen(@authcookie)
+                %span#order_pos_count=@cart_count
                 %br/
                 %span Сумма :
-                %span#order_sum=order_summ()
+                %span#order_sum=@cart_price
                 %br/
             .clear
-            .cart_control_links{:style => "display : #{@auth_cookie_items_count>0 ? "block" : "none"}"}
+            .cart_control_links
               = link_to 'Оформить',orders_path,:id=>'accept_order',:method =>"post"
               = link_to 'Отменить',shop_cart_path(:id),:id=>'cancel_order',:method => "delete"
 
