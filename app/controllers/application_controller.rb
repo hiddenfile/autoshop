@@ -11,5 +11,4 @@ class ApplicationController < ActionController::Base
   def authcookie
     @cart_count,@cart_price=CartMethods.check_or_create_cookie(cookies)
   end
-
 end

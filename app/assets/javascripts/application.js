@@ -8,14 +8,10 @@
 //= require jquery_ujs
 //= require_tree .
 
-function addToCart(auth,id, title, price) {
-    console.log([id, title, price]);
-    $.ajax({
-        type: "PUT",
-        url: "/shop_carts/add",
-        data: ({'authenticity_token': auth,'id':id, 'title':title, 'price':price}),
-        success: function(response) {
-            console.log(response);
-        }
-    });
+function setCookie (name, value, expires, path, domain, secure) {
+      document.cookie = name + "=" + escape(value) +
+        ((expires) ? "; expires=" + expires : "") +
+        ((path) ? "; path=" + path : "") +
+        ((domain) ? "; domain=" + domain : "") +
+        ((secure) ? "; secure" : "");
 }
