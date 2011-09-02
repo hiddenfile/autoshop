@@ -5,17 +5,16 @@ Autoshop::Application.routes.draw do
   devise_for :admins, :controllers => { :sessions => "sessions" }
   devise_for :users, :controllers => { :sessions => "sessions" }
 
+  resources :products
+
   resources :searches, :except => [:new, :update, :create, :destroy, :index, :show, :edit] do
     post 'search_by_products', :on => :member
   end
+
   resources :orders, :only => [:show,:index,:create, :destroy]
-  resources :shop_carts,:except => [:new, :create, :index, :edit] do
-    get 'add_to_cart', :on => :member
-    get 'remove_from_cart', :on => :member
-  end
+  resources :shop_carts,:except => [:new, :create, :index, :edit]
 
   resources :groups, :only => :show
-  resources :orders, :only => [:show,:index,:create, :destroy]
 
   resources :companies, :only => :show do
     resources :groups, :only => :show do

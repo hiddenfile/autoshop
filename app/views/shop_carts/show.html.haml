@@ -1,5 +1,5 @@
 #order_items_table
-  -if @keys.count>0
+  -if @items_list.count>0
     -price=0
     %p В корзине :
     %table#cart_table
@@ -12,21 +12,21 @@
         %th.off
         %th.off
 
-      -@keys.each do |key|
-        - curr_ed_price = @prices[key]
-        - curr_price = curr_ed_price*@items[key].to_i()
+      -@items_list.each do |key,item|
+        - curr_ed_price = item['price'].to_f
+        - curr_price = curr_ed_price*item['count'].to_i
         - price=price+curr_price
 
-        - title = @titles[key]
+        - title = item['title']
         %tr{:id => "order_items_row#{key}", :class => "order_items_row"}
           %td.off
             =link_to(title,product_path(key))
           %td.off.count_of_order_item
-            =@items[key]
+            =item['count']
           %td.off.price_of_order_item
-            =curr_ed_price
+            =item['price']
           %td.off.sum_price_of_order_item
-            =curr_price.to_s()
+            =curr_price.to_s
           %td.off
             =link_to_function "+","addToCart('#{key}','1','#{title}','#{curr_ed_price}')"
           %td.off
@@ -38,10 +38,10 @@
           Всего :
         %td.off
         %td.off
-        %td.off#order_common_price=price.to_s()
+        %td.off#order_common_price=price.to_s
 
     %br
     -if user_signed_in?
       .cart_control_links
-        = link_to 'Оформить',orders_path,:id=>'accept_order',:method =>"post"
-        = link_to 'Отменить',shop_cart_path(:id),:id=>'cancel_order',:method => "delete"
+        = link_to 'Оформить',orders_path,:method =>"post"
+        = link_to 'Отменить',shop_cart_path(:id),:method => "delete"

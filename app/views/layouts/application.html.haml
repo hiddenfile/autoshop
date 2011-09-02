@@ -87,8 +87,8 @@
                 %br/
             .clear
             .cart_control_links
-              = link_to 'Оформить',orders_path,:id=>'accept_order',:method =>"post"
-              = link_to 'Отменить',shop_cart_path(:id),:id=>'cancel_order',:method => "delete"
+              = link_to 'Оформить',orders_path,:method =>"post"
+              = link_to 'Отменить',shop_cart_path(:id),:method => "delete"
 
 
           %h6 The main thing for the day
