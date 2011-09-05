@@ -7,7 +7,7 @@ module CartMethods
       $redis.set(cookies[:cart_id],{})
       $redis.expire(cookies[:cart_id],1.day)
     end
-    return get_cart_info(cookies)
+    get_cart_info(cookies)
   end
 
   def self.cookies_valid?(cookies)
@@ -22,7 +22,7 @@ module CartMethods
   end
 
   def self.get_cart_info(cookies)
-    return cookies[:count].to_i,cookies[:price].to_f
+    [cookies[:count].to_i,cookies[:price].to_f]
   end
 
   def self.get_items_list(cookies)

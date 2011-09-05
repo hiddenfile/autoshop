@@ -11,8 +11,10 @@ Autoshop::Application.routes.draw do
     post 'search_by_products', :on => :member
   end
 
-  resources :orders, :only => [:show,:index,:create, :destroy]
-  resources :shop_carts,:except => [:new, :create, :index, :edit]
+  #resources :orders, :only => [:show,:index,:create, :destroy]
+  #resources :shop_carts,:except => [:new, :create, :index, :edit]
+  resources :orders, :except => [:new, :update, :edit]
+  resources :shop_carts,:only => [:update,:destroy,:show]
 
   resources :groups, :only => :show
 

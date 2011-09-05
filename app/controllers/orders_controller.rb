@@ -1,17 +1,15 @@
 class OrdersController < ApplicationController
   before_filter :authenticate_user!
-  #before_filter :find_order , :only => [:show, :destroy]
+  before_filter :find_order , :only => [:show, :destroy]
 
   def index
     @user_orders=current_user.orders.order("created_at  DESC")
   end
 
   def show
-    @order=Order.includes(:order_items).find_by_id(params[:id])
   end
 
   def destroy
-    find_order
     if @order.destroy
       flash[:notice]="Order was deleted"
     else
@@ -25,7 +23,7 @@ class OrdersController < ApplicationController
     @order = Order.new(:user_id=>current_user.id,:order_state=>"In process")
     build_order_items(@order)
 
-    if @order.save
+    if @order.save!
       flash[:notice]="Order was added to queue"
     else
       flash[:error] ="Error in order save process"
@@ -40,13 +38,12 @@ class OrdersController < ApplicationController
     items = CartMethods.get_items_list(cookies)
 
     items.each do |key,item|
-      #curr_product=Product.find_by_id(key)
-      order.order_items.build({:count => item['count'],:product_name=>item['title'],:product_price=>item['price'],:product_discount => current_user.discount.try(:value) })# if curr_product
+      order.order_items.build({:count => item['count'],:product_name=>item['title'],:product_price=>item['price'],:product_discount => current_user.discount.try(:value) })
     end
   end
 
   def find_order
-    unless @order = Order.find_by_id(params[:id])
+    unless @order=Order.includes(:order_items).find_by_id(params[:id])
       flash[:error] = "Could not find id: #{params[:id]}"
       redirect_to root_path
     end

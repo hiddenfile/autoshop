@@ -24,7 +24,7 @@
       .content
         / L E F T start
         .leftmenu
-          .leftlink{:onclick => "showCategory('#groups',$(this))",:style => cookies['selected_category']=='#groups' ? "color: #B0D323" : "color: #A9AAAA"}
+          .leftlink{:onclick => "showCategory('#groups',$(this))",:style => cookies['selected_category']=='#groups' || !cookies.has_key?('selected_category') ? "color: #B0D323" : "color: #A9AAAA"}
             Группы
           .rightlink{:onclick => "showCategory('#brends',$(this))",:style => cookies['selected_category']=='#brends' ? "color: #B0D323" : "color: #A9AAAA"}
             Бренды
