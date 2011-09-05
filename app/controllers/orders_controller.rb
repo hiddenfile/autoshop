@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
   before_filter :authenticate_user!
-  #before_filter :find_order , :only => [:show, :destroy]
+  before_filter :find_order , :only => [:show, :destroy]
 
   def index
-    @user_orders=current_user.orders
+    @user_orders=current_user.orders.order("created_at  DESC")
   end
 
   def show
@@ -23,29 +23,27 @@ class OrdersController < ApplicationController
     @order = Order.new(:user_id=>current_user.id,:order_state=>"In process")
     build_order_items(@order)
 
-    if @order.save
+    if @order.save!
       flash[:notice]="Order was added to queue"
     else
       flash[:error] ="Error in order save process"
     end
 
-    RedisMethods.clear_cart(authcookie)
+    CartMethods.clear_cart(cookies)
     redirect_to orders_path
   end
 
   private
   def build_order_items(order)
-    items = $redis.hgetall(authcookie)
-    keys = $redis.hkeys(authcookie)
+    items = CartMethods.get_items_list(cookies)
 
-    keys.each do |key|
-       curr_product=Product.find_by_id(key)
-       order.order_items.build({:count => items[key].to_i(),:product_name=>curr_product.title,:product_price=>curr_product.price,:product_discount => current_user.discount.try(:value) }) if curr_product
+    items.each do |key,item|
+      order.order_items.build({:count => item['count'],:product_name=>item['title'],:product_price=>item['price'],:product_discount => current_user.discount.try(:value) })
     end
   end
 
   def find_order
-    unless @order = Order.find_by_id(params[:id])
+    unless @order=Order.includes(:order_items).find_by_id(params[:id])
       flash[:error] = "Could not find id: #{params[:id]}"
       redirect_to root_path
     end

@@ -8,6 +8,6 @@
 
   -@order.order_items.each do |order_item|
     %tr
-      %td.off=order_item.product.title
+      %td.off=order_item.product_name
       %td.off=order_item.count
-      %td.off=order_item.product.price
+      %td.off=order_item.product_price
