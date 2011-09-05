@@ -7,7 +7,7 @@ padding: 10px;
 
 #cart_box
 {
-    background: url("/assets/shopping_cart.png") repeat scroll 0 0 transparent;
+    background: url("/assets/shopping_cart.png") no-repeat transparent;
 }
 
 #cart_info {
@@ -275,17 +275,21 @@ input, select, textarea {
 
 .center {
   float: left;
-  width: 570px; }
+  width: 68%; }
 
 .right {
   float: right;
   width: 205px;
   margin: 0 25px 0 0; }
 
-.content img {
-  float: left;
-  margin: 5px 10px 5px 0;
-  border: 1px solid #000; }
+.img_center{
+width:180px;
+height:180px;
+margin:20px 0 0 20px;
+padding:10px;
+border: 1px dotted #999;
+float:left;
+}
 
 .block {
   background: url("/assets/cc.gif") 0 bottom repeat-x;

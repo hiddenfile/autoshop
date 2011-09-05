@@ -1,2 +1,3 @@
 - @group.companies.sort{|a,b| a.name<=>b.name}.each do |company|
-  = link_to (image_tag company.photos.first.photo.url(:medium)), company_group_products_path(company,@group)
+  .img_center
+    = link_to (image_tag company.photos.first.photo.url(:medium)), company_group_products_path(company,@group)
