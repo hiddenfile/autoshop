@@ -23,24 +23,23 @@
       / C O N T E N T  start
       .content
         / L E F T start
-        - group_menu = cookies['selected_category']=='#groups'
-        -#= cookies.has_key?('selected_category')
         .leftmenu
-          .leftlink{:onclick => "showCategory('#groups',$(this))",:style => group_menu ? "color: #B0D323" : "color: #A9AAAA"}
+          .leftlink{:onclick => "showCategory('#groups',$(this))",:style => @current_menu_is_group ? "color: #B0D323" : "color: #A9AAAA"}
             Группы
-          .rightlink{:onclick => "showCategory('#brends',$(this))",:style => !group_menu ? "color: #B0D323" : "color: #A9AAAA"}
+          .rightlink{:onclick => "showCategory('#brends',$(this))",:style => !@current_menu_is_group ? "color: #B0D323" : "color: #A9AAAA"}
             Бренды
           .clear
+
         .left
           .block.l-menu
             %div
               %h6
-              %div#groups.category{:style => !group_menu ? "display:none" : "" }
+              %div#groups.category{:style => !@current_menu_is_group ? "display:none" : "" }
                 %ul
                 - @groups.each do |group|
                   %li= link_to group.name, group_path(group)
 
-              %div#brends.category{:style => group_menu ? "display:none" : "" }
+              %div#brends.category{:style => @current_menu_is_group ? "display:none" : "" }
                 - @companies.each do |company|
                   %li= link_to company.name, company_path(company)
         / L E F T end
