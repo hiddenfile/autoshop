@@ -23,6 +23,7 @@ gem "passenger", "~> 3.0.8"
 gem "redis", "~> 2.2.1"
 gem "sprockets", "2.0.0.beta.12"
 gem "ckeditor", "~> 3.6.0"
+gem "nokogiri", :require => 'nokogiri'
 group :test do
   gem "test-unit", :require => "test/unit"
   gem 'turn', :require => false

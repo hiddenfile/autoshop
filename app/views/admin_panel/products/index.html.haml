@@ -20,7 +20,7 @@
       %td=link_to product.company.name, admin_panel_product_path(product)
       %td=product.group.name
       %td=product.title
-      %td=product.description[0,25]+"..."
+      %td=raw truncate_html(product.description)
 
       %td.links_column
         = link_to 'Редактировать', edit_admin_panel_product_path(product)
