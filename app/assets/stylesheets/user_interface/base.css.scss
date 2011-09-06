@@ -284,11 +284,28 @@ input, select, textarea {
 
 .img_center{
 width:180px;
-height:180px;
+height:260px;
 margin:20px 0 0 20px;
 padding:10px;
 border: 1px dotted #999;
 float:left;
+position:relative;
+
+}
+
+.img{
+height:178px;
+text-align:center;
+}
+
+.newprod{
+color: #000000;
+font-family: Tahoma;
+font-size: 10.5pt;
+font-weight: bold;
+margin: 0 20px 5px;
+text-shadow: 0 0 1px #999999;
+width:300px;
 }
 
 .block {

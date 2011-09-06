@@ -14,9 +14,15 @@
   %p
     = f.label 'Описание'
     = f.text_area :description
+
   %p
     = f.label 'Цена'
     = f.text_field :price
+
+  %p
+    = f.label 'Статус'
+    = f.select :status,options_for_select(["enable", "new", "disable"])
+
 
   %p
     %br
