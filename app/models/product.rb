@@ -7,4 +7,10 @@ class Product < ActiveRecord::Base
   validates :title, :presence => true, :length => {:minimum => 3, :maximum => 300}
   validates :company_id,:group_id, :numericality => true, :presence => true
   validates :status, :presence => true, :inclusion => { :in => ["new","enable","disable"] }
+
+  before_save :update_product_description
+
+  def update_product_description
+    self.description = Nokogiri::HTML.parse(self.description).search("body").inner_html
+  end
 end

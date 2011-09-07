@@ -25,6 +25,7 @@
       %td=product.description[0,25]+"..."
       %td=product.price
       %td=product.status
+      %td=raw truncate_html(product.description)
 
       %td.links_column
         = link_to 'Редактировать', edit_admin_panel_product_path(product)

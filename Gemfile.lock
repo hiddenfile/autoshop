@@ -52,6 +52,9 @@ GEM
       ZenTest (>= 4.4.1)
     bcrypt-ruby (2.1.4)
     builder (3.0.0)
+    ckeditor (3.6.1)
+      mime-types (~> 1.16)
+      orm_adapter (~> 0.0.5)
     cocaine (0.2.0)
     coffee-script (2.2.0)
       coffee-script-source
@@ -84,6 +87,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     multi_json (1.0.3)
+    nokogiri (1.5.0)
     orm_adapter (0.0.5)
     paperclip (2.3.12)
       activerecord (>= 2.3.0)
@@ -167,6 +171,7 @@ PLATFORMS
 
 DEPENDENCIES
   autotest
+  ckeditor (~> 3.6.0)
   coffee-script
   devise
   factory_girl_rails (~> 1.1.rc1)
@@ -174,6 +179,7 @@ DEPENDENCIES
   hpricot
   jquery-rails
   meta_search!
+  nokogiri
   paperclip (= 2.3.12)
   passenger (~> 3.0.8)
   pg
