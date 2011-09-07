@@ -1,7 +1,7 @@
 .newprod
   Новинки интернет-магазина:
 - @products.each do |product|
-  .img_center
+  .newprod_center
     .img
       = link_to (image_tag product.photos.first.photo.url(:medium)), product
     .prodinfo
