@@ -14,6 +14,7 @@
     %th= sort_link @search, :title, "Наименование"
     %th= sort_link @search, :description, "Описание"
     %th= sort_link @search, :price, "Цена"
+    %th= sort_link @search, :status, "Статус"
     %th.last
 
   -@products.each do |product|
@@ -23,6 +24,7 @@
       %td=product.title
       %td=product.description[0,25]+"..."
       %td=product.price
+      %td=product.status
 
       %td.links_column
         = link_to 'Редактировать', edit_admin_panel_product_path(product)
