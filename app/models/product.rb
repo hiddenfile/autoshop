@@ -6,4 +6,5 @@ class Product < ActiveRecord::Base
 
   validates :title, :presence => true, :length => {:minimum => 3, :maximum => 300}
   validates :company_id,:group_id, :numericality => true, :presence => true
+  validates :status, :presence => true, :inclusion => { :in => ["new","enable","disable"] }
 end
