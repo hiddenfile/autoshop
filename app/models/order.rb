@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
   has_many :order_items, :dependent => :destroy
+  accepts_nested_attributes_for :order_items
   belongs_to :user
 
   def self.order_states
