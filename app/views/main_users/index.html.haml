@@ -1,11 +1,12 @@
-.newprod
-  Новинки интернет-магазина:
-- @products.each do |product|
-  .newprod_center
-    .img
-      = link_to (image_tag product.photos.first.photo.url(:medium)), product
-    .prodinfo
-      %p #{product.title}
-      %p Цена : #{product.price}
-      %p= link_to_function "Добавить в корзину","addToCart('#{product.id}','1','#{product.title}','#{product.price}')"
+.centerprod
+  .newprod
+    Новинки интернет-магазина:
+  - @products.each do |product|
+    .newprod_center
+      .img
+        = link_to (image_tag product.photos.first.photo.url(:medium)), product
+      .prodinfo
+        %p #{product.title}
+        %p Цена : #{product.price}
+        %p= link_to_function "Добавить в корзину","addToCart('#{product.id}','1','#{product.title}','#{product.price}')"
 

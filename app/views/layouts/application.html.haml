@@ -22,15 +22,15 @@
       / H E A D E R  end
       / C O N T E N T  start
       .content
-        / L E F T start
-        .leftmenu
-          .leftlink{:onclick => "showCategory('#groups',$(this))",:style => @current_menu_is_group ? "color: #B0D323" : "color: #A9AAAA"}
-            Группы
-          .rightlink{:onclick => "showCategory('#brends',$(this))",:style => !@current_menu_is_group ? "color: #B0D323" : "color: #A9AAAA"}
-            Бренды
-          .clear
-
+        .center
+          = yield
+        -#.clear
         .left
+          .leftmenu
+            .leftlink{:onclick => "showCategory('#groups',$(this))",:style => @current_menu_is_group ? "color: #B0D323" : "color: #A9AAAA"}
+              Группы
+            .rightlink{:onclick => "showCategory('#brends',$(this))",:style => !@current_menu_is_group ? "color: #B0D323" : "color: #A9AAAA"}
+              Бренды
           .block.l-menu
             %div
               %h6
@@ -42,13 +42,7 @@
               %div#brends.category{:style => @current_menu_is_group ? "display:none" : "" }
                 - @companies.each do |company|
                   %li= link_to company.name, company_path(company)
-        / L E F T end
-        / C E N T E R  start
-        .center
-          = yield
-          .clear
-        / C E N T E R  end
-        / R I G H T
+
         .right
           #user_panel.block
             - if user_signed_in?
@@ -78,8 +72,6 @@
               #cart_box
                 =link_to shop_cart_path(:id), :id=> 'cart_box_list' do
                   =image_tag "shopping_cart.png", :id=> 'cart_box_list_img'
-              %br
-
               #cart_info
                 %span Позиций :
                 %span#order_pos_count=@cart_count
@@ -87,7 +79,11 @@
                 %span Сумма :
                 %span#order_sum=@cart_price
                 %br/
-            .clear
+              .clear
+              %br
+
+
+
             .cart_control_links
               = link_to 'Оформить',orders_path,:method =>"post"
               = link_to 'Отменить',shop_cart_path(:id),:method => "delete"
@@ -126,7 +122,7 @@
               %li
                 %h3 Tymoshenko: I will admit its human error
                 %span view: 2385
-        / R I G H T
+
         .clear
       / C O N T E N T  end
     / /main styles
