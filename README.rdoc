@@ -1,5 +1,5 @@
 + Project test server
-    http://autoshop.heroku.com/
+    http://autoshop.is-valid.org
 
 1.Clone project:
     sudo apt-get install git curl
