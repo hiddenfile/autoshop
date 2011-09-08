@@ -1,7 +1,6 @@
 .centerprod
   %h2 Войти
   = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-    = devise_error_messages!
     %p
       = f.label "Емейл"
       %br/
@@ -15,3 +14,4 @@
         = f.check_box :remember_me
         = f.label "Запомнить меня"
     %p= f.submit "Войти"
+  = render :partial => "devise/shared/links"
