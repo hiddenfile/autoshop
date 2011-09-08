@@ -13,6 +13,12 @@ GIT
       activerecord (~> 3.1.0.alpha)
       activesupport (~> 3.1.0.alpha)
 
+GIT
+  remote: git://github.com/intale/simple-captcha.git
+  revision: a9b924856529fe913f3f26ef279f5c3a287a15df
+  specs:
+    simple_captcha (0.1.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -181,6 +187,7 @@ DEPENDENCIES
   redis (~> 2.2.1)
   rspec-rails
   sass-rails (~> 3.1.0.rc)
+  simple_captcha!
   sprockets (= 2.0.0.beta.12)
   test-unit
   therubyracer (= 0.8.2)

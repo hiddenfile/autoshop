@@ -1,7 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  include SimpleCaptcha::ControllerHelpers
   before_filter :main_menu, :authcookie, :check_referer_link
+
   @current_menu_is_group=true
+
 
   protected
   def main_menu

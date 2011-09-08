@@ -32,4 +32,6 @@ group :test, :development do
 end
 
   gem "autotest"
+
+gem 'simple_captcha', :git => 'git://github.com/intale/simple-captcha.git'
 end
