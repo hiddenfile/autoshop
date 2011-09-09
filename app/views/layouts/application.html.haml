@@ -19,18 +19,40 @@
             = form_for(:search, :url => search_by_products_search_path(:id),:id => 'mainForm') do |f|
               =f.text_field("req", :class =>'h-field', :value=>"")
               =f.submit("",:class => 'h-but')
-      / H E A D E R  end
+              / H E A D E R  end
       / C O N T E N T  start
       .content
+        .leftmenu
+          .menu_left
+          .menu_fill
+            .leftlink{:onclick => "showCategory('#groups',$(this))",:style => @current_menu_is_group ? "color: #B0D323" : "color: #A9AAAA"}
+              Группы
+            .separator
+            .rightlink{:onclick => "showCategory('#brends',$(this))",:style => !@current_menu_is_group ? "color: #B0D323" : "color: #A9AAAA"}
+              Бренды
+          .menu_right
+          .clear
+        .rightmenu
+          .menu_left
+          .menu_fill
+            / h-menu start
+            .h-menu
+              %ul
+                %li
+                  %a{:href => "#"} Контакты
+                .separator
+                %li
+                  %a{:href => "#"} FAQ
+                .separator
+                %li
+                  %a{:href => "#"} Отзывы
+            / h-menu end
+          .menu_right
+          .clear
         .center
           = yield
         -#.clear
         .left
-          .leftmenu
-            .leftlink{:onclick => "showCategory('#groups',$(this))",:style => @current_menu_is_group ? "color: #B0D323" : "color: #A9AAAA"}
-              Группы
-            .rightlink{:onclick => "showCategory('#brends',$(this))",:style => !@current_menu_is_group ? "color: #B0D323" : "color: #A9AAAA"}
-              Бренды
           .block.l-menu
             %div
               %h6
