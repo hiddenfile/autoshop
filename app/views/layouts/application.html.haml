@@ -54,10 +54,10 @@
               %h6 Авторизация
               = form_for(:user, :as => 'user', :url => '/users/sign_in') do |f|
                 %p
-                  = f.label :email
+                  = f.label "Емейл"
                   = f.text_field(:email,:class => 'text')
                 %p
-                  = f.label :password
+                  = f.label "Пароль"
                   = f.password_field(:password,:class => 'text')
                 -#- if devise_mapping.rememberable?
                 -#  %p

@@ -1,0 +1,34 @@
+.centerprod
+  %h2 Регистрация
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+    = devise_error_messages!
+    %p
+      = f.label "Емейл"
+      %br/
+      = f.email_field :email
+    %p
+      = f.label "Пароль"
+      %br/
+      = f.password_field :password
+    %p
+      = f.label "Подтвержддение пароля"
+      %br/
+      = f.password_field :password_confirmation
+    %p
+      = f.label "Имя"
+      %br/
+      = f.text_field :first_name
+    %p
+      = f.label "Фамилия"
+      %br/
+      = f.text_field :last_name
+    %p
+      = f.label "Отчество"
+      %br/
+      = f.text_field :middle_name
+    %p
+      = f.label "Телефон"
+      %br/
+      = f.text_field :user_phone
+    %p= f.submit "Зарегистрироваться"
+  = render :partial => "devise/shared/links"

@@ -1,47 +1,48 @@
-#order_items_table
-  -if @items_list.count>0
-    -price=0
-    %p В корзине :
-    %table#cart_table
-      %tr
-        %th.off Товар
-        %th.off Количество
-        %th.off Цена за еденицу
-        %th.off Цена по позиции
-        %th.off
-        %th.off
-        %th.off
+.centerprod
+  #order_items_table
+    -if @items_list.count>0
+      -price=0
+      %p В корзине :
+      %table#cart_table
+        %tr
+          %th.off Товар
+          %th.off Количество
+          %th.off Цена за еденицу
+          %th.off Цена по позиции
+          %th.off
+          %th.off
+          %th.off
 
-      -@items_list.each do |key,item|
-        - curr_ed_price = item['price'].to_f
-        - curr_price = curr_ed_price*item['count'].to_i
-        - price=price+curr_price
+        -@items_list.each do |key,item|
+          - curr_ed_price = item['price'].to_f
+          - curr_price = curr_ed_price*item['count'].to_i
+          - price=price+curr_price
 
-        - title = item['title']
-        %tr{:id => "order_items_row#{key}", :class => "order_items_row"}
+          - title = item['title']
+          %tr{:id => "order_items_row#{key}", :class => "order_items_row"}
+            %td.off
+              =link_to(title,product_path(key))
+            %td.off.count_of_order_item
+              =item['count']
+            %td.off.price_of_order_item
+              =item['price']
+            %td.off.sum_price_of_order_item
+              =curr_price.to_s
+            %td.off
+              =link_to_function "+","addToCart('#{key}','1','#{title}','#{curr_ed_price}')"
+            %td.off
+              =link_to_function "-","addToCart('#{key}','-1','#{title}','#{curr_ed_price}')"
+            %td.off
+              =link_to_function "x","deleteCartItem('#{key}')"
+        %tr.up_border
           %td.off
-            =link_to(title,product_path(key))
-          %td.off.count_of_order_item
-            =item['count']
-          %td.off.price_of_order_item
-            =item['price']
-          %td.off.sum_price_of_order_item
-            =curr_price.to_s
+            Всего :
           %td.off
-            =link_to_function "+","addToCart('#{key}','1','#{title}','#{curr_ed_price}')"
           %td.off
-            =link_to_function "-","addToCart('#{key}','-1','#{title}','#{curr_ed_price}')"
-          %td.off
-            =link_to_function "x","deleteCartItem('#{key}')"
-      %tr.up_border
-        %td.off
-          Всего :
-        %td.off
-        %td.off
-        %td.off#order_common_price=price.to_s
+          %td.off#order_common_price=price.to_s
 
-    %br
-    -if user_signed_in?
-      .cart_control_links
-        = link_to 'Оформить',orders_path,:method =>"post"
-        = link_to 'Отменить',shop_cart_path(:id),:method => "delete"
+      %br
+      -if user_signed_in?
+        .cart_control_links
+          = link_to 'Оформить',orders_path,:method =>"post"
+          = link_to 'Отменить',shop_cart_path(:id),:method => "delete"
