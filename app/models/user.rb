@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates :first_name, :presence => true
   validates :last_name, :presence => true
   validates :middle_name, :presence => true
-  validates :user_phone, :presence => true, :format => /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+  validates :user_phone, :presence => true, :format => /^\(?[+]?\(?([0-9]*)\)?[-. :]?([0-9]*)[-. :]?([0-9]*)[-. :]?([0-9]*)$/
 
   protected
   def password_require?
