@@ -28,11 +28,17 @@
         %p Description : #{@product.description}
       .add_to_cart_bottom
         %p #{@product.price.to_s}&nbsp&nbsp&nbsp&nbsp&nbsp#{link_to_function "Купить","addToCart('#{@product.id}','1','#{@product.title}','#{@product.price}')"}
+%h6 Отзывы
 
-%backcall
-  =form_for :backcall, :url => '/backcall' do |f|
+.backcalls
+- @product.backcalls.each do |backcall|
+  =render :partial => 'backcall', :locals=>{:backcall => backcall}
+
+.backcall_form
+  %h5.errors
+  =form_for 'backcall' , :url => backcalls_path, :html=> {:id =>'backcall_form'}  do |f|
     =f.text_area :message, :width=>'20', :rows => '10'
     %br
-    -#= render :partial => 'captcha'
-    = show_simple_captcha(:object=>"backcall")
+    #captcha_fields
+      =render :partial => 'captcha'
     =f.submit 'Отправить'

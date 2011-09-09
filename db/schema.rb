@@ -33,7 +33,8 @@ ActiveRecord::Schema.define(:version => 20110908155459) do
 
   create_table "backcalls", :force => true do |t|
     t.text     "content"
-    t.integer  "user_id"
+    t.string   "author"
+    t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

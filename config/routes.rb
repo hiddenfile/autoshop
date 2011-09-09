@@ -1,5 +1,7 @@
 Autoshop::Application.routes.draw do
 
+  resources :backcalls, :only => [:create]
+
   root :to => 'main_users#index'
 
   devise_for :admins, :controllers => { :sessions => "sessions" }
