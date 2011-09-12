@@ -31,8 +31,8 @@
 %h6 Отзывы
 
 .backcalls
-- @product.backcalls.each do |backcall|
-  =render :partial => 'backcall', :locals=>{:backcall => backcall}
+  - @product.backcalls.each do |backcall|
+    =render :partial => 'backcall', :locals=>{:backcall => backcall}
 
 .backcall_form
   %h5.errors
