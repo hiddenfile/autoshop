@@ -37,6 +37,7 @@
 .backcall_form
   %h5.errors
   =form_for 'backcall' , :url => backcalls_path, :html=> {:id =>'backcall_form'}  do |f|
+    =f.hidden_field :product, :value => @product.id
     =f.text_area :message, :width=>'20', :rows => '10'
     %br
     #captcha_fields
