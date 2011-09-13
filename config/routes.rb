@@ -1,6 +1,6 @@
 Autoshop::Application.routes.draw do
 
-  resources :backcalls, :only => [:create]
+  resources :backcalls, :only => [:create, :index]
 
   root :to => 'main_users#index'
 

@@ -12,4 +12,8 @@ class BackcallsController < ApplicationController
       render :json => {:errors => "Captcha is wrong", :captcha => render_to_string(:partial => "products/captcha")}
     end
   end
+
+  def index
+    @backcalls = Backcall.order('product_id asc').paginate(:page => params[:page], :per_page => 20)
+  end
 end

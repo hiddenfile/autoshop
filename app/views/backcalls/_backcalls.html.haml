@@ -1,0 +1,7 @@
+%tr.sortheader
+  %th.first Товар
+  %th.last Содержание
+-backcalls.each do |backcall|
+  %tr{:class => cycle("odd", "even")}
+    %td.title=backcall.product.title
+    %td.message=backcall.content
