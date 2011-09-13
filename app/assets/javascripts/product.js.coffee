@@ -51,7 +51,6 @@
   $(tr_id+' > td.count_of_order_item').html(""+change_count);
   $(tr_id+' > td.sum_price_of_order_item').html((change_count*price).toFixed(1));
 
-  console.log(fVal('#order_common_price'))
   n_price = fVal('#order_sum')+inc*price;
   $('#order_sum').html(n_price.toFixed(1));
 
