@@ -10,6 +10,7 @@
 //= require product.js.coffee
 //= require shop_cart.js.coffee
 //= require user.js.coffee
+//= require backcalls.js
 
 
 function setCookie (name, value, expires, path, domain, secure) {
