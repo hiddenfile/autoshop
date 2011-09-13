@@ -20,12 +20,27 @@
                   = image_tag @product.photos[index].photo.url(:medium)
       %td
 
-        .add_to_cart_top
-          %p #{@product.price.to_s}&nbsp&nbsp&nbsp&nbsp&nbsp#{link_to_function "Купить","addToCart('#{@product.id}','1','#{@product.title}','#{@product.price}')"}
-        %div
-          %p Company : #{@product.company.name}
-          %p Group : #{@product.group.name}
-          %p Title : #{@product.title}
-          %p Description : #{raw truncate_html(@product.description)}
-        .add_to_cart_bottom
-          %p #{@product.price.to_s}&nbsp&nbsp&nbsp&nbsp&nbsp#{link_to_function "Купить","addToCart('#{@product.id}','1','#{@product.title}','#{@product.price}')"}
+      .add_to_cart_top
+        %p #{@product.price.to_s}&nbsp&nbsp&nbsp&nbsp&nbsp#{link_to_function "Купить","addToCart('#{@product.id}','1','#{@product.title}','#{@product.price}')"}
+      %div
+        %p Company : #{@product.company.name}
+        %p Group : #{@product.group.name}
+        %p Title : #{@product.title}
+        %p Description : #{@product.description}
+      .add_to_cart_bottom
+        %p #{@product.price.to_s}&nbsp&nbsp&nbsp&nbsp&nbsp#{link_to_function "Купить","addToCart('#{@product.id}','1','#{@product.title}','#{@product.price}')"}
+%h6 Отзывы
+
+.backcalls
+  - @product.backcalls.each do |backcall|
+    =render :partial => 'backcall', :locals=>{:backcall => backcall}
+
+.backcall_form
+  %h5.errors
+  =form_for 'backcall' , :url => backcalls_path, :html=> {:id =>'backcall_form'}  do |f|
+    =f.hidden_field :product, :value => @product.id
+    =f.text_area :message, :width=>'20', :rows => '10'
+    %br
+    #captcha_fields
+      =render :partial => 'captcha'
+    =f.submit 'Отправить'
