@@ -6,7 +6,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require application
+//= require product
+//= require shop_cart
+//= require user
+
 
 function setCookie (name, value, expires, path, domain, secure) {
       document.cookie = name + "=" + escape(value) +
