@@ -32,5 +32,6 @@ Autoshop::Application.routes.draw do
     resources :products, :companies , :groups, :users ,:admins
     resources :photos, :only => [:index, :destroy]
     resources :orders, :only => [:index,:show,:update,:edit]
+    resources :backcalls, :only => [:index, :destroy, :update]
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110908155459) do
+ActiveRecord::Schema.define(:version => 20110912085627) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20110908155459) do
     t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "checked",    :default => false
   end
 
   create_table "companies", :force => true do |t|
