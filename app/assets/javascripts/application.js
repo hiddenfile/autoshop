@@ -6,10 +6,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require application
-//= require product
-//= require shop_cart
-//= require user
+//= require application.js.coffee
+//= require product.js.coffee
+//= require shop_cart.js.coffee
+//= require user.js.coffee
 
 
 function setCookie (name, value, expires, path, domain, secure) {

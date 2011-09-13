@@ -17,7 +17,7 @@
             - (0..(@product.photos.length-1>2 ? 2 : @product.photos.length-1)).each do |index|
               %tr
                 %td{:class=>"small_picture"+index.to_s,:onmouseover=>"jQuery('.big_picture > img').attr('src', $(this).attr('scr'))", :onmouseout=>"jQuery('.big_picture > img').attr('src', $('small_picture0 > img').attr('scr'))"}
-                  = image_tag @product.photos[index].photo.url(:thumb)
+                  = image_tag @product.photos[index].photo.url(:medium)
       %td
 
         .add_to_cart_top
