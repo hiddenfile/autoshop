@@ -71,7 +71,6 @@
               =link_to('Выход',destroy_user_session_path)
               =link_to('Заказы',orders_path)
               %h6{:style =>"margin: 5px 0 0;"}
-
             - else
               %h6 Авторизация
               = form_for(:user, :as => 'user', :url => '/users/sign_in') do |f|
@@ -115,23 +114,23 @@
           .block.items
             %ul
               %li
-                %a{:href => "#"}
-                  %img{:alt => "", :height => "78", :src => "", :width => "78"}/
+                %a{:href => "javascript:void(0);"}
+                  -#%img{:alt => "", :height => "78", :src => "", :width => "78"}/
                 %p In Japanese products have found elevated levels of radiation
                 .more
-                  %a{:href => "#"} more
+                  -#%a{:href => "#"} more
               %li
                 %a{:href => "#"}
-                  %img{:alt => "", :height => "78", :src => "", :width => "78"}/
+                -#  %img{:alt => "", :height => "78", :src => "", :width => "78"}/
                 %p In Japanese products have found elevated levels of radiation
                 .more
-                  %a{:href => "#"} more
+                  -#%a{:href => "#"} more
               %li
                 %a{:href => "#"}
-                  %img{:alt => "", :height => "78", :src => "", :width => "78"}/
+                -#  %img{:alt => "", :height => "78", :src => "", :width => "78"}/
                 %p In Japanese products have found elevated levels of radiation
                 .more
-                  %a{:href => "#"} more
+                  -#%a{:href => "#"} more
           %h6 Popular News
           .block.sm-news
             %ul

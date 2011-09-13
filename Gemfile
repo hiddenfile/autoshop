@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+
+gem 'simple_captcha', :git => 'git://github.com/intale/simple-captcha.git'
 gem 'rails', '3.1.0.rc6'
 
 gem 'therubyracer', '= 0.8.2'
@@ -34,4 +36,5 @@ group :test, :development do
 end
 
   gem "autotest"
+
 end
