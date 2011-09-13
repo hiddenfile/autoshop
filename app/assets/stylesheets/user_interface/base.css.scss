@@ -233,14 +233,13 @@ input, select, textarea {
   height: 1%; }
 
 .leftmenu{
-  height: 40px;
+  height: 30px;
   width: 150px;
   margin: -40px 21px;
 
     .menu_fill{
       background: url("/assets/1px_menu.png") repeat-x transparent;
       height: 40px;
-      width: 122px;
       float:left;
 
     }
@@ -262,24 +261,21 @@ input, select, textarea {
 
     .leftlink {
       height: 40px;
-      width: 60px;
       font-weight: bold;
       color: #a9aaaa;
       cursor:pointer;
       color:#b0d323;
       float:left;
-      padding: 10px 0 0 0;
+      padding: 10px 8px 0 0;
     }
 
     .rightlink {
-      text-align:right;
       height: 40px;
-      width: 60px;
       font-weight: bold;
       color: #a9aaaa;
       cursor:pointer;
       float:right;
-      padding: 10px 0 0 0;
+      padding: 10px 0 0 8px;
     }
 }
 
@@ -292,7 +288,6 @@ input, select, textarea {
       .menu_fill{
       background: url("/assets/1px_menu.png") repeat-x transparent;
       height: 40px;
-      width: 265px;
       float:left;
 
     }
@@ -311,6 +306,27 @@ input, select, textarea {
       width: 11px;
       float:left;
     }
+
+
+    .h-menu {
+      text-align: center;
+      margin-left:-10px;
+      li {
+        display: inline-block;
+        height: 17px;
+        line-height: 17px;
+        padding: 0 5px;
+        margin: 8px 12px;
+          float:left; } }
+
+    *html .h-menu li, *+html .h-menu li {
+      display: inline;}
+
+    .h-menu a {
+      color: #ffffff;
+      text-decoration: none;
+      &:hover {
+        color: #b0d323; } }
 }
 
 .separator{
@@ -323,26 +339,7 @@ input, select, textarea {
 
 
 
-.h-menu {
-  text-align: center;
-  li {
-    display: inline-block;
-    height: 17px;
-    line-height: 17px;
-    padding: 0 5px;
-    margin: 8px 12px;
-      float:left; } }
 
-*html .h-menu li, *+html .h-menu li {
-  display: inline;
-
-}
-
-.h-menu a {
-  color: #ffffff;
-  text-decoration: none;
-  &:hover {
-    color: #b0d323; } }
 
 
 .category h6{
