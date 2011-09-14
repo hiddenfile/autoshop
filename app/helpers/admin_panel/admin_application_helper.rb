@@ -1,6 +1,6 @@
 module AdminPanel::AdminApplicationHelper
  def has_active_class?(href)
-    current_page?(href) ? {:class => "active"} : []
+   request.fullpath.start_with?(href) ? {:class => "active"} : []
  end
 
   def truncate_html(html)

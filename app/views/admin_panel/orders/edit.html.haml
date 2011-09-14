@@ -5,12 +5,12 @@
 
   -@order.order_items.each do |order_item|
     =fields_for order_item do |order_item_fields|
-      =order_item_fields.label order_item.product.title
-      =order_item_fields.text_field order_item.product.id,:value=>order_item.count
+      =order_item_fields.label order_item.product_name
+      =order_item_fields.text_field order_item.product_name,:value=>order_item.count
       =link_to_function 'Удалить', "removeOrderItem()"
       %br/
 
-  =link_to_function 'Добавить позицию',"addOrderItem()"
+  -#=link_to_function 'Добавить позицию',"addOrderItem()"
 
   =f.label :state
   =f.select "order_state", options_for_select(@order_states)
