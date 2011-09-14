@@ -26,7 +26,7 @@
         %p Company : #{@product.company.name}
         %p Group : #{@product.group.name}
         %p Title : #{@product.title}
-        %p Description : #{@product.description}
+        %p Description : #{raw (@product.description)}
       .add_to_cart_bottom
         %p #{@product.price.to_s}&nbsp&nbsp&nbsp&nbsp&nbsp#{link_to_function "Купить","addToCart('#{@product.id}','1','#{@product.title}','#{@product.price}')"}
   %h6 Отзывы
