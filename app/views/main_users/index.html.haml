@@ -9,4 +9,7 @@
         %p #{product.title}
         %p Цена : #{product.price}
         %p= link_to_function "Добавить в корзину","addToCart('#{product.id}','1','#{product.title}','#{product.price}')"
-
+.pagine
+  %div
+    = will_paginate @products
+    .clear
