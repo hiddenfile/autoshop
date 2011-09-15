@@ -13,8 +13,6 @@ Autoshop::Application.routes.draw do
     post 'search_by_products', :on => :member
   end
 
-  #resources :orders, :only => [:show,:index,:create, :destroy]
-  #resources :shop_carts,:except => [:new, :create, :index, :edit]
   resources :orders, :except => [:new, :update, :edit]
   resources :shop_carts,:only => [:update,:destroy,:show]
 
@@ -34,5 +32,6 @@ Autoshop::Application.routes.draw do
     resources :photos, :only => [:index, :destroy]
     resources :orders, :only => [:index,:show,:update,:edit]
     resources :backcalls, :only => [:index, :destroy, :update]
+    resources :order_items, :only => [:create, :update,:destroy]
   end
 end

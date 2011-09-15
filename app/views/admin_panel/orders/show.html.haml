@@ -1,17 +1,16 @@
-
-
-
 %table#tablecontent.table
   %tr
     %th.first Наименование
     %th Количество
-    %th.last Цена
+    %th Цена
+    %th.last Дисконт
 
   -@order.order_items.each do |order_item|
-    %tr
-      %td=order_item.product.title
+    %tr{:class => cycle("odd", "even")}
+      %td=order_item.product_name
       %td=order_item.count
-      %td=order_item.product.price
+      %td=order_item.product_price
+      %td=order_item.product_discount
 
   %tr
   %tr

@@ -3,5 +3,5 @@
   %th.last Содержание
 -backcalls.each do |backcall|
   %tr{:class => cycle("odd", "even")}
-    %td.title=backcall.product.title
+    %td.title=backcall.product.title #link_to backcall.product.title, company_group_products_path(backcall.product)
     %td.message=backcall.content

@@ -23,14 +23,18 @@ class OrdersController < ApplicationController
     @order = Order.new(:user_id=>current_user.id,:order_state=>"In process")
     build_order_items(@order)
 
-    if @order.save!
-      flash[:notice]="Order was added to queue"
-    else
-      flash[:error] ="Error in order save process"
-    end
+    if @order.order_items.length>0
+      if @order.save!
+        flash[:notice]="Order was added to queue"
+      else
+        flash[:error] ="Error in order save process"
+      end
 
-    CartMethods.clear_cart(cookies)
-    redirect_to orders_path
+      CartMethods.clear_cart(cookies)
+      redirect_to orders_path
+    else
+      redirect_to '/'
+    end
   end
 
   private
@@ -38,7 +42,9 @@ class OrdersController < ApplicationController
     items = CartMethods.get_items_list(cookies)
 
     items.each do |key,item|
-      order.order_items.build({:count => item['count'],:product_name=>item['title'],:product_price=>item['price'],:product_discount => current_user.discount.try(:value) })
+      if item['count'].to_i>0
+        order.order_items.build({:count => item['count'],:product_name=>item['title'],:product_price=>item['price'],:product_discount => current_user.discount.try(:value) })
+      end
     end
   end
 
