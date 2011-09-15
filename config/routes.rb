@@ -19,6 +19,7 @@ Autoshop::Application.routes.draw do
   resources :shop_carts,:only => [:update,:destroy,:show]
 
   resources :groups, :only => :show
+  resources :custom_views, :only => :index
 
   resources :companies, :only => :show do
     resources :groups, :only => :show do
