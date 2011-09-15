@@ -1,6 +1,6 @@
 module CartMethods
   def self.check_or_create_cookie(cookies)
-    unless cookies.has_key?(:cart_id)# and cookies.has_key?(:count) and cookies.has_key?(:price)
+    unless cookies_valid?(cookies)
       cookies[:cart_id] = { :value => Digest::MD5.hexdigest("#{Time.now} + #{Array.new(4){(65+rand(26)).chr}}"), :expires => 1.day.from_now }
       $redis.set(cookies[:cart_id],{})
       $redis.expire(cookies[:cart_id],1.day)
@@ -13,7 +13,7 @@ module CartMethods
   end
 
   def self.cookies_valid?(cookies)
-    if cookies.has_key?(:cart_id)
+    if cookies.has_key?(:cart_id) and $redis.get(cookies[:cart_id]+'q')
       cookies[:cart_id] =~ /^[a-f0-9]{32}$/
 
     #if cookies.has_key?(:cart_id) and cookies.has_key?(:count) and cookies.has_key?(:price)

@@ -1,0 +1,12 @@
+.secondary-navigation
+  %ul.wat-cf
+    %li
+      = link_to 'Список', admin_panel_backcalls_path
+
+%h2.title Отзывы
+
+%table#tablecontent.table
+  =render :partial=>'backcalls', :locals =>{:backcalls=> @backcalls, :state=>@state}
+
+=render :partial=>'paginate', :locals=>{:objects => @backcalls}
+

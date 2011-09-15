@@ -1,7 +1,7 @@
 %tr.sortheader
-  %th.first Товар
+  %th{:width=>"20%"} Товар
   %th.last Содержание
 -backcalls.each do |backcall|
   %tr{:class => cycle("odd", "even")}
-    %td.title=backcall.product.title #link_to backcall.product.title, company_group_products_path(backcall.product)
+    %td.title= link_to backcall.product.title, company_group_product_path(backcall.product.company,backcall.product.group,backcall.product)
     %td.message=backcall.content

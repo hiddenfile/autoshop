@@ -481,6 +481,16 @@ input, select, textarea {
     padding: 0 0 0 0;
     font-size: 8pt; } }
 
+.backcalls table ,tr ,th ,td{
+    background-color: #FFFFFF;
+    border: 1px solid #C3C3C3;
+    border-collapse: collapse;
+    cellspacing:0;
+    cellpadding:0;
+    padding:5px;
+
+}
+
 /* ----- footer styles ----- */
 
 .footer {
