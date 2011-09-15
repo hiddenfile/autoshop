@@ -10,6 +10,7 @@ class AdminPanel::OrdersController < AdminPanel::AdminApplicationController
 
   def edit
     @order_states = Order.order_states()
+    @products = Product.order('title asc').all
   end
 
   def update
