@@ -19,6 +19,7 @@ Autoshop::Application.routes.draw do
   resources :shop_carts,:only => [:update,:destroy,:show]
 
   resources :groups, :only => :show
+  resources :custom_views, :only => :index
 
   resources :companies, :only => :show do
     resources :groups, :only => :show do
@@ -29,7 +30,7 @@ Autoshop::Application.routes.draw do
   match '/admin_panel' => 'admin_panel/users#index', :as => 'admin_users'
 
   namespace :admin_panel do
-    resources :products, :companies , :groups, :users ,:admins
+    resources :products, :companies , :groups, :users ,:admins, :custom_views
     resources :photos, :only => [:index, :destroy]
     resources :orders, :only => [:index,:show,:update,:edit]
     resources :backcalls, :only => [:index, :destroy, :update]

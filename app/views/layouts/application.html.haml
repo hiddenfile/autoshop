@@ -39,10 +39,10 @@
             .h-menu
               %ul
                 %li
-                  %a{:href => "#"} Контакты
+                  %a{:href => "#{custom_views_path(:page_type=>"Контакты")}"} Контакты
                 .separator
                 %li
-                  %a{:href => "#"} FAQ
+                  %a{:href => "#{custom_views_path(:page_type=>"FAQ")}"} FAQ
                 .separator
                 %li
                   %a{:href => "#{backcalls_path}" } Отзывы
