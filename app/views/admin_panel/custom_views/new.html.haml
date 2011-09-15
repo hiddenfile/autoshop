@@ -1,0 +1,4 @@
+.pages
+  = form_for @page, {:url => admin_panel_custom_views_path } do |f|
+    =render :partial => 'form', :locals => {:f => f}
+    = f.submit 'Добавить'

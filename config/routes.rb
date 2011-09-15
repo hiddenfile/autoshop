@@ -1,6 +1,6 @@
 Autoshop::Application.routes.draw do
 
-  resources :backcalls, :only => [:create]
+  resources :backcalls, :only => [:create, :index]
 
   root :to => 'main_users#index'
 
@@ -12,8 +12,6 @@ Autoshop::Application.routes.draw do
   resources :searches, :except => [:new, :update, :create, :destroy, :index, :show, :edit] do
     post 'search_by_products', :on => :member
   end
-
-  match '/contacts' => 'contacts#index'
 
   #resources :orders, :only => [:show,:index,:create, :destroy]
   #resources :shop_carts,:except => [:new, :create, :index, :edit]
@@ -31,7 +29,7 @@ Autoshop::Application.routes.draw do
   match '/admin_panel' => 'admin_panel/users#index', :as => 'admin_users'
 
   namespace :admin_panel do
-    resources :products, :companies , :groups, :users ,:admins, :contacts
+    resources :products, :companies , :groups, :users ,:admins, :custom_views
     resources :photos, :only => [:index, :destroy]
     resources :orders, :only => [:index,:show,:update,:edit]
     resources :backcalls, :only => [:index, :destroy, :update]

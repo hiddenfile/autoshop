@@ -1,0 +1,3 @@
+class CustomViewsController < ApplicationController
+
+end

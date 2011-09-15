@@ -39,13 +39,13 @@
             .h-menu
               %ul
                 %li
-                  %a= link_to "Контакты", contacts_path
+                  %a{:href => "#"} Контакты
                 .separator
                 %li
                   %a{:href => "#"} FAQ
                 .separator
                 %li
-                  %a{:href => "#"} Отзывы
+                  %a{:href => "#{backcalls_path}" } Отзывы
             / h-menu end
           .menu_right
           .clear
