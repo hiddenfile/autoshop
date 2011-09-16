@@ -95,7 +95,7 @@ h7
 }
 
 #user_panel{
-  margin: 15px 0 50px;
+  margin: 17px 0 50px;
   min-height: 90px;
   padding-bottom: 20px;
 }
@@ -354,23 +354,16 @@ input, select, textarea {
   float:left;
 }
 
-
-
-
-
-
 .category h6{
   color: #b2d622;
 }
-
-
 
 .center {
   float:left;
   width:100%;}
 
 .centerprod{
-  margin:0 270px 0 200px;
+  margin:0 270px 0 208px;
 }
 
 .left {
@@ -416,6 +409,16 @@ input, select, textarea {
   text-shadow: 0 0 1px #999999;
   width:300px;
   padding-left: 20px;
+}
+
+.pages{
+    color: #36393d;
+    font-size: 22px;
+    margin: 8px 0 0 0;
+    font-family: Tahoma;
+    font-weight: bold;
+    text-shadow: 0 0 1px #999999;
+
 }
 
 .block {
@@ -477,6 +480,16 @@ input, select, textarea {
   h3 {
     padding: 0 0 0 0;
     font-size: 8pt; } }
+
+.backcalls table ,tr ,th ,td{
+    background-color: #FFFFFF;
+    border: 1px solid #C3C3C3;
+    border-collapse: collapse;
+    cellspacing:0;
+    cellpadding:0;
+    padding:5px;
+
+}
 
 /* ----- footer styles ----- */
 

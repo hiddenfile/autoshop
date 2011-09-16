@@ -1,0 +1,8 @@
+%h2.title Страничка #{@page.page_name}
+.pages
+  Контент странички :
+  .page_content
+    %p=raw @page.page_content
+  %p
+    = link_to 'Редактировать', edit_admin_panel_custom_view_path
+    = link_to 'Вернутся', admin_panel_custom_views_path

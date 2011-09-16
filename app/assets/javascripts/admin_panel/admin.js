@@ -4,4 +4,5 @@
 //= require admin_panel/photos
 //= require ckeditor/ckeditor
 //= require admin_panel/backcall.js
+//= require admin_panel/order.js
 

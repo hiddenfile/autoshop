@@ -1,0 +1,27 @@
+%div.secondary-navigation
+  %ul.wat-cf
+    %li
+      = link_to 'Перечень', admin_panel_custom_views_path
+    %li
+      = link_to 'Добавить', new_admin_panel_custom_view_path
+
+%h2.title Странички
+
+%table#tablecontent.table
+  %tr.sortheader
+    %th.first= sort_link @search, :page_name, "Имя странички"
+    %th= sort_link @search, :page_type, "Тип странички"
+    %th.last
+
+  - @pages.each do |page|
+    %tr{:class => cycle("odd", "even")}
+      %td=page.page_name
+      %td=page.page_type
+      %td.links_column
+        = link_to 'Перейти', admin_panel_custom_view_path(page)
+        = link_to 'Редактировать', edit_admin_panel_custom_view_path(page)
+        = link_to 'Удалить', admin_panel_custom_view_path(page.id), :confirm => 'Are you sure?', :method => :delete
+.pagine
+  %div
+    = will_paginate @pages
+    .clear

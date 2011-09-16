@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110912085627) do
+ActiveRecord::Schema.define(:version => 20110914132248) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -56,6 +56,14 @@ ActiveRecord::Schema.define(:version => 20110912085627) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "custom_views", :force => true do |t|
+    t.string   "page_type"
+    t.string   "page_name"
+    t.text     "page_content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -46,3 +46,5 @@
         .cart_control_links
           = link_to 'Оформить',orders_path,:method =>"post"
           = link_to 'Отменить',shop_cart_path(:id),:method => "delete"
+    -else
+      Корзина пуста...

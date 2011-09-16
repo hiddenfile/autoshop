@@ -1,7 +1,7 @@
 .centerprod
-  %h2.title Отзывы
-
-  %table#tablecontent.table
+  .pages Отзывы
+  %h6
+  %table.backcalls
     =render :partial=>'backcalls', :locals =>{:backcalls=> @backcalls, :state=>@state}
 
   =render :partial=>'paginate', :locals=>{:objects => @backcalls}
