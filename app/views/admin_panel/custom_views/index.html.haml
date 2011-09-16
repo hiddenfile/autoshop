@@ -9,11 +9,13 @@
 
 %table#tablecontent.table
   %tr.sortheader
-    %th.first= sort_link @search, :page_type, "Тип странички"
+    %th.first= sort_link @search, :page_name, "Имя странички"
+    %th= sort_link @search, :page_type, "Тип странички"
     %th.last
 
   - @pages.each do |page|
     %tr{:class => cycle("odd", "even")}
+      %td=page.page_name
       %td=page.page_type
       %td.links_column
         = link_to 'Перейти', admin_panel_custom_view_path(page)

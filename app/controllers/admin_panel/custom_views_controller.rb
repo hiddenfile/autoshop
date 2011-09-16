@@ -11,13 +11,25 @@ class AdminPanel::CustomViewsController < AdminPanel::AdminApplicationController
   end
 
   def update
-    @page.update_attributes(params[:custom_views])
-    if @page.save
-      flash[:notice] = "Page successfully updated"
-      redirect_to admin_panel_custom_views_path(@pages)
+    if (params[:custom_views][:page_type]=='static')
+      @page.update_attributes(params[:custom_views])
+      File.open("#{Rails.root}/app/views/staticpages/"+params[:custom_views][:page_name]+".html", 'w') {|file| file.write (params[:custom_views][:page_content]).to_s }
+      if @page.save
+        flash[:notice] = "Page successfully updated"
+        redirect_to admin_panel_custom_views_path(@pages)
+      else
+        flash[:error] = "Some ERROR here, perhaps you're doing something wrong )"
+        render :action => :edit
+      end
     else
-      flash[:error] = "Some ERROR here, perhaps you're doing something wrong )"
-      render :action => :edit
+      @page.update_attributes(params[:custom_views])
+      if @page.save
+        flash[:notice] = "Page successfully updated"
+        redirect_to admin_panel_custom_views_path(@pages)
+      else
+        flash[:error] = "Some ERROR here, perhaps you're doing something wrong )"
+        render :action => :edit
+      end
     end
   end
 
@@ -30,19 +42,28 @@ class AdminPanel::CustomViewsController < AdminPanel::AdminApplicationController
   end
 
   def create
-    @page = CustomViews.new(params[:custom_views])
-    if @page.save
-      flash[:notice] = "Page successfully saved"
-      redirect_to admin_panel_custom_views_path(@pages)
+    if (params[:custom_views][:page_type]=='static')
+      File.open("#{Rails.root}/app/views/staticpages/"+params[:custom_views][:page_name]+".html", 'w') {|file| file.write (params[:custom_views][:page_content]).to_s }
+      @page = CustomViews.new(params[:custom_views])
+      if @page.save
+        redirect_to admin_panel_custom_views_path(@pages), :notice => "Page successfully saved"
+      else
+        render :action => :new, :error => "Some ERROR here, perhaps you're doing something wrong )"
+      end
     else
-      flash[:error] = "Some ERROR here, perhaps you're doing something wrong )"
-      render :action => :new
+      @page = CustomViews.new(params[:custom_views])
+      if @page.save
+        redirect_to admin_panel_custom_views_path(@pages), :notice => "Page successfully saved"
+      else
+        render :action => :new, :error => "Some ERROR here, perhaps you're doing something wrong )"
+      end
     end
   end
 
   def destroy
+    File.delete("#{Rails.root}/app/views/staticpages/"+@page.page_name+".html") if File.exist?("#{Rails.root}/app/views/staticpages/"+@page.page_name+".html")
     @page.destroy
-    redirect_to admin_panel_custom_views_path, :notice => 'Product was successfully deleted.'
+    redirect_to admin_panel_custom_views_path, :notice => 'Page was successfully deleted.'
   end
 
   private

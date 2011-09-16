@@ -1,4 +1,12 @@
 .pages
   = form_for @page, {:url => admin_panel_custom_views_path } do |f|
     =render :partial => 'form', :locals => {:f => f}
+    %p
+      = f.label 'Статическая страничка'
+      = f.radio_button(:page_type, 'static', :checked=>true)
+      %br
+      = f.label 'Обычная страничка'
+      = f.radio_button(:page_type, 'base')
+
     = f.submit 'Добавить'
+
