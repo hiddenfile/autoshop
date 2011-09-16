@@ -39,10 +39,10 @@
             .h-menu
               %ul
                 %li
-                  %a{:href => "#"} Контакты
+                  %a{:href => "#{custom_views_path(:page_name=>"Контакты")}"} Контакты
                 .separator
                 %li
-                  %a{:href => "#"} FAQ
+                  %a{:href => "#{custom_views_path(:page_name=>"FAQ")}"} FAQ
                 .separator
                 %li
                   %a{:href => "#{backcalls_path}" } Отзывы
@@ -106,7 +106,7 @@
 
 
             .cart_control_links
-              = link_to 'Оформить',orders_path,:method =>"post"
+              = link_to 'Ваш заказ',shop_cart_path(:id)
               = link_to 'Отменить',shop_cart_path(:id),:method => "delete"
 
 

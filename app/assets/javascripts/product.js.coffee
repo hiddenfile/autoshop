@@ -5,9 +5,10 @@
   $.ajax
     type: "PUT"
     url: "/shop_carts/"+product_id
-    data: ({'title' : title, 'price' : price})
+    data: ({'title' : title, 'price' : price, 'inc' : inc })
     success: (response) ->
-      procResultChange(product_id,inc,price,response);
+      if (response=='true')
+        procResultChange(product_id,inc,price,response);
       return false;
 
 @deleteCartItem = (product_id) ->
@@ -16,7 +17,7 @@
     url: "/shop_carts/"+product_id
     data: ({'delete_item' : '1'})
     success: (response) ->
-      if response=="true"
+      if (response=="true")
         procResultDel(product_id);
       return false;
 
@@ -41,8 +42,7 @@
 
 
 
-@procResultChange = (tr_id,inc,price,res) ->
-
+@procResultChange = (tr_id,inc,price) ->
   tr_id = '#order_items_row'+tr_id;
   inc = parseFloat(inc)
   price=parseFloat(price)
@@ -56,5 +56,4 @@
 
   count = fVal('#order_pos_count')+inc;
   $('#order_pos_count').html(""+count);
-
   $('#order_common_price').html(n_price.toFixed(1));
