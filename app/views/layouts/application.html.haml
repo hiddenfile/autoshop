@@ -38,13 +38,13 @@
             / h-menu start
             .h-menu
               %ul
-                %li
+                %li{has_active_class?(custom_views_path(:page_name=>"Контакты"))}
                   %a{:href => "#{custom_views_path(:page_name=>"Контакты")}"} Контакты
                 .separator
-                %li
+                %li{has_active_class?(custom_views_path(:page_name=>"FAQ"))}
                   %a{:href => "#{custom_views_path(:page_name=>"FAQ")}"} FAQ
                 .separator
-                %li
+                %li{has_active_class?(backcalls_path)}
                   %a{:href => "#{backcalls_path}" } Отзывы
             / h-menu end
           .menu_right
