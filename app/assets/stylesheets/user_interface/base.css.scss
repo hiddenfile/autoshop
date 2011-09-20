@@ -210,7 +210,7 @@ input, select, textarea {
   font-size: 18pt;
   font-weight: bold;
   &:hover {
-    color: #dcb4b4; } }
+    color: #b0d323; } }
 
 /* ----- h-search ----- */
 
@@ -328,22 +328,26 @@ input, select, textarea {
     .h-menu {
       text-align: center;
       margin-left:-10px;
-      li {
-        display: inline-block;
-        height: 17px;
-        line-height: 17px;
-        padding: 0 5px;
-        margin: 8px 12px;
-          float:left; } }
+        li {
+          display: inline-block;
+          height: 17px;
+          line-height: 17px;
+          padding: 0 5px;
+          margin: 8px 12px;
+          float:left;
+            a {
+            color: #ffffff;
+            text-decoration: none;
+              &:hover{
+              color: #C3C3C3;} }
+            }
 
-    *html .h-menu li, *+html .h-menu li {
-      display: inline;}
+    }
 
-    .h-menu a {
-      color: #ffffff;
-      text-decoration: none;
-      &:hover {
-        color: #b0d323; } }
+    .h-menu ul li.active a {
+      &:link, &:visited, &:hover, &:active {
+       color: #b0d323; } }
+
 }
 
 .separator{
