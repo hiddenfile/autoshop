@@ -1,16 +1,11 @@
-
-
-
 =form_for @order do |f|
+  .order_items
+    -@order.order_items.each do |order_item|
+      = render :partial => 'order_item', :locals => {:order_item => order_item}
 
-  -@order.order_items.each do |order_item|
-    =fields_for order_item do |order_item_fields|
-      =order_item_fields.label order_item.product.title
-      =order_item_fields.text_field order_item.product.id,:value=>order_item.count
-      =link_to_function 'Удалить', "removeOrderItem()"
-      %br/
-
-  =link_to_function 'Добавить позицию',"addOrderItem()"
-
+  %br
+  =select_tag 'products',options_from_collection_for_select(@products, "id", "title")
+  =link_to_function 'Добавить позицию',"addOrderItem('#{@order.id}')"
+  %br
   =f.label :state
   =f.select "order_state", options_for_select(@order_states)

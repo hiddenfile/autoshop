@@ -24,7 +24,6 @@ class ShopCartsController < ApplicationController
 
   def check_cookies_valid
     redirect_to root_path if !CartMethods.cookies_valid?(cookies)
-
   end
 
 end
