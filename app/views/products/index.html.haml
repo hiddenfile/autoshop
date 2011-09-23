@@ -16,7 +16,7 @@
 
     - @products.each do |product|
       %tr{:id => "item_row#{product.id}"}
-        %td.offset=image_tag product.photos.first.photo.url(:medium)
+        %td.offset=image_tag product.photos.first.photo.url(:thumb)
         %td.offset.item_row_name=link_to product.title,company_group_product_path(@company,@group,product)
         %td.offset.item_row_price= !product.price ? 0 : product.price.to_s
         %td.offset=link_to_function "Добавить в корзину","addToCart('#{product.id}','1','#{product.title}','#{product.price}')"

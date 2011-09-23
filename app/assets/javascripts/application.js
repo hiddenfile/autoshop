@@ -11,3 +11,5 @@
 //= require shop_cart.js.coffee
 //= require user.js.coffee
 //= require backcalls.js
+//= require jquery.slideViewerPro.1.5.js
+//= require gallery.js
