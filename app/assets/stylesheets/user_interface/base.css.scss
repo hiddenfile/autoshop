@@ -383,8 +383,8 @@ input, select, textarea {
   margin-left: -235px; }
 
 .img_center{
-  width:180px;
-  height:180px;
+  width:auto;
+  height:auto;
   margin:20px 0 0 20px;
   padding:10px;
   border: 1px dotted #999;
@@ -485,13 +485,14 @@ input, select, textarea {
     padding: 0 0 0 0;
     font-size: 8pt; } }
 
-.backcalls table ,tr ,th ,td{
+.backcalls{
+    table ,tr ,th ,td{
     background-color: #FFFFFF;
     border: 1px solid #C3C3C3;
     border-collapse: collapse;
     cellspacing:0;
     cellpadding:0;
-    padding:5px;
+    padding:5px;}
 
 }
 
