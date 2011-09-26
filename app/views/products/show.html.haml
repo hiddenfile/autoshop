@@ -10,7 +10,7 @@
       %ul
         -@product.photos.each do |p|
           %li
-            = image_tag (p.photo.url(:medium))
+            = image_tag p.photo.url(:medium) if p.photo
 
   #description_box
     .buy_box

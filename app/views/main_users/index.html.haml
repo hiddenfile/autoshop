@@ -4,7 +4,7 @@
   - @products.each do |product|
     .newprod_center
       .img
-        = link_to (image_tag product.photos.first.photo.url(:medium)), product
+        = link_to (image_tag product.photos.first.photo.url(:thumb)), company_group_product_path(product.company,product.group,product) if product.photos.first
       .prodinfo
         %p #{product.title}
         %p Цена : #{product.price}
