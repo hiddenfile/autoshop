@@ -47,12 +47,3 @@ $(window).bind("load", function() {
 		thumbsBorderOpacity: 0
 		});
 		});
-
-$(function(){
-	/**
-	I've seen many slideViewerPro users adding these lines too.
-	They're only needed to highlight the syntax within this page,
-	it's NOT part of the slideViewerPro plugin!
-	*/
-	$.syntax({root: 'http://www.gcmingati.net/wordpress/wp-content/themes/giancarlo-mingati/js/jquery-syntax/'});
-});

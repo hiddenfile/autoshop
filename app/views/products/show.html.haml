@@ -6,11 +6,15 @@
     >>#{@product.title}
 
   #photo_box
-    #flickit.svwp4
-      %ul
-        -@product.photos.each do |p|
-          %li
-            = image_tag p.photo.url(:medium) if p.photo
+    -if @product.photos.empty?
+      #noimage
+        = (image_tag ('/assets/noimage.png'))
+    -else
+      #flickit.svwp4
+        %ul
+          -@product.photos.each do |p|
+            %li
+              = (image_tag p.photo.url(:medium))
 
   #description_box
     .buy_box

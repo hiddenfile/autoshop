@@ -1,4 +1,4 @@
 .centerprod
   - @group.companies.sort{|a,b| a.name<=>b.name}.each do |company|
     .img_center
-      = link_to (image_tag company.photos.first.photo.url(:thumb)), company_group_products_path(company,@group) if company.photos.first
+      = link_to (company.photos.first ? (image_tag company.photos.first.photo.url(:thumb)) : (image_tag ('/assets/noimage.png'))), company_group_products_path(company,@group) if company.photos.first
