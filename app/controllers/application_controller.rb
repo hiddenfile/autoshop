@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
 
   protected
   def main_menu
-    @groups = Group.includes(:companies)
-    @companies = Company.includes(:groups)
+    @groups = Group.includes(:companies).order('name')
+    @companies = Company.includes(:groups).order('name')
   end
 
   def authcookie
