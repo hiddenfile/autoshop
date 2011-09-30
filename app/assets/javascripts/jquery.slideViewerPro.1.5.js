@@ -186,33 +186,7 @@ jQuery.fn.slideViewerPro = function(settings) {
             authorityMixing();
 
             if (settings.autoslide) {
-                var i = 1;
 
-                jQuery("div#thumbSlider" + j).everyTime(settings.asTimer, "asld", function() {
-                    jQuery(this).find("a").eq(i).trigger("click");
-                    if (i == 0) {
-                        pos = 0;
-                        l_enabled = false;
-                        jQuery("div#thumbSlider" + j).find("ul:not(:animated)").animate({ left: -(thumbsWidth + settings.thumbsRightMargin) * pos}, 500, settings.easeFunc, function() {
-                            authorityMixing();
-                        });
-                    }
-                    else l_enabled = true;
-
-                    (i % settings.thumbs == 0) ? jQuery(this).next().next().trigger("click") : null;
-                    (i < pictEls - 1) ? i++ : i = 0;
-                });
-
-                //stops autoslidemode
-                jQuery("a#right" + j).bind("mouseup", function() {
-                    jQuery(this).prev().prev().stopTime("asld");
-                });
-                jQuery("a#left" + j).bind("mouseup", function() {
-                    jQuery(this).prev().stopTime("asld");
-                });
-                jQuery("div#thumbSlider" + j + " a").bind("mouseup", function() {
-                    jQuery(this).parent().parent().parent().stopTime("asld");
-                });
             }
             var uiDisplay = (settings.thumbsVis) ? "block" : "none";
             jQuery("div#thumbSlider" + j + ", a#left" + j + ", a#right" + j).wrapAll("<div style='width:" + pictWidth + "px; display: " + uiDisplay + "' id='ui" + j + "'><\/div>");
