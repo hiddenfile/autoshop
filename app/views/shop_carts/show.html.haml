@@ -42,7 +42,6 @@
           %td.off#order_common_price=price.to_s
 
       %br
-      -if user_signed_in?
         .cart_control_links
           = link_to 'Оформить',orders_path,:method =>"post"
           = link_to 'Отменить',shop_cart_path(:id),:method => "delete"
