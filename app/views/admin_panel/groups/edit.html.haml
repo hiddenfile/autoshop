@@ -1,3 +1,5 @@
+=render :partial => 'head', :locals => {:title => 'Редактирование категории'}
+
 = form_for @group, :url => admin_panel_group_path, :html => {:multipart => true}  do |f|
   =render :partial => 'form', :locals => {:f => f}
   = f.submit 'Добавить'

@@ -2,6 +2,7 @@
 
 .pages
   = form_for @page, {:url => admin_panel_custom_view_path } do |f|
+    =render :partial => 'shared/errors', :locals => {:object => @page}
     =render :partial => 'form', :locals => {:f => f}
     %p
       = f.label 'Статическая страничка'
