@@ -1,5 +1,7 @@
 class AdminPanel::AdminsController < AdminPanel::AdminApplicationController
 
+  before_filter :find_admin, :only => [:show, :destroy]
+
   def index
     @search = Admin.search(params[:search] || {"meta_sort" => "id.asc"})
     @admins = @search.paginate(:page => params[:page], :per_page => 10)
@@ -12,21 +14,24 @@ class AdminPanel::AdminsController < AdminPanel::AdminApplicationController
   def create
        @admin = Admin.new(params[:admin])
        if @admin.save
-           flash[:notice] = "Successful created"
-             redirect_to admin_panel_admins_path
+          redirect_to(admin_panel_admins_path, :notice => "Successful created")
        else
-         flash[:error] = "Error. Can not save."
          render :action => :new
        end
   end
 
   def show
-    @admin = Admin.find(params[:id])
   end
 
   def destroy
-    Admin.find_by_id(params[:id]).try(:destroy)
+    @admin.try(:destroy)
     redirect_to(admin_panel_admins_path, :notice => 'Admin was successfully deleted.')
+  end
+
+  protected
+
+  def find_admin
+    @admin = Admin.find(params[:id])
   end
 
 end

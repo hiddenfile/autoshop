@@ -3,8 +3,8 @@ class AdminPanel::BackcallsController < AdminPanel::AdminApplicationController
 
   def index
     @state=params['backcalls_type'] || "all"
-    @backcalls = @state=="all" ?  Backcall.includes(:product).order('product_id asc') : Backcall.includes(:product).where("checked=?",@state=="checked")
-    @backcalls=@backcalls.paginate(:page => params[:page], :per_page => 20)
+    @backcalls = @state == "all" ?  Backcall.includes(:product).order('product_id asc') : Backcall.includes(:product).where(:checked => (@state=="checked"))
+    @backcalls = @backcalls.paginate(:page => params[:page], :per_page => 20)
     render :json => {:table => render_to_string(:partial => 'backcalls',:locals=>{:backcalls=>@backcalls, :state=>@state}), :paginate => render_to_string(:partial=>'paginate',:locals=>{:objects=>@backcalls})} if request.xhr?
   end
 
