@@ -1,10 +1,11 @@
-%h2.title Страничка #{@page.page_name}
+=render :partial => 'head', :locals => {:title => "Редактирование статической страницы #{@page.page_name}"}
+
 .pages
   = form_for @page, {:url => admin_panel_custom_view_path } do |f|
     =render :partial => 'form', :locals => {:f => f}
     %p
       = f.label 'Статическая страничка'
-      = f.radio_button(:page_type, 'static', :checked=>true)
+      = f.radio_button(:page_type, 'static', :checked => true)
       %br
       = f.label 'Обычная страничка'
       = f.radio_button(:page_type, 'base')

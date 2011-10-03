@@ -1,5 +1,6 @@
 class AdminPanel::CustomViewsController < AdminPanel::AdminApplicationController
   before_filter :find_pages, :only => [:update, :show, :edit, :destroy]
+  before_filter :build_path, :only => [:update, :create, :destroy]
 
   def index
     @search = CustomViews.search(params[:search] || {"meta_sort" => "id.asc"})
@@ -7,68 +8,49 @@ class AdminPanel::CustomViewsController < AdminPanel::AdminApplicationController
   end
 
   def edit
-    @page = CustomViews.find(params[:id])
   end
 
   def update
-    if (params[:custom_views][:page_type]=='static')
-      @page.update_attributes(params[:custom_views])
-      File.open("#{Rails.root}/app/views/staticpages/"+params[:custom_views][:page_name]+".html", 'w') {|file| file.write (params[:custom_views][:page_content]).to_s }
-      if @page.save
-        flash[:notice] = "Page successfully updated"
-        redirect_to admin_panel_custom_views_path(@pages)
-      else
-        flash[:error] = "Some ERROR here, perhaps you're doing something wrong )"
-        render :action => :edit
-      end
+    File.open(@template_path, 'w') {|file| file.write (params[:custom_views][:page_content]) } if params[:custom_views][:page_type] == 'static'
+    if @page.update_attributes(params[:custom_views])
+      redirect_to admin_panel_custom_views_path(@pages), :notice => "Page successfully updated"
     else
-      @page.update_attributes(params[:custom_views])
-      if @page.save
-        flash[:notice] = "Page successfully updated"
-        redirect_to admin_panel_custom_views_path(@pages)
-      else
-        flash[:error] = "Some ERROR here, perhaps you're doing something wrong )"
-        render :action => :edit
-      end
+      render :action => :edit
     end
   end
 
   def show
-    @page = CustomViews.find(params[:id])
   end
 
   def new
-    @page= CustomViews.new
+    @page = CustomViews.new
   end
 
   def create
-    if (params[:custom_views][:page_type]=='static')
-      File.open("#{Rails.root}/app/views/staticpages/"+params[:custom_views][:page_name]+".html", 'w') {|file| file.write (params[:custom_views][:page_content]).to_s }
-      @page = CustomViews.new(params[:custom_views])
-      if @page.save
-        redirect_to admin_panel_custom_views_path(@pages), :notice => "Page successfully saved"
-      else
-        render :action => :new, :error => "Some ERROR here, perhaps you're doing something wrong )"
-      end
+    File.open(@template_path, 'w') {|file| file.write (params[:custom_views][:page_content]) } if (params[:custom_views][:page_type] == 'static')
+    @page = CustomViews.new(params[:custom_views])
+    if @page.save
+      redirect_to admin_panel_custom_views_path, :notice => "Page successfully saved"
     else
-      @page = CustomViews.new(params[:custom_views])
-      if @page.save
-        redirect_to admin_panel_custom_views_path(@pages), :notice => "Page successfully saved"
-      else
-        render :action => :new, :error => "Some ERROR here, perhaps you're doing something wrong )"
-      end
+      render :action => :new
     end
   end
 
   def destroy
-    File.delete("#{Rails.root}/app/views/staticpages/"+@page.page_name+".html") if File.exist?("#{Rails.root}/app/views/staticpages/"+@page.page_name+".html")
+    File.delete(@template_path) if File.exist?(@template_path)
     @page.destroy
     redirect_to admin_panel_custom_views_path, :notice => 'Page was successfully deleted.'
   end
 
   private
 
+  def build_path
+    part = params.has_key?('custom_views') ? params[:custom_views][:page_name] : @page.page_name
+    @template_path = "#{Rails.root}/app/views/staticpages/"+part+".html"
+  end
+
   def find_pages
     @page = CustomViews.find(params[:id])
+    redirect_to(admin_panel_custom_views_path, :error => 'Item not found') unless @page
   end
 end
