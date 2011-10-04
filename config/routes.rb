@@ -1,15 +1,15 @@
 Autoshop::Application.routes.draw do
 
-  resources :backcalls, :only => [:create, :index]
-
   root :to => 'main_users#index'
+
+  resources :backcalls, :only => [:create, :index]
 
   devise_for :admins, :controllers => { :sessions => "sessions" }
   devise_for :users, :controllers => { :sessions => "sessions" }
 
   resources :products
 
-  resources :searches, :except => [:new, :update, :create, :destroy, :index, :show, :edit] do
+  resources :searches, :only => [] do
     post 'search_by_products', :on => :member
   end
 

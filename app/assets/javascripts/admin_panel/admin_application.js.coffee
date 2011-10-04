@@ -11,5 +11,5 @@ true
     url: path
     data: ({'authenticity_token': auth})
     success: (response) ->
-      if response == "true"
+      if (response.state == true)
         elem.parent("p:first").remove();
