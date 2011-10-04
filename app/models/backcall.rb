@@ -3,5 +3,6 @@ class Backcall < ActiveRecord::Base
 
   belongs_to :product
 
-  validates_presence_of :content, :author, :product_id
+  validates :content, :author, :presence => true
+  validates :product_id, :presence => true, :numericality => true
 end

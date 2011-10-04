@@ -10,7 +10,7 @@ Autoshop::Application.routes.draw do
   resources :products
 
   resources :searches, :only => [] do
-    post 'search_by_products', :on => :member
+    post 'search_by_products', :on => :collection
   end
 
   resources :orders, :except => [:new, :update, :edit]

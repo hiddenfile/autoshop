@@ -15,9 +15,6 @@ module CartMethods
   def self.cookies_valid?(cookies)
     if cookies.has_key?(:cart_id) and $redis.get(cookies[:cart_id]+'q')
       cookies[:cart_id] =~ /^[a-f0-9]{32}$/
-
-    #if cookies.has_key?(:cart_id) and cookies.has_key?(:count) and cookies.has_key?(:price)
-    #  cookies[:cart_id] =~ /^[a-f0-9]{32}$/ and cookies[:count].to_i.to_s==cookies[:count]
     end
   end
 

@@ -29,11 +29,11 @@
             %td.off.sum_price_of_order_item
               =curr_price.to_s
             %td.off
-              =link_to_function "+","addToCart('#{key}','1','#{title}','#{curr_ed_price}')"
+              =link_to_function "+","addToCart('#{key}','1','#{title}','#{curr_ed_price}','#{form_authenticity_token}')"
             %td.off
-              =link_to_function "-","addToCart('#{key}','-1','#{title}','#{curr_ed_price}')"
+              =link_to_function "-","addToCart('#{key}','-1','#{title}','#{curr_ed_price}','#{form_authenticity_token}')"
             %td.off
-              =link_to_function "x","deleteCartItem('#{key}')"
+              =link_to_function "x","deleteCartItem('#{key}','#{form_authenticity_token}')"
         %tr.up_border
           %td.off
             Всего :
