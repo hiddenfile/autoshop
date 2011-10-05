@@ -59,14 +59,14 @@ function checkValue(elem)
     return true;
 }
 
-function changeState(id, new_state)
+function changeState(id, new_state, auth)
 {
     $.ajax({
-    type: "PUT",
+    type: "POST",
     url: "/admin_panel/orders/" + id,
-    data: {'order_attr' : {'order_state' : new_state}},
+    data: {'order_attr' : {'order_state' : new_state}, 'authenticity_token': auth, '_method' : 'PUT'},
     success: function(response)
-    {   if (response == true) {
+    {   if (response) {
 
         }
     }
@@ -74,14 +74,14 @@ function changeState(id, new_state)
     return false;
 }
 
-function changeItemCount(id, count)
+function changeItemCount(id, count, auth)
 {
     $.ajax({
-    type: "PUT",
+    type: "POST",
     url: "/admin_panel/order_items/" + id,
-    data: {'order_item' : {'count' : count}},
+    data: {'order_attr' : {'count' : count}, 'authenticity_token': auth, '_method' : 'PUT'},
     success: function(response)
-    {   if (response.state == true) {
+    {   if (response.state) {
             jQuery('#order_summary').html(response.summary);
         }
     }

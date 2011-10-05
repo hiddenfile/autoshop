@@ -6,12 +6,18 @@ class AdminPanel::OrderItemsController < AdminPanel::AdminApplicationController
     @item = OrderItem.where(:product_name => product.title, :order_id => params[:order_id]).first
     unless @item
       @item=OrderItem.new(:order_id=> params[:order_id],:product_name => product.title,:product_price => product.price, :count => 1)
-      render :json => {:state => 'add', :summary => @item.order.summary, :content => render_to_string(:partial => 'admin_panel/orders/order_item', :locals => {:order_item => @item})} if @item.save
+      if @item.save
+        render :json => {:state => 'add', :summary => @item.order.summary, :content => render_to_string(:partial => 'admin_panel/orders/order_item', :locals => {:order_item => @item})}
+      else
+        render :json => {:state => 'null'}
+      end
     else
-      render :json => ({:state => 'update', :summary => @item.order.summary, :updated_id => table_item_id(@item) ,:count => @item.count}) if @item.update_attribute('count',@item.count+1)
+      if @item.update_attribute('count',@item.count + 1)
+        render :json => ({:state => 'update', :summary => @item.order.summary, :updated_id => table_item_id(@item) ,:count => @item.count})
+      else
+        render :json => {:state => 'null'}
+      end
     end
-
-    render :json => {:state => 'null'}
   end
 
   def destroy
