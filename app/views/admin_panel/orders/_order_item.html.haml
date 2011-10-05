@@ -1,6 +1,10 @@
-.order_item{:class => cycle("odd", "even")}
+%tr{:class => table_item_id(order_item)+" #{cycle("odd", "even")}" }
   =fields_for order_item do |order_item_fields|
-    =order_item_fields.label order_item.product_name
-    =order_item_fields.text_field order_item.id,:value=>order_item.count
-    =link_to_function 'Удалить', "removeOrderItem('#{order_item.id}', this)"
-    %br/
+    %td
+      =order_item_fields.label order_item.product_name
+    %td
+      =order_item_fields.text_field order_item.id,:value=>order_item.count, :onkeyup => "checkValue(this);", :onchange => "if (checkValue(this)) changeItemCount('#{order_item.id}',$(this).attr('value'),'#{form_authenticity_token}');"
+    %td
+      =order_item_fields.label order_item.product_price
+    %td
+      =link_to_function 'Удалить', "removeOrderItem('#{order_item.id}', this)"
