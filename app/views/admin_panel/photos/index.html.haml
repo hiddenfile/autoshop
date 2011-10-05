@@ -16,7 +16,7 @@
     %br
     = p.entity_type + ": "+(p.entity_type=="Product" ? p.entity.title : p.entity.name)
     %br
-    = link_to_function 'Удалить', "deletePhoto($(this),'#{admin_panel_photo_path(p)}','#{form_authenticity_token}')"
+    = link_to_function 'Удалить', "deletePhoto($(this),'#{admin_panel_photo_path(p)}')"
 %div{:style=>"clear:both;height:0px"}
 .pagine
   %div

@@ -5,11 +5,11 @@ photo_index = 0
   $($(".photo_fields > input:first").clone().attr("name", "photos[" + photo_index + "][photo]").val("")).appendTo ".photo_fields"
 true
 
-@deletePhoto = (elem, path, auth) ->
+@deletePhoto = (elem, path) ->
   $.ajax
-    type: "DELETE"
+    type: "POST"
     url: path
-    data: ({'authenticity_token': auth})
+    data: ({'_method': 'DELETE', 'authenticity_token' : $("meta[name='csrf-token']").attr('content')})
     success: (response) ->
-      if (response.state == true)
+      if (response.state)
         elem.parent("p:first").remove();

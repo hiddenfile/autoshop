@@ -1,10 +1,11 @@
 function removeOrderItem(id, elem)
 {
     $.ajax({
-    type: "DELETE",
+    type: "POST",
     url: "/admin_panel/order_items/" + id,
+    data: {'_method' : 'DELETE', 'authenticity_token' : $("meta[name='csrf-token']").attr('content')},
     success: function(response)
-    {   if (response.state == true) {
+    {   if (response.state) {
             jQuery(elem).parent().parent().remove();
             jQuery('#order_summary').html(response.summary);
         }
@@ -59,12 +60,12 @@ function checkValue(elem)
     return true;
 }
 
-function changeState(id, new_state, auth)
+function changeState(id, new_state)
 {
     $.ajax({
     type: "POST",
     url: "/admin_panel/orders/" + id,
-    data: {'order_attr' : {'order_state' : new_state}, 'authenticity_token': auth, '_method' : 'PUT'},
+    data: {'order_attr' : {'order_state' : new_state}, 'authenticity_token' : $("meta[name='csrf-token']").attr('content'), '_method' : 'PUT'},
     success: function(response)
     {   if (response) {
 
@@ -74,12 +75,12 @@ function changeState(id, new_state, auth)
     return false;
 }
 
-function changeItemCount(id, count, auth)
+function changeItemCount(id, count)
 {
     $.ajax({
     type: "POST",
     url: "/admin_panel/order_items/" + id,
-    data: {'order_item' : {'count' : count}, 'authenticity_token': auth, '_method' : 'PUT'},
+    data: {'order_item' : {'count' : count}, 'authenticity_token' : $("meta[name='csrf-token']").attr('content'), '_method' : 'PUT'},
     success: function(response)
     {   if (response.state) {
             jQuery('#order_summary').html(response.summary);

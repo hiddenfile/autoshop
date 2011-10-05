@@ -1,21 +1,21 @@
 @fVal = (id) ->
   return parseFloat($(id).html());
 
-@addToCart = (product_id, inc, title, price, auth) ->
+@addToCart = (product_id, inc, title, price) ->
   $.ajax
     type: "POST"
     url: "/shop_carts/" + product_id
-    data: ({'title' : title, 'price' : price, 'inc' : inc, 'authenticity_token': auth, '_method' : 'PUT' })
+    data: ({'title' : title, 'price' : price, 'inc' : inc, 'authenticity_token' : $("meta[name='csrf-token']").attr('content'), '_method' : 'PUT' })
     success: (response) ->
       if (response.state)
         procResultChange(product_id,inc,price,response);
       return false;
 
-@deleteCartItem = (product_id, auth) ->
+@deleteCartItem = (product_id) ->
   $.ajax
     type: "POST"
     url: "/shop_carts/" + product_id
-    data: ({'delete_item' : '1', 'authenticity_token': auth, '_method' : 'PUT'})
+    data: ({'delete_item' : '1', 'authenticity_token' : $("meta[name='csrf-token']").attr('content'), '_method' : 'PUT'})
     success: (response) ->
       if (response.state)
         procResultDel(product_id);
