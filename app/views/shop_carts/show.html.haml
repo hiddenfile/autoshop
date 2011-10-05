@@ -17,7 +17,6 @@
           - curr_ed_price = item['price'].to_f
           - curr_price = curr_ed_price*item['count'].to_i
           - price=price+curr_price
-
           - title = item['title']
           %tr{:id => "order_items_row#{key}", :class => "order_items_row"}
             %td.off
