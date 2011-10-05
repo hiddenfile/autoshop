@@ -38,7 +38,7 @@ class AdminPanel::OrderItemsController < AdminPanel::AdminApplicationController
     def find_item
       @item = OrderItem.find_by_id(params[:id])
       unless @item
-        redirect_to :back, :error => "Order item is not finded"
+        redirect_to admin_panel_orders_path, :error => "Order item is not finded"
       end
     end
 end

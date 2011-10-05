@@ -79,7 +79,7 @@ function changeItemCount(id, count, auth)
     $.ajax({
     type: "POST",
     url: "/admin_panel/order_items/" + id,
-    data: {'order_attr' : {'count' : count}, 'authenticity_token': auth, '_method' : 'PUT'},
+    data: {'order_item' : {'count' : count}, 'authenticity_token': auth, '_method' : 'PUT'},
     success: function(response)
     {   if (response.state) {
             jQuery('#order_summary').html(response.summary);
