@@ -5,7 +5,7 @@ class ShopCartsController < ApplicationController
     if params[:id] and params[:delete_item]
       render :json => {:state => CartMethods.remove_item_from_list(cookies,params[:id])}
     elsif params[:id]
-      render :json => {:state => CartMethods.add_item_to_list(cookies,params[:id],{:title => params[:title], :price => params[:price].to_f, :count => params[:inc].to_i})}
+      render :json => {:state => CartMethods.add_item_to_list(cookies,params[:id],params[:order_item_attr])}
     else
       redirect_to :root
     end
