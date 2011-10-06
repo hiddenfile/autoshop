@@ -7,7 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require application.js.coffee
-//= require product.js.coffee
+//= require shop_cart.js.coffee
 //= require shop_cart.js.coffee
 //= require user.js.coffee
 //= require backcalls.js

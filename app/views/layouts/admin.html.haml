@@ -16,8 +16,6 @@
         #user-navigation
           %ul.wat-cf
             %li
-              -#=link_to 'Профиль', edit_admin_registration_path
-            %li
               =link_to 'Выход', destroy_admin_session_path, {:class=>"logout"}
 
         #main-navigation
@@ -47,7 +45,7 @@
               =link_to 'Отзывы', admin_panel_backcalls_path
 
             %li{has_active_class?(admin_panel_custom_views_path)}
-              =link_to 'Странички', admin_panel_custom_views_path
+              =link_to 'Статические страницы', admin_panel_custom_views_path
 
       #wrapper.wat-cf
         .flash

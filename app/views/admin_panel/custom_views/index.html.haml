@@ -1,11 +1,4 @@
-%div.secondary-navigation
-  %ul.wat-cf
-    %li
-      = link_to 'Перечень', admin_panel_custom_views_path
-    %li
-      = link_to 'Добавить', new_admin_panel_custom_view_path
-
-%h2.title Странички
+=render :partial => 'head', :locals => {:title => 'Статические страницы'}
 
 %table#tablecontent.table
   %tr.sortheader
@@ -19,7 +12,7 @@
       %td=page.page_type
       %td.links_column
         = link_to 'Перейти', admin_panel_custom_view_path(page)
-        = link_to 'Редактировать', edit_admin_panel_custom_view_path(page)
+        = link_to 'Редактировать', admin_panel_custom_view_path(page)
         = link_to 'Удалить', admin_panel_custom_view_path(page.id), :confirm => 'Are you sure?', :method => :delete
 .pagine
   %div

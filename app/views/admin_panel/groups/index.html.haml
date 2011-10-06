@@ -1,11 +1,4 @@
-.secondary-navigation
-  %ul.wat-cf
-    %li
-      = link_to 'Перечень', admin_panel_groups_path
-    %li
-      = link_to 'Добавить', new_admin_panel_group_path
-
-%h2.title Категории
+=render :partial => 'head', :locals => {:title => 'Категории'}
 
 %table#tablecontent.table
   %tr.sortheader

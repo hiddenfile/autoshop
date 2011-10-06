@@ -9,7 +9,7 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
     if @product.save
       redirect_to(admin_panel_products_path, :notice => 'Product was successfully created.')
     else
-      redirect_to(new_admin_panel_product_path, :alert => 'Product dont created.')
+      render :action => :new
     end
   end
 
@@ -29,12 +29,11 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
     if @product.update_attributes(params[:product])
       redirect_to(admin_panel_product_path(@product), :notice => 'Product was successfully updated.')
     else
-      render :action => "edit"
+      render :action => :edit
     end
   end
 
   def show
-
   end
 
   def edit
@@ -45,12 +44,6 @@ class AdminPanel::ProductsController < AdminPanel::AdminApplicationController
   def destroy
     @product.destroy
     redirect_to admin_panel_products_path, :notice => 'Product was successfully deleted.'
-  end
-
-  def delete_photo
-    @product = Product.find(params[:product_id])
-    @product.photos.find(params[:photo_id]).destroy
-    render :text => true
   end
 
   private

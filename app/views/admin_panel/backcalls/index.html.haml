@@ -6,7 +6,7 @@
 %h2.title Отзывы
 
 %table#tablecontent.table
-  =render :partial=>'backcalls', :locals =>{:backcalls=> @backcalls, :state=>@state}
+  =render :partial => 'backcalls', :locals => {:backcalls => @backcalls, :state => @state}
 
-=render :partial=>'paginate', :locals=>{:objects => @backcalls}
+=render :partial => 'paginate', :locals => {:objects => @backcalls}
 

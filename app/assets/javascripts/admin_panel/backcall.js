@@ -1,11 +1,11 @@
 function deleteBackcall(id,elem)
 {
     $.ajax({
-    type: "DELETE",
+    type: "POST",
     url: "/admin_panel/backcalls/"+id,
+    data: ({'_method' : 'DELETE', 'authenticity_token' : $("meta[name='csrf-token']").attr('content') }),
     success: function(response)
-    {   if (response==='Deleted')
-        {
+    {   if (response.state) {
             $(elem).parent().parent().remove();
         }
     }
@@ -16,13 +16,20 @@ function deleteBackcall(id,elem)
 function change_stateBackcall(id,elem)
 {
     var chState = jQuery(elem).attr('checked') || "unchecked";
-    chState = (chState==='checked' ? 'true' : 'false');
+    chState = (chState == 'checked' ? 'true' : 'false');
 
     $.ajax({
-    type: "PUT",
+    type: "POST",
     url: "/admin_panel/backcalls/"+id,
-    data: ({'backcall_state' : chState}),
-    success: function(response){}
+    data: ({'backcall_attr' : { 'checked' : chState}, '_method' : 'PUT', 'authenticity_token' : $("meta[name='csrf-token']").attr('content')}),
+    success: function(response){
+        if (!response.state) {
+            if (chState == 'true')
+                $(elem).removeAttr('checked');
+            else
+                $(elem).attr('checked', 'checked');
+        }
+    }
     })
     return false;
 }
@@ -33,8 +40,7 @@ function changeShownBackcallsType(type)
     type: "GET",
     url: "/admin_panel/backcalls",
     data:({'backcalls_type' : type}),
-    success: function(response)
-    {
+    success: function(response) {
         jQuery('#tablecontent').html(response.table);
         jQuery('.pagination').html(response.paginate);
     }
