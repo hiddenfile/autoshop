@@ -19,7 +19,6 @@ class AdminPanel::CompaniesController < AdminPanel::AdminApplicationController
 
   def new
     @company = Company.new
-    @photo = Photo.new
   end
 
   def update
@@ -46,8 +45,7 @@ class AdminPanel::CompaniesController < AdminPanel::AdminApplicationController
 
   def find_company
     unless @company = Company.find_by_id(params[:id])
-      flash[:error] = "Could not find id: #{params[:id]}"
-      redirect_to admin_panel_companies_path
+      redirect_to admin_panel_companies_path, :error => "Could not find id: #{params[:id]}"
     end
   end
 

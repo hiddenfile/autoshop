@@ -2,7 +2,7 @@ class BackcallsController < ApplicationController
 
   def create
     if simple_captcha_valid?
-      backcall = Backcall.new(:author=>user_signed_in? ? current_user.email : "Anonimous", :content => params[:text], :product_id => params[:product_id])
+      backcall = Backcall.new(:author => user_signed_in? ? current_user.email : "Anonimous", :content => params[:text], :product_id => params[:product_id])
       if backcall.save
         render :json => {:backcall => render_to_string(:partial => 'products/backcall', :locals=>{:backcall => backcall}), :captcha => render_to_string(:partial => "products/captcha")}
       else

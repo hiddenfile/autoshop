@@ -1,11 +1,30 @@
-=form_for @order do |f|
-  .order_items
-    -@order.order_items.each do |order_item|
-      = render :partial => 'order_item', :locals => {:order_item => order_item}
+%table.items_table#tablecontent.table
+  %thead
+    %th.first Наименование
+    %th Количество
+    %th Цена
+    %th.last
 
-  %br
-  =select_tag 'products',options_from_collection_for_select(@products, "id", "title")
-  =link_to_function 'Добавить позицию',"addOrderItem('#{@order.id}')"
-  %br
-  =f.label :state
-  =f.select "order_state", options_for_select(@order_states)
+  =form_for @order do |f|
+    .order_items
+      -@order.order_items.each do |order_item|
+        = render :partial => 'order_item', :locals => {:order_item => order_item}
+
+    %tfoot
+      %tr
+        %td Всего
+        %td
+        %td
+          %span#order_summary= @order.summary
+      %tr
+        %td
+        %td
+          =select_tag 'products',options_from_collection_for_select(@products, "id", "title")
+        %td
+        %td
+          =link_to_function 'Добавить позицию',"addOrderItem('#{@order.id}')"
+      %tr
+        %td
+          =f.label :state
+        %td
+          =f.select "order_state", @order_states.collect {|p| [ p, p ] },{},:onchange => "changeState('#{@order.id}',$(this).attr('value'))"

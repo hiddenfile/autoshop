@@ -1,3 +1,4 @@
+=render :partial => 'head', :locals => {:title => 'Свойства категории'}
 %div
   %p Название : #{@group.name}
   %p= render :partial => 'admin_panel/shared/images_show', :locals => {:target => @group}

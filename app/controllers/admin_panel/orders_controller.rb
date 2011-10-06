@@ -16,17 +16,17 @@ class AdminPanel::OrdersController < AdminPanel::AdminApplicationController
   def update
     @order = Order.find_by_id(params[:id])
     if @order.update_attributes(params[:order_attr])
-      redirect_to admin_panel_orders_path, :notice => 'Order was successfully changed.'
+      request.xhr? ? render(:text => true) : redirect_to(admin_panel_orders_path, :notice => 'Order was successfully changed.')
     else
-      redirect_to admin_panel_orders_path, :notice => 'Update of the order is failed.'
+      request.xhr? ? render(:text => false) :  redirect_to(admin_panel_orders_path, :notice => 'Update of the order is failed.')
     end
   end
 
   protected
     def find_order
-      @order = Order.includes(:order_items).find_by_id(params[:id])
+      @order = Order.includes(:order_items).order('order_items.product_name ASC').find_by_id(params[:id])
       unless @order
-        redirect_to :back
+        redirect_to admin_panel_orders_path
       end
     end
 end
