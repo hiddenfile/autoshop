@@ -5,7 +5,7 @@
   $.ajax
     type: "POST"
     url: "/shop_carts/" + product_id
-    data: ({'title' : title, 'price' : price, 'inc' : inc, 'authenticity_token' : $("meta[name='csrf-token']").attr('content'), '_method' : 'PUT' })
+    data: ({'order_item_attr' : {'product_name' : title, 'product_price' : price, 'count' : inc}, 'authenticity_token' : $("meta[name='csrf-token']").attr('content'), '_method' : 'PUT' })
     success: (response) ->
       if (response.state)
         procResultChange(product_id,inc,price,response);
