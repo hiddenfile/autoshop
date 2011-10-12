@@ -45,8 +45,7 @@ class AdminPanel::GroupsController < AdminPanel::AdminApplicationController
   private
   def find_group
     unless @group = Group.find_by_id(params[:id])
-      flash[:error] = "Could not find id: #{params[:id]}"
-      redirect_to admin_panel_groups_path
+      redirect_to admin_panel_groups_path, :error => "Could not find id: #{params[:id]}"
     end
   end
 

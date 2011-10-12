@@ -7,6 +7,4 @@ class Photo < ActiveRecord::Base
 
   validates_attachment_size :photo, :less_than => 1.megabytes
   validates :photo_file_name, :length => {:minimum => 1, :maximum => 50}
-
-
 end

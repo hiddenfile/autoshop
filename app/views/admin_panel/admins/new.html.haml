@@ -1,20 +1,19 @@
-%h2 Sign up
+=render :partial => 'head', :locals => {:title => 'Создание новой записи'}
 
 =form_for(@admin, :url => admin_panel_admins_path) do |f|
 
+  =render :partial => 'shared/errors', :locals => {:object => @admin}
   %p
     =f.label :email
-    %br
+    %br/
     =f.text_field :email
-
   %p
     =f.label :password
-    %br
+    %br/
     =f.password_field :password
-
   %p
     =f.label :password_confirmation
-    %br
+    %br/
     =f.password_field :password_confirmation
 
-  %p= f.submit "Sign up"
+  %p= f.submit "Создать"

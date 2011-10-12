@@ -4,11 +4,7 @@ class AdminPanel::PhotosController < AdminPanel::AdminApplicationController
   end
 
   def destroy
-    if Photo.find_by_id(params[:id]).try(:destroy)
-      render :text => "true"
-    else
-      render :text => "false"
-    end
+    render :json => {:state => (Photo.find_by_id(params[:id]).try(:destroy) != nil)}
   end
 
 end
