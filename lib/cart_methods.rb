@@ -33,6 +33,8 @@ module CartMethods
 
   def self.add_item_to_list(cookies,item_id,item_info)
     info = items_list_decode($redis.get(cookies[:cart_id]))
+    item_info[:count] = item_info[:count].to_i
+    item_info[:product_price] = item_info[:product_price].to_f
 
     unless info[item_id]
       info[item_id]=item_info
@@ -44,7 +46,7 @@ module CartMethods
     $redis.set(cookies[:cart_id],items_list_code(info))
 
     cart_count,cart_price=check_or_create_cookie(cookies)
-    set_cart_info(cookies,cart_count+item_info[:count],cart_price+item_info[:price]*item_info[:count])
+    set_cart_info(cookies,cart_count+item_info[:count],cart_price+item_info[:product_price]*item_info[:count])
     true
   end
 
@@ -55,7 +57,7 @@ module CartMethods
       cart_count,cart_price=check_or_create_cookie(cookies)
       count = info[item_id]['count'].to_i
 
-      set_cart_info(cookies,cart_count-count,cart_price-count*info[item_id]['price'].to_f)
+      set_cart_info(cookies,cart_count-count,cart_price-count*info[item_id]['product_price'].to_f)
       info.delete(item_id)
 
       $redis.set(cookies[:cart_id],items_list_code(info))

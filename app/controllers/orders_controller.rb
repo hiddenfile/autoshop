@@ -36,10 +36,8 @@ class OrdersController < ApplicationController
   def build_order_items(order)
     items = CartMethods.get_items_list(cookies)
 
-    items.each do |key,item|
-      if item['count'].to_i > 0
-        order.order_items.build({:count => item['count'],:product_name => item['title'],:product_price => item['price'],:product_discount => current_user.discount.try(:value) })
-      end
+    items.each_value do |item|
+      order.order_items.build(item.merge({:product_discount => current_user.discount.try(:value) })) if item['count'].to_i > 0
     end
   end
 
