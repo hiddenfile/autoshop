@@ -1,15 +1,14 @@
 source 'http://rubygems.org'
 
-
 gem 'simple_captcha', :git => 'git://github.com/intale/simple-captcha.git'
-gem 'rails', '3.1.0.rc6'
+gem 'rails', '3.1.0'
 
 gem 'therubyracer', '= 0.8.2'
 
 gem "pg"
 gem 'devise'
 
-gem 'sass-rails', "~> 3.1.0.rc"
+gem 'sass-rails'
 gem 'coffee-script'
 gem 'uglifier'
 
@@ -23,7 +22,7 @@ gem 'will_paginate', '~> 3.0.pre4'
 gem "paperclip", "= 2.3.12"
 gem "passenger", "~> 3.0.8"
 gem "redis", "~> 2.2.1"
-gem "sprockets", "2.0.0.beta.12"
+gem "sprockets", "2.0.0"
 gem "ckeditor", "~> 3.6.0"
 gem "nokogiri", :require => 'nokogiri'
 group :test do
