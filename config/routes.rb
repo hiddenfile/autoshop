@@ -14,7 +14,8 @@ Autoshop::Application.routes.draw do
   end
 
   resources :orders, :except => [:new, :update, :edit]
-  resources :shop_carts,:only => [:update,:destroy,:show]
+  resources :shop_carts,:only => [:update,:destroy]
+  match 'shop_cart' => "shop_carts#show", :as => 'shop_cart', :via => 'get'
 
   resources :groups, :only => :show
   resources :custom_views, :only => :index

@@ -92,7 +92,7 @@
               %h6{:style =>"margin: 35px 0 0;"}
             #cart
               #cart_box
-                =link_to shop_cart_path(:id), :id=> 'cart_box_list' do
+                =link_to shop_cart_path, :id=> 'cart_box_list' do
                   =image_tag "shopping_cart.png", :id=> 'cart_box_list_img'
               #cart_info
                 %span Позиций :
@@ -107,7 +107,7 @@
 
 
             .cart_control_links
-              = link_to 'Ваш заказ',shop_cart_path(:id)
+              = link_to 'Ваш заказ',shop_cart_path, :method => 'get'
               = link_to 'Отменить',shop_cart_path(:id),:method => "delete"
 
         .clear
