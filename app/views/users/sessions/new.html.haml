@@ -14,4 +14,7 @@
       %p
         = f.check_box :remember_me
         = f.label "Запомнить меня"
-    %p= f.submit "Войти"
+    %p
+      = f.submit "Войти",:class => 'button'
+      =link_to('Регистрация',new_user_registration_path,:class => 'button')
+      .clear
